@@ -1,0 +1,1893 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../Linux/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/">
+      
+      
+        <link rel="next" href="../../../nginx/2294_nginx/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>makefile学习笔记 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#makefile" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Blog" class="md-header__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              makefile学习笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Blog" class="md-nav__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/%E9%AB%98%E8%B4%A8%E9%87%8FC_C%2B%2B%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    代码规范
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    绘图
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            绘图
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BB%98%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流程图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/eNSP%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F/eNSP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eNSP网络仿真
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C_C%2B%2B/C_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C_C%2B%2B%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95/C_C%2B%2B%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++代码调试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux系统编程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    makefile
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            makefile
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    makefile学习笔记
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    makefile学习笔记
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#makefile-cflagsldflags-libs" class="md-nav__link">
+    Makefile的 CFLAGS、LDFLAGS 和 LIBS 选项（重点内容）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#makefileaddsuffix" class="md-nav__link">
+    makefile加后缀函数——addsuffix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-makefile" class="md-nav__link">
+    1 makefile简介
+  </a>
+  
+    <nav class="md-nav" aria-label="1 makefile简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-makefile" class="md-nav__link">
+    1.1 什么是makefile?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-makefile" class="md-nav__link">
+    1.2 Makefile规则介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 简单的示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-make" class="md-nav__link">
+    1.4 make如何工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 指定变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    1.6 自动推导规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-makefile" class="md-nav__link">
+    1.7 另类风格的makefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    1.8 清除工作目录过程文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-makefile" class="md-nav__link">
+    3 Makefile总述
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Makefile总述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-makefile" class="md-nav__link">
+    3.1 Makefile的内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-makefile" class="md-nav__link">
+    3.2 makefile文件的命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-makefile" class="md-nav__link">
+    3.3 包含其它makefile文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-makefiles" class="md-nav__link">
+    3.4 变量MAKEFILES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-makefile_list" class="md-nav__link">
+    3.5 变量MAKEFILE_LIST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 其他特殊变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-makefile" class="md-nav__link">
+    3.7 makefile文件的重建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-makefile" class="md-nav__link">
+    3.8 重载另外一个makefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-makemakefile" class="md-nav__link">
+    3.9 make如何解析makefile文件（重点内容）
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 make如何解析makefile文件（重点内容）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#391" class="md-nav__link">
+    3.9.1 变量取值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#392" class="md-nav__link">
+    3.9.2 条件语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#393" class="md-nav__link">
+    3.9.3 规则的定义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-makefile" class="md-nav__link">
+    4 Makefile的规则
+  </a>
+  
+    <nav class="md-nav" aria-label="4 Makefile的规则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 一个例子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 规则语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 依赖的类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-makefile" class="md-nav__link">
+    4.4 Makefile通配符
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Makefile通配符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441" class="md-nav__link">
+    4.4.1 文件名使用通配符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442" class="md-nav__link">
+    4.4.2 通配符存在的缺陷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-wildcard" class="md-nav__link">
+    4.4.3 函数wildcard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 目录搜寻 ??? 没看懂,后续补充
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-makefile" class="md-nav__link">
+    4.6 Makefile伪目标
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../nginx/2294_nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2294 nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../nginx/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/Beyond_Compare/Beyond_Compare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beyond_Compare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git/Git%E5%9F%B9%E8%AE%AD/git%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/Markdown/Markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/MobaXterm/MobaXterm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MobaXterm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/Source_Insight/source_insight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Source_Insight
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/vim/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/VMware/vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VMware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/VS_Code/VS_Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS_Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#makefile-cflagsldflags-libs" class="md-nav__link">
+    Makefile的 CFLAGS、LDFLAGS 和 LIBS 选项（重点内容）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#makefileaddsuffix" class="md-nav__link">
+    makefile加后缀函数——addsuffix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-makefile" class="md-nav__link">
+    1 makefile简介
+  </a>
+  
+    <nav class="md-nav" aria-label="1 makefile简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-makefile" class="md-nav__link">
+    1.1 什么是makefile?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-makefile" class="md-nav__link">
+    1.2 Makefile规则介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 简单的示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-make" class="md-nav__link">
+    1.4 make如何工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 指定变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    1.6 自动推导规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-makefile" class="md-nav__link">
+    1.7 另类风格的makefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    1.8 清除工作目录过程文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-makefile" class="md-nav__link">
+    3 Makefile总述
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Makefile总述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-makefile" class="md-nav__link">
+    3.1 Makefile的内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-makefile" class="md-nav__link">
+    3.2 makefile文件的命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-makefile" class="md-nav__link">
+    3.3 包含其它makefile文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-makefiles" class="md-nav__link">
+    3.4 变量MAKEFILES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-makefile_list" class="md-nav__link">
+    3.5 变量MAKEFILE_LIST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 其他特殊变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-makefile" class="md-nav__link">
+    3.7 makefile文件的重建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-makefile" class="md-nav__link">
+    3.8 重载另外一个makefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-makemakefile" class="md-nav__link">
+    3.9 make如何解析makefile文件（重点内容）
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 make如何解析makefile文件（重点内容）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#391" class="md-nav__link">
+    3.9.1 变量取值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#392" class="md-nav__link">
+    3.9.2 条件语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#393" class="md-nav__link">
+    3.9.3 规则的定义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-makefile" class="md-nav__link">
+    4 Makefile的规则
+  </a>
+  
+    <nav class="md-nav" aria-label="4 Makefile的规则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 一个例子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 规则语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 依赖的类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-makefile" class="md-nav__link">
+    4.4 Makefile通配符
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Makefile通配符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441" class="md-nav__link">
+    4.4.1 文件名使用通配符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442" class="md-nav__link">
+    4.4.2 通配符存在的缺陷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-wildcard" class="md-nav__link">
+    4.4.3 函数wildcard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 目录搜寻 ??? 没看懂,后续补充
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-makefile" class="md-nav__link">
+    4.6 Makefile伪目标
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="makefile">makefile学习</h1>
+<h3 id="makefile-cflagsldflags-libs">Makefile的 CFLAGS、LDFLAGS 和 LIBS 选项（重点内容）</h3>
+<p>https://blog.csdn.net/lailaiquququ11/article/details/126691913
+https://blog.csdn.net/hxlawf/article/details/94623786
+http://www.noobyard.com/article/p-smbimeag-bn.html
+https://www.cnblogs.com/rohens-hbg/p/11104231.html</p>
+<h3 id="makefileaddsuffix">makefile加后缀函数——addsuffix</h3>
+<p>$(addsuffix <suffix>,<names...> )</p>
+<p>名称：加后缀函数——addsuffix。
+功能：把后缀<suffix>加到<names>中的每个单词后面。
+返回：返回加过后缀的文件名序列。
+示例：$(addsuffix .c,foo bar)返回值是“foo.c bar.c”。
+————————————————
+原文链接：https://blog.csdn.net/qianniuwei321/article/details/123488850</p>
+<h2 id="1-makefile">1 makefile简介</h2>
+<h3 id="11-makefile">1.1 什么是makefile?</h3>
+<h3 id="12-makefile">1.2 Makefile规则介绍</h3>
+<p>一个简单的Makefile描述规则如下所示：</p>
+<pre><code class="language-makefile">TARGET... : PREREQUISITES...
+    COMMAND
+    ...
+    ...
+</code></pre>
+<p>target：规则的目标。通常是最后需要生成的文件名或者为了实现这个目标而必需的中间过程文件名。可以是.o文件，也可以是最后的可执行文件等。另外，目标也可以是一个make执行的动作的名称，如目标"clean"，我们称这样的目标是"伪目标"。</p>
+<p>prerequisites：规则的依赖。生成规则目标所需要的文件名列表。通常一个目标依赖于一个或者多个文件。</p>
+<p>command：规则的命令行。是规则所要执行的动作（任意的shell命令或者是可在shell下执行的程序），它限定了make执行这条规则时所需要的动作。
+一个规则可以有多个命令行，每一条命令占一行。<strong>注意：每一个命令必须以[Tab]字符开始，[Tab]字符告诉make此行是一个命令行，make按照命令完成相应的动作，这也是书写Makefile时容易产生且比较隐蔽的错误。</strong>
+命令就是在任何一个目标的依赖文件发生变化后重建目标的动作描述。一个目标可以没有依赖而只有动作（指令的命令）。比如Makefile中的目标"clean"，此目标没有依赖，只有命令。它所定义的命令用来删除make过程产生的中间文件（进行清理工作）。</p>
+<p>在Makefile中"规则"就是描述在什么情况下如何重建目标的命令，通常规则中包括了目标的依赖关系（目标的依赖文件）和重建目标的命令。make执行重建目标的命令，来创建或者重建规则的目标（此目标文件也可以是触发这个规则的上一个规则中的依赖文件）。规则包含了文件之间的依赖关系和更新此规则目标所需要的命令。</p>
+<p>一个Makefile文件中通常还包含了除规则以外的很多东西（后续我们会一步一步的展开）。一个最简单的Makefile可能只包含规则，规则在有些Makefile中可能看起来非常复杂，但是无论规则的书写是多么的复杂，它都符合规则的基本格式。
+make程序根据规则的依赖关系，决定是否执行所定义的命令的过程我们称之为<strong>执行规则</strong>。</p>
+<h3 id="13">1.3 简单的示例</h3>
+<p>本小节开始我们举一个简单的例子。此例子有3个头文件和8个C文件组成。我们将书写一个简单的Makefile，来描述如何创建最终的可执行文件"edit"，此可执行文件依赖于3个头文件和8个C源文件。Makefile文件的内容如下：</p>
+<pre><code class="language-makefile">#sample Makefile
+edit : main.o kbd.o command.o display.o \
+       insert.o search.o files.o utils.o
+    cc -o edit main.o kbd.o command.o display.o \
+               insert.o search.o files.o utils.o
+main.o : main.c defs.h
+    cc -c main.c
+kbd.o : kdb.c defs.h command.h
+    cc -c kbd.c
+command.o : command.c defs.h command.h
+    cc -c command.c
+display.o : display.c defs.h buffer.h
+    cc -c display.c
+insert.o : insert.c defs.h buffer.h
+    cc -c insert.c
+search.o : search.c defs.h buffer.h command.h
+    cc -c search.c
+files.o : files.c defs.h buffer.h command.h
+    cc -c files.c
+utils.o : utils.c defs.h
+    cc -c utils.c
+clean :
+    rm edit main.o kbd.o command.o display.o \
+            insert.o search.o files.o utils.o
+</code></pre>
+<p>首先书写时，可以将一个较长行使用反斜线（\）来分解为多行，这样可以使我们的Makefile书写清晰、容易阅读。<strong>但需要注意：反斜线之后不能有空格（这也是大家最容易犯的错误，比较隐蔽）。</strong> 我们推荐将一个长行分解为使用反斜线连接的多行形式。
+当完成了这个Makefile以后，如果需要创建可执行程序 "edit" ,只需要在包含此Makefile的目录（当然也在代码所在目录）下输入命令 "<strong>make</strong>" 。如果想删除之前使用 "<strong>make</strong>" 生成的文件（包括那些中间过程的.o文件），也只需要输入命令 "<strong>make clean</strong>" 即可。
+在这个Makefile中，我们的目标（target）就是可执行文件 "edit" 和那些.o文件（main.o,kbd.o...）;依赖（prerequisites）就是冒号后面的那些.c文件和.h文件，所有的.o文件既是依赖（相对于可执行程序edit）又是目标（相对于.c和.h文件）。命令包括"cc -c main"、"cc -c kbd.c"......
+当规则的目标是一个文件，在它的任何一个依赖文件被修改以后，执行"make"时这个目标文件将会被重新编译或者重新连接。当然，此目标的任何一个依赖文件如果有必要则首先会被重新编译。在这个例子中，"edit"的依赖为8个.o文件，而"main.o"的依赖文件为"main.c"和"defs.h"。当"main.c"或者"defs.h"被修改以后，再次执行"make"，"main.o"就会被更新（其他的.o文件不会被更新），同时"main.o"的更新将会导致"edit"被更新。</p>
+<p>在描述依赖关系行之下通常就是规则的命令行（存在一些规则没有命令行），命令行定义了规则的动作（如何根据依赖文件来更新目标文件）。命令行必须以 [Tab] 键开始，以和Makefile其他行区别。<strong>就是说所有的命令行必须以 [Tab] 字符开始，但并不是所有的以 [Tab] 键出现的行都是命令行。但make程序会把出现在第一条规则之后的所有以 [Tab] 字符开始的行都作为命令行来处理。</strong> （记住：make程序本身并不关心命令是如何工作的，对目标文件的更新需要你在规则描述中提供正确的命令。"make"程序所做的就是当目标程序需要更新时执行规则所定义的命令）。</p>
+<p>目标 "clean" 不是一个文件，它仅仅代表执行一个动作的标识。正常情况下，不需要执行这个规则所定义的动作，因此目标 "clean" 没有出现在其他任何规则的依赖列表中。因此在执行 "make" 时，它所指定的动作不会被执行。除非在执行make时明确的指定它。而且目标 "clean" 没有任何依赖文件，它只有一个目的，就是通过这个目标名来执行它所定义的命令。<strong>Makefile中把那些没有任何依赖只有执行动作的目标称为“伪目标”（phony targets）<code>[ˈfoʊni]</code>。</strong> 需要执行"clean"目标所定义的命令，可在shell下输入：<u><em>make clean</em></u> 。</p>
+<h3 id="14-make">1.4 make如何工作</h3>
+<p>默认的情况下，make执行的是Makefile中的第一个规则，此规则的第一个目标称为“最终目的”或者“终极目标”（就是一个Makefile最终需要更新或者创建的目标）
+上例的Makefile，目标 "edit" 在Makefile中是第一个目标，因此它就是make的“终极目标”。当修改了任何C源文件或者头文件后，执行make将会重建终极目标"edit"。
+当在shell提示符下输入"make"命令以后，make读取当前目录下的Makefile文件，并将Makefile文件中的第一个目标作为其执行的“终极目标”，开始处理第一个规则（终极目标所在的规则）。在我们的例子中，第一个规则就是目标"edit"所在的规则。规则描述了"edit"的依赖关系，并定义了链接.o文件生成目标"edit"的命令;make在执行这个规则所定义的命令之前，首先处理目标"edit"所在的依赖文件（例子中的那些.o文件）的更新规则（以这些.o文件为目标的规则），对这些.o文件为目标的规则处理有下列三种情况：
+1. 目标.o文件不存在，使用其描述规则创建它；
+2. 目标.o文件存在，目标.o文件所依赖的.c源文件、.h文件中的任何一个比目标.o文件“更新”（在上一次make之后被修改）。则根据规则重新编译生成它；
+3. 目标.o文件存在，目标.o文件比它的任何一个依赖文件（.c源文件、.h文件）“更新”（它的依赖文件在上一次make之后没有被修改），则什么也不做。</p>
+<p>这些.o文件所在的规则之所以会被执行，是因为这些.o文件出现在“终极目标”的依赖列表中。在Makefile中一个规则的目标如果不是“终极目标”所依赖的（或者“终极目标”的依赖文件所依赖的），那么这个规则将不会被执行，除非明确指定执行这个规则（可以通过make命令行指定重建目标，那么这个目标所在的规则就会被执行，例如“make clean”）。在编译或者重新编译生成一个.o文件时，make同样会去寻找它的依赖文件的重建规则（是这样一个规则：这个依赖文件在规则中作为目标出现），在这里就是.c和.h文件的重建规则。在上例的Makefile中没有那个规则的目标是.c或者.h文件，所以没有重建.c和.h文件的规则。不过C语言源文件可以使用工具Bison或者Yacc来生成（具体用法可参考相应的手册）。</p>
+<p>完成了对.o文件的创建（第一次编译）或者更新后，make程序将处理终极目标"edit"所在的规则，分为以下三种情况：
+1. 目标文件"edit"不存在，则执行规则以创建目标"edit"。
+2. 目标文件"edit"存在，其依赖文件中有一个或者多个文件比它“更新”，则根据规则重新链接生成"edit"。
+3. 目标文件"edit"存在，它比它的任何一个依赖文件都“更新”，则什么也不做。</p>
+<p>上例中，如果更改了源文件 "insert.c" 后执行make，"insert.o" 将被更新，之后终极目标 "edit" 将会被重新生成;如果我们修改了头文件"command.h"之后运行make，那么“kbd.o”、“command.o”和“files.o”将会被重新编译，之后同样终极目标"edit"也将被重新生成。</p>
+<p>以上我们通过一个简单的例子，介绍了Makefile中目标和依赖的关系。我们简单总结一下：
+对于一个Makefile文件，"make"首先解析终极目标所在的规则（上节例子中的第一个规则），根据其依赖文件（例子中第一个规则的8个.o文件）依次（按照依赖文件列表从左到右的顺序）寻找创建这些依赖文件的规则。首先为第一个依赖文件（main.o）寻找创建规则，如果第一个依赖文件依赖于其它文件（main.c、defs.h），则同样为这个依赖文件寻找创建规则（创建main.c和defs.h的规则，通常源文件和头文件已经存在，也不存在重建它们的规则）......，直到为所有的依赖文件找到合适的创建规则。之后make按照终极目标的依赖文件的列表顺序依次完成对规则文件的创建和更新（上例的顺序是"main.o"、 "kbd.o"、 "command.o"......）。
+创建或者更新每一个规则依赖文件的过程都是这样的一个过程。对于任意一个规则执行的过程都是按照依赖文件列表顺序，对于规则中的每一个依赖文件，使用同样方式（按照同样的过程）去重建它，在完成对所有依赖文件的重建之后，最后一步才是重建此规则的目标。
+更新（或者创建）终极目标的过程中，如果任何一个规则执行出现错误make就立即报错并退出。整个过程make只是负责执行规则，而对具体规则所描述的依赖关系的正确性、规则所定义的命令的正确性不做任何判断。就是说，一个规则的依赖关系是否正确、描述重建目标的规则命令行是否正确，make不做任何错误检查。
+因此，需要正确的编译一个工程，需要在提供给make程序的Makefile中来保证其依赖关系的正确性和执行命令的正确性。</p>
+<h3 id="15">1.5 指定变量</h3>
+<p>同样是上边的例子，我们来看一下终极目标"edit"所在的规则</p>
+<pre><code class="language-makefile">edit : main.o kbd.o command.o display.o \
+       insert.o seartch.o files.o utils.o
+    cc -o edit main.o kbd.o command.o display.o \
+          insert.o search.o files.o utils.o
+</code></pre>
+<p>在这个规则中.o文件列表出现了两次；
+第一次：作为目标"edit"的依赖文件列表出现；
+第二次：规则命令行中作为"cc"的参数列表。
+这样做所带来的问题是：如果我们需要为目标"edit"增加一个依赖文件，我们就需要在两个地方添加（依赖文件列表和规则的命令行中）。添加时可能在"edit"的依赖文件中加入了，但是却忘记了给命令行中添加，或者相反。这就给后期的维护和修改带来了很多不方便，添加或修改时容易出现遗漏。
+为了避免这个问题，在实际工作中大家都比较认同的方法是使用一个变量"objects"、"OBJECTS"、"objs"、"OBJS"或者"OBJ"来作为所有的.o文件的列表来替代。在使用到这些文件列表的地方，使用此变量来代替。在上例的Makefile中我们可以添加这样的一行：</p>
+<pre><code class="language-makefile">objects = main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+</code></pre>
+<p>"objects"作为一个变量，它代表所有的.o文件的列表。在定义了此变量后，我们就可以在需要使用这些.o文件列表的地方使用"<strong>$(objects)</strong>"来表示它，而不需要罗列所有的.o文件列表。因此上例的规则就可以这样写：</p>
+<pre><code class="language-makefile">objects = main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+edit : $(objects)
+    cc -o edit $(objects)
+    ...
+    ...
+clean :
+    rm edit $(objects)
+</code></pre>
+<p>当我们需要为终极目标"edit"增加或者去掉一个.o依赖文件时，只需要改变"objects"的定义（加入或者去掉若干个.o文件）。这样做不但减少书写的工作量，而且可以减少修改而产生错误的可能。</p>
+<h3 id="16">1.6 自动推导规则</h3>
+<p>在使用make编译.c源文件时，编译.c源文件规则的命令可以不用明确给出。这是因为make本身存在一个默认的规则，能够自动完成对.c文件的编译并生成对应的.o文件。它执行命令"cc -c"来编译.c源文件。在Makefile中我们只需要给出需要重建的目标文件名（一个.o文件），make会自动为这个.o文件寻找合适的依赖文件（对应的.c文件，对应是指：文件名除后缀外，其余都相同的两个文件），而且使用正确的命令来重建这个目标文件。对于上边的例子，此默认规则就是使用命令"cc -c main.c -o main.o"来创建文件"main.o"。对一个目标文件是"N.o"，依赖文件是"N.c"的规则，完全可以省略其规则的命令行，而由make自身决定使用默认命令。此默认规则称为make的隐含规则。</p>
+<p>这样，在书写Makefile时，我们就可以省略描述.c文件和.o文件依赖关系的规则，而只需要给出那些特定的规则描述（.o目标所需要的.h文件）。因此上边的例子就可以以更加简单的方式书写，我们同样使用变量"objects"。Makefile内容如下：</p>
+<pre><code class="language-makefile"># sample Makefile
+objects = main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+edit : $(objects)
+    cc -o edit $(objects)
+main.o : defs.h
+kbd.o : defs.h command.h
+command.o : defs.h command.h
+display.o : defs.h buffer.h
+insert.o : defs.h buffer.h
+search.o : defs.h buffer.h
+files.o : defs.h buffer.h command.h
+utils.o : defs.h
+
+.PHONY : clean
+clean : 
+    rm edit $(objects)
+</code></pre>
+<p>这样格式的Makefile更接近于我们实际应用。</p>
+<p>make的隐含规则在实际工程的make中会经常使用，它使得编译过程变得方便。几乎在所有的Makefile中都用到了make的隐含规则，make的隐含规则是非常重要的一个概念。</p>
+<h3 id="17-makefile">1.7 另类风格的makefile</h3>
+<p>上一节中我们提到过，Makefile中，所有的.o目标文件都可以使用隐含规则由make自动重建，我们可以根据这一点书写更加简洁的Makefile。而且在这个Makefile中，我们是根据依赖而不是目标对规则进行分组。形成另外一种风格的Makefile。实现如下：</p>
+<pre><code class="language-makefile"># sample Makefile
+objects = main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+edit : $(objects)
+    cc -o edit $(objects)
+$(objects) : defs.h
+kbd.o command.o files.o : command.h
+display.o insert.o search.o files.o : buffer.h
+</code></pre>
+<p>本例中，我们以三个头文件为出发点，对依赖于每一个头文件的目标进行合并。书写出一个多目标规则。规则中多个目标同时依赖于对应的头文件，而且同一个文件可能同时存在多个规则中。例子中头文件"defs.h"作为所有.o文件的依赖文件。其它两个头文件作为规则所有目标文件（多个.o文件）的依赖文件。
+这种风格的Makefile并不值得我们借鉴。问题在于：同时把多个目标的依赖文件放在同一个规则（一个规则中含有多个目标文件），这样导致规则定义不明了，比较混乱。建议大家不要在Makefile中采用这种书写方式，否则后期维护将是一件非常痛苦的事情。
+书写规则建议的方式是：<strong>单目标，多依赖。就是说尽量要做到一个规则中只存在一个目标文件，可以有多个依赖文件。尽量避免使用多目标，单依赖的方式。</strong> 这样书写的好处是后期维护会非常方便，而且这样会使Makefile更清晰、明了。</p>
+<h3 id="18">1.8 清除工作目录过程文件</h3>
+<p>规则除了完成源代码编译之外，也可以完成其它任务。例如：前边提到的为了实现清除当前目录中编译过程中产生的临时文件（edit和那些.o文件）的规则：</p>
+<pre><code class="language-makefile">clean :
+    rm edit $(objects)
+</code></pre>
+<p>在实际应用时，我们把这个规则写成如下稍微复杂一些的样子，防止出现始料未及的情况。</p>
+<pre><code class="language-makefile">.PHONY : clean
+clean :
+    -rm edit $(objects)
+</code></pre>
+<p>这个实现有两点不同：
+1. 通过 ".PHONY" 这个特殊目标将 "clean" 目标声明成伪目标。避免当磁盘上存在一个名为"clean"文件时，目标 "clean" 所在规则的命令无法执行。
+2. 在命令行之前使用 "-" ，意思是忽略命令 "rm" 的执行错误。</p>
+<p>这样的一个目标在Makefile中，不能将其作为终极目标（Makefile的第一个目标）。因为我们的初衷并不是当你在命令行输入make以后执行删除动作，而是要创建或者更新程序。在上面的例子中，就是输入make以后对目标 "edit" 进行创建或者重建。
+上面中因为目标 "clean" 没有出现在终极目标 "edit" 依赖关系中（终极目标的直接依赖或者间接依赖），所以我们执行 "make" 时，目标 "clean" 所在的规则将不会被处理。当需要执行此规则时，要在make的命令行选项中明确指定这个目标（执行 <strong>"make clean"</strong> ）。</p>
+<h2 id="3-makefile">3 Makefile总述</h2>
+<h3 id="31-makefile">3.1 Makefile的内容</h3>
+<p>在一个完整的Makefile中，包含了5个东西：<strong>显示规则</strong>、<strong>隐含规则</strong>、<strong>变量定义</strong>、<strong>指示符</strong>和<strong>注释</strong>。
+- 显示规则：它描述了在何种情况下如何更新一个或者多个被称为目标的文件（Makefile的目标文件）。书写Makefile时需要明确的给出目标文件、目标的依赖文件列表以及更新目标文件所需要的命令（有些规则没有命令，这样的规则只是存粹的描述了文件之间的依赖关系）。
+- 隐含规则：它是make根据一类目标文件（典型的是根据文件名的后缀）而自动推导出来的规则。make根据目标文件的名，自动产生目标的依赖文件并使用默认的命令来对目标进行更新（建立一个规则）。
+- 变量定义：使用一个字符或字符串代表一段文本串，当定义了一个变量以后，Makefile后续在需要使用此文本串的地方，通过引用这个变量来实现对文本串的使用。在上面的例子中，我们就定义了一个变量 "objects" 来表示一个.o文件列表。
+- Makefile指示符：指示符指明在make程序读取makefile文件过程中所要执行的一个动作。其中包括：
+  - 读取一个文件，读取给定文件名的文件，将其内容作为makefile文件的一部分。
+  - 决定（通常是根据一个变量的值）处理或者忽略Makefile中的某些特定部分。
+  - 定义一个多行变量。
+- 注释：Makefile中 "#" 字符后的内容被作为是注释内容（和shell脚本一样）处理。如果此行的第一个非空字符为 "#" ,那么此行作为注释行。注释行的结尾如果存在反斜线（\），那么下一行也被作为注释行。一般在书写Makefile时推荐将注释作为一个独立的行，而不要和Makefile的有效行放在一行中书写。当在Makefile中需要使用字符 "#" 时，可以使用反斜线加 "#" <code>\#</code> 来实现（对特殊字符 "#" 的转移），其表示将 "#" 作为一字符而不是注释的开始标志。</p>
+<p>需要注意的地方：
+Makefile中第一个规则之后的所有以<code>[Tab]</code>字符开始的行，make程序都会将其交给<code>shell</code>程序去解释执行。因此，以<code>[Tab]</code>字符开始的注释行也会被交给shell来处理，此命令行是否需要被执行（shell执行或者忽略）是由shell程序来判决的。
+另外，在使用指示符<code>define</code>定义一个多行的变量或者命令时，其定义体（<code>define</code>和<code>endef</code>之间的内容）会被完整的展开到Makefile中引用此变量的地方（包含定义体中的注释行）;make在引用此变量的引用和C语言中的宏类似（但是其实质并不相同，后续将会详细讨论）。对一个变量引用的地方make所作的就是将这个变量根据定义进行基于文本的展开，展开变量的过程不涉及到任何变量的具体含义和功能分析。</p>
+<h3 id="32-makefile">3.2 makefile文件的命名</h3>
+<p>默认的情况下，make会在工作目录（执行make的目录）下按照文件名顺序寻找makefile文件读取并执行，查找的文件名顺序为：<code>GNUmakefie</code>、<code>makefile</code>、<code>Makefile</code>。
+通常应该使用<code>makefile</code>或者<code>Makefile</code>作为一个makefile的文件名（我们推荐使用<code>Makefile</code>，首字母大写比较显著，而且一般在一个目录中和当前目录的一些重要文件（README,Changelist等）靠近，在寻找时会比较容易发现）。而<code>GNUmakefile</code>是不推荐使用的文件名，因为此命名方式只有<code>GNU make</code>才可以识别，而其它版本的make程序只会在工作目录下寻找<code>makefile</code>和<code>Makefile</code>这两个文件。
+如果make程序在工作目录下无法找到以上三个中的任意一个，它将不读取任何其它文件作为解析对象。但是根据make隐含规则的特性，我们可以通过命令行指定一个目标，如果当前目录下存在符合此目标的依赖文件，那么这个命令行所指令的目标将会被创建或者更新。
+当makefile文件的命名不是这三个中的任何一个时，需要通过make的<code>-f</code>、<code>--file</code>或者<code>--makefile</code>选项来指定make读取的makefile。格式如下所示：</p>
+<blockquote>
+<p>-f file
+--file=file
+--makefile=file</p>
+</blockquote>
+<p>它指定<code>file</code>作为执行make时读取的makefile文件。也可通过<code>-f</code>、<code>--file</code>或者<code>--makefile</code>选项来指定多个需要读取的makefile文件，多个makefiel 文件将会按照指定的顺序进行链接并被make解析执行。格式如下所示：</p>
+<blockquote>
+<p>make -f file1 -f file2
+make --file=file1 -- file=file2
+make --makefile=file1 -- makefile=file2</p>
+</blockquote>
+<p>当通过<code>-f</code>、<code>--file</code>或者<code>--makefile</code>选项指定make读取的makefile文件时，make就不会再自动查找三个标准命名的makefiel文件。</p>
+<blockquote>
+<p>注释：通过命令指定目标使用make的隐含规则：
+假设：当前目录不存在以<code>GNUmakefile</code>、<code>makefile</code>、<code>Makefile</code>命名的文件
+1. 当前目录下存在一个源文件foo.c，我们可以使用<code>make foo.o</code>来使用make的隐含规则自动生成<code>foo.o</code>。当执行<code>make foo.o</code>时，我们看到其执行的命令为：
+<code>cc -c foo.c</code>
+之后，foo.o将会被创建或者更新。
+2. 如果当前目录下没有foo.c文件时，就是make对.o文件目标的隐含规则中的依赖文件不存在。如果使用命令<code>make foo.o</code>时，将会得到如下提示：
+<code>make: *** No rule to make target foo.o. Stop.</code>
+3. 如果直接使用命令<code>make</code>时，得到的提示信息如下：
+<code>make: *** No targets specified and no makefile found. Stop</code></p>
+</blockquote>
+<h3 id="33-makefile">3.3 包含其它makefile文件</h3>
+<p>本节我们讨论如何在一个Makefile中包含其它的Makefile文件。Makefile中包含其它文件所需要使用的关键字是<code>include</code>,和<code>C语言</code>对头文件的包含方式一致。
+<code>include</code>指示符告诉make暂停读取当前的Makefile，而转去读取<code>include</code>指定的一个或者多个文件，完成以后再继续当前Makefile的读取。Makefile中指示符<code>include</code>书写在独立的一行，其形式如下：</p>
+<blockquote>
+<p>include FILENAMES...</p>
+</blockquote>
+<p><code>FILENAMES</code>是shell所支持的文件名（可以使用通配符）。
+指示符<code>include</code>所在的行可以有一个或者多个空格（make程序在处理时将忽略这些空格）开始，切记不能以<code>[Tab]</code>字符开始（如果一行以<code>[Tab]</code>字符开始make程序将此行作为一个命令行来处理）。指示符<code>include</code>和文件名之间、多个文件之间使用空格或者<code>[Tab]</code>键隔开。行尾的空白字符在处理时被忽略。使用指示符包含进来的Makefile中，如果存在变量或者函数引用。它们将会在包含它们的Makefile中被展开。
+来看一个例子，存在三个.mk文件a.mk、b.mk、c.mk，<code>$(bar)</code>被扩展为<code>bish bash</code>。则</p>
+<pre><code class="language-makefile">include foo *.mk $(bar)
+</code></pre>
+<p>等价于</p>
+<pre><code class="language-makefile">include foo a.mk b.mk c.mk bish bash
+</code></pre>
+<p>之前已经提到过make程序在处理指示符<code>include</code>时，将暂停对当前Makefile的读取，而转去依次读取由<code>include</code>指示符指定的文件列表，直到完成所有这些文件以后再回过头继续读取指示符<code>include</code>所在的Makefile文件。
+通常指示符<code>include</code>用在以下场合：
+1. 有多个不同的程序，由不同目录下的几个独立的Makefile来描述其重建规则。它们需要使用一组通用的变量定义或者模式规则。通用的做法是将这些共同使用的变量或者模式规则定义在一个文件中（没有具体的文件命名限制），在需要使用的Makefile中使用指示符<code>include</code>来包含此文件。
+2. 当根据源文件自动产生依赖文件时，我们可以将自动产生的依赖关系保存在另一个文件中，主Makefile使用指示符<code>include</code>包含这些文件。这样的做法比直接在主Makefile中追加依赖文件的方法要明智的多，其它版本的make已经使用这种方式来处理。
+如果指示符<code>include</code>指定的文件不是以斜线开始（绝对路径，如<code>/usr/src/Makefile...</code>），而且当前目录下也不存在此文件；make将根据文件名试图在以下几个目录下查找：
+   - 首先查找使用命令行选项<code>-I</code>或者<code>--include-dir</code>指定的目录，如果找到指定的文件。则使用这个文件；
+   - 否则继续依次搜索以下几个目录（如果其存在）：<code>/usr/gnu/include</code>、'/usr/local/include'和<code>/usr/include</code>。</p>
+<p>补充：</p>
+<blockquote>
+<p>make的命令行选项：
+<code>make -I DIR</code> 或者 <code>make --include-dir=DIR</code>
+指定被包含makefile文件的搜索目录。在Makefile中出现<code>include</code>另外的文件时，将在<code>DIR</code>目录下搜索。多个<code>-I</code>指定目录时，搜索目录按照指定顺序进行。</p>
+</blockquote>
+<p>当在这些目录下都没有找到<code>include</code>指定的文件时，make将会提示一个包含文件未找到的告警提示，但是不会立即退出。而是继续处理Makefile的后续内容。当完成读取整个Makefile后，make将试图使用规则来创建通过指示符<code>include</code>指定的但未找到的文件，当不能创建它时（没有创建这个文件的规则）,make将提示致命错误并退出。会输出类似如下错误提示：</p>
+<pre><code class="language-shell">root@iZwz9fghqcmil5mflscf19Z:~/makefile# make
+Makefile:2: foo.mk: No such file or directory
+make: *** No rule to make target 'foo.mk'.  Stop.
+</code></pre>
+<p>通常我们在Makefile中可使用<code>-include</code>来替代<code>include</code>，来忽略由于包含文件不存在或者无法创建时的错误提示（<code>-</code>的意思是告诉make，忽略此操作的错误，make继续执行）。像下面这样：
+<code>-include FILENAMES...</code>
+使用这种方式时，当所要包含的文件不存在时不会有错误提示，make也不会退出，除此之外，和第一种效果相同。
+以下是两种方式的比较：
+- <code>include FILENAMES...</code>,make程序处理时，如果<code>FILENAMES...</code>列表中的任何一个文件不能正常读取而且不存在一个创建此文件的规则时，make程序将提示错误并退出。
+- <code>-include FILENAMES...</code>，当所包含的文件不存在或者不存在一个规则去创建它，make程序会继续执行，只有真正由于不能正确完成终极目标的重建时（某些必须的目标无法在当前已读取的makefile文件内容中找到正确的重建规则），才会提示致命错误并退出。
+为了和其它的make程序进行兼容，也可以使用<code>sinclude</code>来代替<code>-include</code>（GNU所支持的方式）。</p>
+<h3 id="34-makefiles">3.4 变量MAKEFILES</h3>
+<h3 id="35-makefile_list">3.5 变量MAKEFILE_LIST</h3>
+<h3 id="36">3.6 其他特殊变量</h3>
+<pre><code>.VARIABLES
+</code></pre>
+<h3 id="37-makefile">3.7 makefile文件的重建</h3>
+<h3 id="38-makefile">3.8 重载另外一个makefile</h3>
+<pre><code class="language-makefile">#sample GNUmakefile
+foo :
+    frobnicate &gt; foo
+% : force
+    @$(MAKE) -f Makefile $@
+force :;
+</code></pre>
+<h3 id="39-makemakefile">3.9 make如何解析makefile文件（重点内容）</h3>
+<p>GNU make的执行过程分为两个阶段。
+- 第一阶段
+读取所有的makefile文件（包括<code>MAKEFILES</code>变量指定的、指示符<code>include</code>指定的，以及命令行选项<code>-f(--file)</code>指定的makefile文件），内建所有的变量、明确规则和隐含规则，并建立所有目标和依赖之间的依赖关系结构链表。
+- 第二阶段
+根据第一阶段已经建立的依赖关系结构链表决定那些目标需要更新，并使用对应的规则来重建这些目标。</p>
+<p>理解make执行过程的两个阶段是很重要的，它能帮助我们更深入的了解执行过程中的变量以及函数是如何被展开的。变量和函数展开问题是书写Makefile时容易犯错和引起大家迷惑的地方之一。本节将对这些不同结构的展开阶段进行简单的总结（明确变量和函数的展开阶段，对正确使用变量非常有帮助）。首先，明确以下基本的概念：
+- 在make执行的第一阶段中如果变量和函数被展开，那么称此展开是“立即”的，此时所有的变量和函数被展开在需要构建的结构链表的对应规则中（此规则在建立链表时需要使用）；
+- 其它展开称之为“延后”的，这些变量和函数不会被“立即”展开，而是直到后续某些规则需要使用时或者在make处理的第二阶段它们才会被展开。</p>
+<p>可能现在讲述的这些还不能完全理解，不过没有关系，通过后续章节内容的学习，我们会一步一步的熟悉make的执行过程。学习过程中可以回来参考本节内容。相信通过看完本书后，会对make的整个过程有全面深入的理解。</p>
+<h4 id="391">3.9.1 变量取值</h4>
+<p>变量定义解析的规则如下：</p>
+<pre><code class="language-makefile">IMMEDIATE = DEFERRED
+IMMEDIATE ?= DEFERRED
+IMMEDIATE := DEFERRED
+IMMEDIATE += DEFERRED or IMMEDIATE
+define IMMEDIATE
+    DEFERRED
+Endef
+</code></pre>
+<p>当变量使用追加符(+=)时，如果此前这个变量是一个简单变量（使用:=定义的）则认为它是立即展开的，其它情况时都被认为是“延后”展开的变量。</p>
+<h4 id="392">3.9.2 条件语句</h4>
+<p>所有使用到条件语句在产生分支的地方，make程序会根据预设条件将正确的分支展开，就是说条件分支的展开是“立即”的。其中包括："ifdef"、"ifeq"、"ifndef"和"ifneq"所确定的所有分支命令。</p>
+<h4 id="393">3.9.3 规则的定义</h4>
+<p>所有的规则在make执行时，都按照如下的模式展开：</p>
+<pre><code class="language-makefile">IMMEDIATE : IMMEDIATE; DEFERRED
+    DEFERRED
+</code></pre>
+<p>其中，规则中目标和依赖如果引用其它的变量，则被立即展开。而规则的命令行中的变量引用会被延后展开。此模板适合所有的规则，包括明确规则、模式规则、后缀规则、静态模式规则。</p>
+<h3 id="310">3.10 总结</h3>
+<p>make的执行过程如下：
+1. 依次读取变量"MAKEFILES"定义的makefile文件列表
+2. 读取工作目录下的makefile文件（根据命名的查找规则"GNUmakefile"、"makefile"、"Makefile"，首先找到那个就读取那个）
+3. 依次读取工作目录makefile文件中使用指示符<code>include</code>包含的文件。
+4. 查找重建所有已读取的makefile文件的规则（如果存在一个目标是当前读取的某一个makefile文件，则执行此规则重建此makefile文件，完成后从第一步开始重新执行）
+5. 初始化变量值并展开那些变量和函数并根据预设条件确定执行分支
+6. 根据“终极目标”以及其它目标的依赖关系建立链表
+7. 执行除“终极目标”以外的所有的目标的规则（规则中如果依赖文件中任一个文件的时间戳比目标文件新，则使用规则所定义的命令重建目标文件）
+8. 执行“终极目标”所在的规则</p>
+<p>说明：</p>
+<blockquote>
+<p>执行一个规则的过程是这样的：</p>
+<blockquote>
+<p>对于一个存在的规则（明确规则和隐含规则）。首先，make程序将目标文件和所有的依赖文件的时间戳进行比较，如果目标的时间戳比所有的依赖文件的时间戳更新（依赖文件在上一次执行make后没有被修改），那么什么也不做。否则，（依赖文件中的某一个或者全部在上一次执行make后已经被修改过），规则所定义的重建目标的命令将会被执行。这就是make工作的基础，也是其执行规则所定义命令的基础。（后续讨论规则时将会对此详细的说明）</p>
+</blockquote>
+</blockquote>
+<h2 id="4-makefile">4 Makefile的规则</h2>
+<p>本章我们将讨论Makefile的一个重要内容--规则。熟悉规则对于书写Makefile至关重要。Makefile中，规则描述了在何种情况下使用什么命令来重建一个特定的文件，此文件被称为规则“目标”（通常规则中的目标只有一个）。规则中除目标之外罗列的其它文件称为“目标”的依赖，而规则的命令是用来更新或者创建此规则的目标。
+除了makefile的“终极目标”所在的规则以外，其它规则的顺序在makefile文件中没有意义。“终极目标”就是当没有使用make命令行指定具体目标时，make默认的更新目标。它是makefile文件中第一个规则的目标，如果在makefile中第一个规则有多个目标的话，那么多个目标中的第一个将会被作为make的“终极目标”。
+有两种情况例外：
+- 目标名以点号<code>.</code>开始并且其后不存在斜线<code>/</code>（<code>./</code>被认为是当前目录；<code>../被认为是上一级目录</code>）
+- 模式规则的目标 ？？？
+当这两种目标所在的规则是Makefile的第一个规则时，它们并不会被作为“终极目标”。</p>
+<p>“终极目标”是执行make的唯一目的，其所在的规则作为第一个被执行的规则。而其它的规则是在完成重建“终极目标”的过程中被连带出来的。所以这些目标所在的规则在Makefile中的顺序无关紧要。
+因此，我们书写的makefile的第一个规则应该就是重建整个程序或多个程序的依赖关系和执行命令的描述。</p>
+<h4 id="41">4.1 一个例子</h4>
+<p>我们来看一个规则的例子：</p>
+<pre><code class="language-makefile">foo.o : foo.c defs.h    # module for twiddling the frobs
+    cc -c -g foo.c
+</code></pre>
+<p>这是一个典型的规则。看到这个例子，大家应该能够说出这个规则的各个部分之间的关系。不过我们还是要把这个例子拿出来讨论，目的是为了让我们更加明确地理解Makefile的规则。本例第一行中，文件<code>foo.o</code>是规则需要重建的文件，而<code>foo.c</code>和<code>defs.h</code>是重建<code>foo.o</code>所要使用的文件。我们把规则所需要重建的文件称为规则的“目标”(foo.o)，而把重建目标所需哟的文件称为规则的“依赖”（或者目标的依赖）。规则中的第二行<code>cc -c -g foo.c</code>是规则的“命令”。它描述了如何使用规则中的依赖文件重建目标。
+而且，上面的规则告诉我们两件事：
+1. 如何确定目标文件是否过期（需要重建目标），过期是指目标文件不存在或者目标文件<code>foo.o</code>在时间戳上比依赖文件中的任何一个(<code>foo.c</code>或者<code>defs.h</code>)更早。
+2. 如何重建目标文件<code>foo.o</code>。这个规则中使用cc编译器。规则的命令中没有明确的使用到依赖文件<code>defs.h</code>。我们假设在源文件<code>foo.c</code>中已经包含了此头文件，这也是为什么它作为目标依赖出现的原因。</p>
+<h3 id="42">4.2 规则语法</h3>
+<p>通常规则的语法格式如下：</p>
+<pre><code class="language-makefile">TARGETS : PREREQUISITES
+    COMMAND
+    ...
+</code></pre>
+<p>或者</p>
+<pre><code class="language-makefile">TARGETS : PREREQUISITES; COMMAND
+    COMMAND
+    ...
+</code></pre>
+<p>规则中<code>TARGETS</code>可以是空格分开的多个文件名，也可以是一个标签（例如：执行清空的<code>clean</code>）。<code>TARGETS</code>的文件名可以使用通配符，格式<code>A(M)</code>表示档案文件（Linux下的静态库.a文件）的成员<code>M</code>。通常规则只有一个目标文件（建议这么做），偶尔在一个规则中需要多个目标。
+书写规则时需要注意以下几点：
+1. 规则的命令部分有两种书写方式：
+    - a.命令可以和目标、依赖描述放在同一行。命令在依赖文件列表后并使用分号(;)和依赖文件列表分开。
+    - b.命令在目标、依赖的描述的下一行，作为独立的命令行。当作为独立的行时命令行必须以<code>[Tab]</code>字符开始。在Makefile中，在第一个规则之后出现的所有以<code>[Tab]</code>字符开始的行都会被当作命令来处理。
+2. Makefile中符号<code>$</code>有特殊含义（表示变量或者函数的引用），在规则中需要使用符号<code>$</code>的地方，需要书写两个连续的(<code>$$</code>)。
+3. 对于Makefile中一个较长的行，可以使用反斜线<code>\</code>将其书写到几个独立的行上。虽然make对Makefile文本行的最大长度没有限制，但还是建议这么做。不仅书写方便而且还有利于别人的阅读（这也是一个程序员修养的体现）。</p>
+<p>一个规则告诉<code>make</code>两件事：1. 目标在什么情况下已经过期； 2. 如果需要重建目标，如何去重建这个目标。目标是否过期是由那些使用空格分割的规则的依赖文件所决定的。当目标文件不存在或者目标文件的最后修改时间比依赖文件中的任何一个晚时，目标就会被创建或者重建。就是说执行规则命令行的前提条件是以下两者之一：
+1. 目标文件不存在;
+2. 目标文件存在，但是规则的依赖文件中存在一个依赖的最后修改时间比目标的最后修改时间更新。</p>
+<p>规则的中心思想是：目标文件的内容是由依赖文件决定，依赖文件的任何一处改动，将导致目前已经存在的目标文件的内容过期。规则的命令行为重建目标提供了方法。这些命令运行在系统shell之上。</p>
+<h3 id="43">4.3 依赖的类型</h3>
+<p>在GNU make的规则中可以使用两种不同类型的依赖：1、以前章节所提到的规则中使用的是常规依赖，这是书写Makefile规则时最常用的一种。2、另外一种在我们书写Makefile时不会经常使用，它比较特殊，称之为<code>order-only</code>依赖。一个规则的常规依赖（通常是多个依赖文件）表明了两件事：首先，它决定了重建此规则目标所要执行规则（确切的说是执行命令）的顺序；表明在更新这个规则的目标（执行此规则的命令行）之前需要按照什么样的顺序、执行那些规则（命令）来重建这些依赖文件（对所有依赖文件的重建，使用明确或者隐含规则。就是说对于这样的规则A:B C，那么在重建目标A之前，首先需要完成对它的依赖文件B和C的重建。重建B和C的过程就是执行Makefile中以文件B和C为目标的规则）。
+其次，它确定了一个依存关系，规则中如果依赖文件的任何一个比目标文件新，则认为规则的目标已经过期而需要重建目标文件。通常，如果规则中依赖文件中的任何一个被更新，则规则的目标相应的也应该被更新。</p>
+<p>有时，需要定义一个这样的规则，在更新目标（<strong>目标文件已经存在</strong>）时只需要根据依赖文件中的部分来决定目标是否需要被重建，而不是在依赖文件中的任何一个被修改后都重建目标。为了实现这一目的，相应的就需要对规则的依赖进行分类，一类是在这些依赖文件被更新后，需要更新规则的目标；另一类是更新这些依赖文件时，可不需要更新规则的目标。我们把第二类称为：<code>order-only</code>依赖。书写规则时，<code>order-only</code>依赖使用管道符号<code>|</code>开始，作为目标的一个依赖文件。规则依赖列表中管道符号<code>|</code>左边的时常规依赖，管道符号右边的是<code>order-only</code>依赖。书写规则如下所示：</p>
+<pre><code class="language-makefile">TARGETS : NORMAL-PREREQUISITES | ORDER-ONLY-PREREQUISITES
+</code></pre>
+<p>这样的规则中常规依赖文件可以是空，同样也可以对一个目标进行多次追加依赖。
+需要注意：规则依赖文件列表中如果一个文件同时出现在常规依赖和<code>order-only</code>列表中，那么此文件被作为常规依赖处理。</p>
+<hr />
+<p><code>order-only</code>依赖的使用举例：</p>
+<pre><code class="language-makefile">LIBS = libtest.a
+foo : foo.c | $(LIBS)
+    $(CC) $(CFLAGS) $&lt; -o $@ $(LIBS)
+</code></pre>
+<p>make在执行这个规则时，如果目标文件<code>foo</code>已经存在，当<code>foo.c</code>被修改以后，目标<code>foo</code>将会被重建，但是当<code>libtest.a</code>被修改以后，将不执行规则的命令来重建目标<code>foo</code>。
+就是说，规则中依赖文件$(LIBS)只有在目标文件不存在的情况下，才会参与规则的执行，当目标文件存在时此依赖不会参与规则的执行过程。</p>
+<hr />
+<h3 id="44-makefile">4.4 Makefile通配符</h3>
+<h4 id="441">4.4.1 文件名使用通配符</h4>
+<p>Makefile中表示文件名时可以使用通配符，可使用的通配符有<code>*</code>、<code>?</code>和<code>[...]</code>。在Makefile中通配符的用法和含义与<code>shell</code>完全相同。例如，<code>*.c</code>代表了当前目录下所有的以<code>.c</code>结尾的文件。但是Makefile中这些通配符并不是可以用在任何地方，Makefile中通配符可以出现在以下两种场合：
+1. 可出现在规则的<u><strong>目标</strong></u>、<u><strong>依赖</strong></u>中，make在读取Makefile时会自动对其进行匹配处理（通配符展开）。如，</p>
+<pre><code class="language-makefile">test : *.o
+    gcc -o $@ $^
+
+*.o : *.c
+    gcc -c $^
+</code></pre>
+<ol>
+<li>可出现在规则的命令中，通配符的处理是在shell执行此命令时完成的，如:</li>
+</ol>
+<pre><code class="language-makefile">clean :
+    rm -f *.o
+</code></pre>
+<p>除了这两种情况外，不能直接使用通配符，而是需要通过<code>wildcard</code>函数来实现。</p>
+<p>Makefile常用的几个自动变量可以看作通配符:
+<code>$@</code>: 所有的目标文件
+<code>$^</code>: 目标依赖的所有文件
+<code>$&lt;</code>: 第一个依赖文件
+<code>$?</code>: 所有更新过的依赖文件</p>
+<p>如果规则的一个文件名包含通配符(<code>*</code>,<code>.</code>等字样)，在使用这样的文件时需要对文件名中的通配符使用反斜线(<code>\</code>)进行转义处理。例如<code>foo\*bar</code>，在Makefile中表示文件<code>foo*bar</code>。Makefile中对一些特殊字符的转义方式和<code>shell</code>以及<code>C</code>语言中的基本相同。
+另外需要注意：在Linux中，以波浪线<code>~</code>开始的文件名有特殊含义，单独使用它或者后面跟一个斜线(<code>~/</code>)，代表了当前用户的home目录(在shell下可以通过命令<code>echo ~</code>或者<code>echo ~/</code>来查看)。</p>
+<h4 id="442">4.4.2 通配符存在的缺陷</h4>
+<p>变量定义中使用通配符不会被通配处理(因为在变量定义中不能使用通配符，否则在某些情况下会出现非预期的结果)。例如，在Makefile中有这样一个变量定义:</p>
+<pre><code class="language-makefile">objects = *.o
+</code></pre>
+<p>它表示变量的值是字符串<code>*.o</code>,并不是期望的空格分开的<code>.o</code>文件列表。当需要变量<code>objects</code>代表所有<code>.o</code>文件列表时，需要使用函数<code>wildcard</code>,</p>
+<pre><code class="language-makefile">objects = $(wildcard *.o)
+</code></pre>
+<h4 id="443-wildcard">4.4.3 函数wildcard</h4>
+<p>之前提到过，在规则中，通配符会被自动展开，但在变量的定义和函数引用时，通配符将失效。这种情况下如果需要通配符有效，就需要使用函数<code>wildcard</code>，它的用法是: </p>
+<pre><code class="language-makefile">$(wildcard PATTERN...)
+</code></pre>
+<p>在Makefile中，它被展开为已经存在的，使用空格分开的、匹配模式的所有文件列表。如果不存在任何符合此模式的文件，函数会忽略模式字符并返回空。需要注意的是: 这种情况下规则中通配符的展开和上一小节匹配通配符的区别。
+一般我们可以使用<code>$(wildcard *.c)</code>来获取工作目录下的所有<code>.c</code>文件列表。复杂一些的用法，可以使用<code>$(patsubst %.c,%.o,$(wildcard *.c))</code>，首先使用<code>wildcard</code>函数获取工作目录下的<code>.c</code>文件列表，之后将列表中所有文件名的后缀<code>.c</code>替换为<code>.o</code>，这样我们就可以得到当前目录可生成的<code>.o</code>文件列表。因此在一个目录下可以使用如下内容的Makefile来将工作目录下的所有<code>.c</code>文件进行编译并最后连接成为一个可执行文件:</p>
+<pre><code class="language-makefile"># sample Makefile
+objects := $(patsubst %c,%.o,$(wildcard *.c))
+
+foo : $(objects)
+    cc -o foo $(objects)
+</code></pre>
+<p>这里我们使用了make的隐含规则来编译<code>.c</code>的源文件，对变量的赋值也用到了一个特殊的符号(<code>:=</code>)。</p>
+<h3 id="45">4.5 目录搜寻 ??? 没看懂,后续补充</h3>
+<p>VPATH
+vpath</p>
+<h3 id="46-makefile">4.6 Makefile伪目标</h3>
+<p>本节我们讨论Makefile的一个重要的特殊目标: 伪目标。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

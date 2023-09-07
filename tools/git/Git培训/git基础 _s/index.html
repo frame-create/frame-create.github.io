@@ -1,0 +1,2103 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>Git基础 s - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Blog" class="md-header__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git基础  s
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Blog" class="md-nav__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/%E9%AB%98%E8%B4%A8%E9%87%8FC_C%2B%2B%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    代码规范
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    绘图
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            绘图
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E7%BB%98%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流程图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/eNSP%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F/eNSP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eNSP网络仿真
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../C_C%2B%2B/C_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../C_C%2B%2B%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95/C_C%2B%2B%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++代码调试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Linux/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Linux/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux系统编程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    makefile
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            makefile
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../makefile/makefile%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/makefile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    makefile学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../nginx/2294_nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2294 nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../nginx/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Beyond_Compare/Beyond_Compare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beyond_Compare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Markdown/Markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MobaXterm/MobaXterm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MobaXterm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Source_Insight/source_insight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Source_Insight
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vim/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../VMware/vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VMware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../VS_Code/VS_Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS_Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-git" class="md-nav__link">
+    《协同开发培训 - Git》
+  </a>
+  
+    <nav class="md-nav" aria-label="《协同开发培训 - Git》">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 版本控制
+  </a>
+  
+    <nav class="md-nav" aria-label="1 版本控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    什么是版本控制系统?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    本地版本控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    集中式版本控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    分布式版本控制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-git" class="md-nav__link">
+    2 Git基础使用
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Git基础使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-git" class="md-nav__link">
+    2.1 Git项目中的三大区域 (重要)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-git" class="md-nav__link">
+    2.2 Git文件的状态 (重要)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-git" class="md-nav__link">
+    2.3 开发中Git的工作流程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-git" class="md-nav__link">
+    2.4 Git的安装及首次配置
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Git的安装及首次配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241-git" class="md-nav__link">
+    2.4.1 Git的安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#242-git" class="md-nav__link">
+    2.4.2 Git的首次配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-gitgitea" class="md-nav__link">
+    2.5 Git仓库的创建(gitea)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 查看当前文件状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    2.7 跟踪新文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    2.8 暂存已修改的文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    2.9 查看已暂存和未暂存的变更
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    2.10 查看变更的具体内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210_1" class="md-nav__link">
+    2.10 提交变更
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    2.11 查看提交历史
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212" class="md-nav__link">
+    2.12 查看某一次提交的内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    2.13 移除文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    2.14 移动文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-git" class="md-nav__link">
+    2.15 Git别名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216" class="md-nav__link">
+    2.16 远程仓库的使用
+  </a>
+  
+    <nav class="md-nav" aria-label="2.16 远程仓库的使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2161" class="md-nav__link">
+    2.16.1 创建本地远程仓库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2162" class="md-nav__link">
+    2.16.2 远程仓库的使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2163" class="md-nav__link">
+    2.16.3 冲突的处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2164" class="md-nav__link">
+    2.16.4 删除和重命名远程仓库
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-git" class="md-nav__link">
+    3 Git分支
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Git分支">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 分支简述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-gitsvn" class="md-nav__link">
+    3.2 Git和SVN比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 分支操作
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 分支操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    3.3.1 查看分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    3.3.2 创建分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    3.3.3 切换分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334" class="md-nav__link">
+    3.3.4 创建并切换分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#335" class="md-nav__link">
+    3.3.5 重命名本地分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#336" class="md-nav__link">
+    3.3.6 删除本地分支
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 基本的分支与合并操作
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 基本的分支与合并操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341" class="md-nav__link">
+    3.4.1 实际案例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 上述案例中涉及到的重要知识点
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 上述案例中涉及到的重要知识点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351" class="md-nav__link">
+    3.5.1 合并分支操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352" class="md-nav__link">
+    3.5.2 分支合并的两种模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353" class="md-nav__link">
+    3.5.3 合并冲突的解决
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 查看已合并以及未合并分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 远程分支
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 远程分支">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371" class="md-nav__link">
+    3.7.1 远程分支介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372" class="md-nav__link">
+    3.7.2 跟踪/不跟踪远程分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-git-pull" class="md-nav__link">
+    3.7.3 git pull 与 远程分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#374-git-push" class="md-nav__link">
+    3.7.4 git push 与远程分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#375" class="md-nav__link">
+    3.7.5 删除远程分支
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#376" class="md-nav__link">
+    3.7.6 重命名远程分支
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    遗留问题
+  </a>
+  
+    <nav class="md-nav" aria-label="遗留问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-git-commit-amend" class="md-nav__link">
+    1. git commit --amend操作，时间是否会改变?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 合并非连续提交?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 如何合并中间的某几个节点?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-log" class="md-nav__link">
+    4. 如何从提交log中进行关键字查找?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Git基础  s</h1>
+
+<h2 id="-git">《协同开发培训 - Git》</h2>
+<p>[toc]</p>
+<h3 id="1">1 版本控制</h3>
+<h4 id="_1">什么是版本控制系统?</h4>
+<p>版本控制是一套系统，该系统按时间顺序记录某一个或者一系类文件的变更，让你可以查看其以前的特定版本。</p>
+<h4 id="_2">本地版本控制</h4>
+<p><img alt="本地版本控制" src="../images/1%20%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.png" />
+记录文件的每次更新，可以对每个版本做一个快照，或是记录补丁文件。
+缺点:
+- 只能在本地使用，且所有的数据都在本地，有很大的丢失风险。</p>
+<h4 id="_3">集中式版本控制</h4>
+<p><img alt="集中式版本系统" src="../images/2%20%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F.png" />
+包含一个服务器和多个客户端，多个客户端可以从服务器拉取文件。
+优点: 解决了本地版本控制系统不能多人协作的问题
+缺点:
+- 所有的数据都在服务器中，若服务器宕机，则不能查协作或提交更改
+- 有数据丢失风险</p>
+<h4 id="_4">分布式版本控制</h4>
+<p><img alt="分布式版本控制" src="../images/3%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.png" />
+对于一个分布式版本控制系统来说，客户端并非仅仅是检出文件的最新快照，而是对代码仓库(repository)进行完整的镜像。这样一来，不管是那个服务器故障，任何一个客户端都可以使用自己的本地镜像来恢复服务器，每一次检出操作实际上都是对数据的一次完整备份。</p>
+<h3 id="2-git">2 Git基础使用</h3>
+<h4 id="21-git">2.1 Git项目中的三大区域 (重要)</h4>
+<p>工作目录(Workspace)
+暂存区 (Staging Area)
+Git目录(仓库)(Repository) /rɪˈpɒzət(ə)ri/
+<img alt="三大目录" src="../images/4%20%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%20%E6%9A%82%E5%AD%98%E5%8C%BA%20git%E4%BB%93%E5%BA%93.png" />
+- 工作目录: 对项目的某个版本独立提取出来的内容，如项目的源代码。
+- 暂存区: 保存了下次将提交的文件列表信息。
+- Git仓库: Git用来保存项目元数据和对象数据库的地方，这是Git中最重要的部分。</p>
+<h4 id="22-git">2.2 Git文件的状态 (重要)</h4>
+<ul>
+<li>未跟踪(Untracked)</li>
+<li>已跟踪(tracked)<ul>
+<li>未修改(Unmodified)</li>
+<li>已修改(Modified)</li>
+<li>已暂存(Staged)</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意: 各种状态都是相对于Git仓库而言的</strong></p>
+<p><img alt="git文件的状态" src="../images/5%20git%E6%96%87%E4%BB%B6%E7%9A%84%E7%8A%B6%E6%80%81.png" /></p>
+<p>工作目录下的每一个文件都不外乎这两种状态: <strong>已跟踪</strong>或<strong>未跟踪</strong>。已跟踪的文件是指那些被纳入了版本控制的文件，在上一次快照中有它们的记录，在工作一段时间后，它们的状态可能处于未修改，已修改或已放入暂存区。
+工作目录中除已跟踪文件以外的所有文件都属于未跟踪文件，它们既不存在于上次快照的记录中，也没有放入暂存区。初次克隆某个仓库的时候，工作目录中的所有文件都属于已跟踪文件，并处于未修改状态。
+编辑过某些文件之后，由于自上次提交后对它们做了修改，Git将它们标记为已修改文件。我们逐步将这些修改过的文件放入暂存区，然后提交所有暂存了的修改，如此反复。</p>
+<h4 id="23-git">2.3 开发中Git的工作流程</h4>
+<p><img alt="Git工作流程" src="../images/0_Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" />
+基本的Git工作流如下:
+1. 在工作目录中修改文件
+2. 暂存文件，将文件的快照放入暂存区域
+3. 提交更新，找到暂存区域的文件，将快照永久性存储到Git仓库目录。</p>
+<h4 id="24-git">2.4 Git的安装及首次配置</h4>
+<h5 id="241-git">2.4.1 Git的安装</h5>
+<p>安装方法:
+- Windows
+  使用安装包安装
+- Linux/Unix的安装教程:
+  https://git-scm.com/download/linux
+- Mac OS的安装教程:
+  https://git-scm.com/download/mac</p>
+<h5 id="242-git">2.4.2 Git的首次配置</h5>
+<ul>
+<li>
+<p>设置用户名
+git config --global user.name \&lt;name&gt;</p>
+<blockquote>
+<p>git config --global user.name chenzhuo</p>
+</blockquote>
+</li>
+<li>
+<p>设置用户邮箱
+git config --global user.email \&lt;email&gt;</p>
+<blockquote>
+<p>git config --global user.email chen_zhuo@topsec.com.cn</p>
+</blockquote>
+</li>
+<li>
+<p>提交模板
+git config --global commit.template xxx</p>
+</li>
+</ul>
+<blockquote>
+<p>git config --global commit.template E:\topsec.template</p>
+</blockquote>
+<ul>
+<li>
+<p>检查配置</p>
+<blockquote>
+<p>git config --global --list</p>
+</blockquote>
+</li>
+<li>
+<p>删除全局配置
+git config --global --unset xxx</p>
+<blockquote>
+<p>例如:
+git config --global --unset user.name</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="25-gitgitea">2.5 Git仓库的创建(gitea)</h4>
+<ul>
+<li>
+<p>创建远程仓库
+供测试使用的Gitea地址: https://gitea.peerblack.cn</p>
+<blockquote>
+<p>git remote add [url]
+git push -u origin master</p>
+</blockquote>
+</li>
+<li>
+<p>在现有目录中初始化Git仓库</p>
+<blockquote>
+<p>touch README.md
+git init
+git add README.md
+git commit -m 'first commit'</p>
+</blockquote>
+</li>
+<li>
+<p>克隆仓库
+git clone [url]</p>
+</li>
+</ul>
+<h4 id="26">2.6 查看当前文件状态</h4>
+<p>git status
+示例如下:</p>
+<blockquote>
+<p>git status</p>
+</blockquote>
+<p><img alt="initial status" src="../images/6%20init%20status.png" /></p>
+<blockquote>
+<p>vi example_1
+在example_1文件中加入内容
+git status</p>
+</blockquote>
+<p><img alt="新建文件" src="../images/7%20%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6.png" /></p>
+<h4 id="27">2.7 跟踪新文件</h4>
+<p>git add <file></p>
+<blockquote>
+<p>git add example_1
+git status</p>
+</blockquote>
+<p><img alt="添加文件" src="../images/8%20%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6.png" /></p>
+<h4 id="28">2.8 暂存已修改的文件</h4>
+<p>git status
+git add <file></p>
+<blockquote>
+<p>vi example_1
+示例: 使一个文件同时处于暂存和非暂存两种状态</p>
+</blockquote>
+<p><img alt="工作区 + 暂存区" src="../images/9%20%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%20%2B%20%E6%9A%82%E5%AD%98%E5%8C%BA.png" /></p>
+<h4 id="29">2.9 查看已暂存和未暂存的变更</h4>
+<p>git status</p>
+<h4 id="210">2.10 查看变更的具体内容</h4>
+<ul>
+<li>git diff
+用来查看未暂存的修改</li>
+<li>git diff --cached
+用来查看已暂存的修改</li>
+</ul>
+<p><img alt="git diff" src="../images/10%20git%20diff.png" /></p>
+<h4 id="210_1">2.10 提交变更</h4>
+<ul>
+<li>不使用提交模板(仅演示用，日常开发不推荐)
+git commit -m 'xxx'</li>
+</ul>
+<blockquote>
+<p>git commit -m 'modify example_1'</p>
+</blockquote>
+<p><img alt="git commit -m" src="../images/11%20git_commit.png" /></p>
+<ul>
+<li>使用提交模板(推荐的方式)
+git commit
+会去调用之前已经设置好的提交模板</li>
+</ul>
+<p><img alt="git commit" src="../images/12%20git_commit_1.png" />
+<img alt="commit template" src="../images/13%20commit.template.png" /></p>
+<h4 id="211">2.11 查看提交历史</h4>
+<ul>
+<li>git log
+默认不加参数的情况下，git log会按照时间顺序列出仓库中的所有提交，其中最新的提交显示在最前面。和每个提交一同列出的还有它的SHA-1校验和、作者的姓名和邮箱、提交日期以及提交信息。</li>
+</ul>
+<p><img alt="commit msg" src="../images/14%20commit_msg.png" /></p>
+<ul>
+<li>git log -p -n
+-p选项，会显示出每次提交所引入的差异
+-n选项，只输出最近的第n次提交</li>
+</ul>
+<p>例</p>
+<blockquote>
+<p>git log -p -2</p>
+</blockquote>
+<p><img alt="git log -p -n" src="../images/15_git%20log%20-p%20-n.png" /></p>
+<p>git log --oneline
+<code>--online</code>选项 在浏览大量提交时，oneline选项很有用，它可以在每一行中显示一个提交。</p>
+<p>git log --oneline --graph &lt;==&gt; gitk
+<code>--graph</code>选项 在多分支里面可以轻易的观察到分支的变化情况</p>
+<h4 id="212">2.12 查看某一次提交的内容</h4>
+<p>git show SHA-1</p>
+<h4 id="213">2.13 移除文件</h4>
+<p>要从Git中移除某个文件，需要把它先从已跟踪文件列表中移除(确切的说，是从暂存区中移除)，然后再提交。git rm会帮你完成这些操作，另外该命令还会把文件从工作目录中移除，这样你在下一次就不会在未跟踪文件列表中看到这些文件了。
+- git rm -- 从工作目录中移除
+    - 直接使用rm
+        rm
+        git add
+        git commit
+    - 使用git rm
+        git rm
+        git commit
+    git rm &lt;==&gt; mv + git add
+- git rm -f -- 从暂存区中移除
+如果已经把某个文件加入了暂存区，要想让git移除它就必须使用<code>-f</code>选项强制移除。这是为了防止没有被记录到快照中的数据被意外移除而设立的安全特性，因为这样的数据被意外移除后无法由Git恢复。</p>
+<ul>
+<li>git rm --cached -- 把文件保留在工作区，但从暂存区中移除该文件
+即让文件任然保留在硬盘中，但不想让Git对其进行跟踪管理。</li>
+</ul>
+<p><img alt="git rm --cached" src="../images/16_git_rm__cached.png" /></p>
+<h4 id="214">2.14 移动文件</h4>
+<p>git mv</p>
+<p>例，把README.md 改名为README</p>
+<blockquote>
+<p>git mv README.md README</p>
+</blockquote>
+<p><img alt="git mv" src="../images/17%20git%20mv.png" /></p>
+<h4 id="215-git">2.15 Git别名</h4>
+<p>git config --global alias.short_name full_name
+例:
+1. git st
+    &gt; git config --global alias.st status
+    &gt; git st</p>
+<pre><code>![git st](./images/18%20git%20alias_1.png)
+</code></pre>
+<ol>
+<li>
+<p>git unstage
+    &gt; git config --global alias.unstage 'reset --hard'
+    git unstage &lt;==&gt; git reset --hard</p>
+<p><img alt="git unstage" src="../images/18%20git%20alias_2.png" /></p>
+</li>
+<li>
+<p>删除别名
+    &gt; git config --global --unset alias.st</p>
+</li>
+</ol>
+<h4 id="216">2.16 远程仓库的使用</h4>
+<h5 id="2161">2.16.1 创建本地远程仓库</h5>
+<p>创建如下的目录结构
+<img alt="remote" src="../images/19%20remote_rep.png" />
+其中，
+Git_Remote: 为本地远程仓库
+Local_one 和 Local_two，用于模拟多用户操作</p>
+<ul>
+<li>
+<p>在 Git_Remote 中</p>
+<blockquote>
+<p>git init
+进入 .git/hooks目录
+将post-update.sample 文件 改名为 post-update</p>
+</blockquote>
+</li>
+<li>
+<p>在 post-update中，</p>
+<blockquote>
+<p>unset GIT_DIR
+cd ..
+git reset --hard</p>
+</blockquote>
+</li>
+</ul>
+<p><img alt="post-sample" src="../images/20%20post-sample.png" /></p>
+<p>好了，至此本地远程仓库创建完毕。</p>
+<h5 id="2162">2.16.2 远程仓库的使用</h5>
+<ul>
+<li>显示远程仓库<ul>
+<li>git remote
+列出每个远程仓库的简短名称</li>
+<li>git remote -v
+会显示出Git存储的每个远程仓库对应的URL</li>
+</ul>
+</li>
+<li>添加远程仓库
+git remote add [shortname] [url]</li>
+</ul>
+<p><img alt="git remote" src="../images/21%20git_remote.png" /></p>
+<ul>
+<li>
+<p>从远程仓库拉取数据
+git pull [remote-name] [branch-name]
+或者
+git fetch [remote-name] [branch-name]
++
+git merge [remote-name]/[branch-name]</p>
+</li>
+<li>
+<p>将数据推送到远程仓库
+git push [remote-name] [branch-name]</p>
+</li>
+</ul>
+<p>例，
+    <img alt="git push refused" src="../images/22%20git%20push%20refused.png" /></p>
+<blockquote>
+<p>git config --global receive.denyCurrentBranch ignore</p>
+</blockquote>
+<p><img alt="git push succeed" src="../images/23%20git%20push%20succeed.png" /></p>
+<h5 id="2163">2.16.3 冲突的处理</h5>
+<ul>
+<li>制造冲突<ul>
+<li>第一步，在Local_two中修改某一文件</li>
+<li>第二步，提交并推送到远程仓库</li>
+<li>第三步，在Local_one中对同一文件进行修改并提交</li>
+<li>第四步，从远程仓库拉取更新</li>
+</ul>
+</li>
+</ul>
+<p>例，
+Local_two</p>
+<blockquote>
+<p>vi example_1
+git add example_1
+git commit -m 'modify example_1 -- user2'
+git push origin master</p>
+</blockquote>
+<p>Local_one</p>
+<blockquote>
+<p>vi example_1
+git add example_1
+git commit -m 'modify example_2 -- user1'
+git fetch origin master
+git merge origin/master
+- 解决冲突</p>
+</blockquote>
+<p><img alt="merge_conflict" src="../images/25%20merge_conflict.png" />
+<img alt="merge_conflict" src="../images/26%20merge_conflict_2.png" /></p>
+<blockquote>
+<p>解决完冲突后
+git add example_1
+git commit -m 'resolve conflict'
+冲突解决完毕</p>
+</blockquote>
+<h5 id="2164">2.16.4 删除和重命名远程仓库</h5>
+<p>(都是本地操作)
+- 检查远程仓库
+git remote show [remote-name]
+- 重命名远程仓库
+git remote rename [origin-name] [new-name]
+删除远程仓库
+git remote rm [remote-name]</p>
+<p><img alt="git-remote" src="../images/24%20git_remote.png" /></p>
+<h3 id="3-git">3 Git分支</h3>
+<h4 id="31">3.1 分支简述</h4>
+<p>分支意味着偏离开发主线并继续你自己的工作而不影响主线开发</p>
+<!-- ![branch](./images/branch/4_branch.png) -->
+<div align="left" >
+<img src= ./images/branch/4_branch.png width="80%" />
+</div>
+
+<h4 id="32-gitsvn">3.2 Git和SVN比较</h4>
+<p>Git 创建分支是新建指向某次提交的<strong>指针</strong>，而SVN新建分支则是拷贝目录，这个特性使得Git的分支切换非常迅速，且成本低</p>
+<h4 id="33">3.3 分支操作</h4>
+<h5 id="331">3.3.1 查看分支</h5>
+<ul>
+<li>git branch
+    查看所有本地分支
+    其中<strong>星号</strong>显示的是当前所在的分支
+    <img alt="git branch" src="../images/27%20git_branch.png" /></li>
+<li>git branch -r
+    查看所有远程分支
+    <img alt="git branch -r" src="../images/28%20git_branch%20-r.png" /></li>
+<li>git branch -a
+    查看所有本地分支和远程分支
+    <img alt="git branch -a" src="../images/29%20git_branch%20-a.png" /></li>
+<li>git branch -v
+    简要的显示SHA-1检验和 以及 提交信息
+    <img alt="git branch -va" src="../images/30%20git_branch%20-va.png" /></li>
+</ul>
+<h5 id="332">3.3.2 创建分支</h5>
+<ul>
+<li>git branch \&lt;branch-name&gt;
+HEAD: 指向当前所在分支的指针
+  新建分支前:
+    <img alt="git branch" src="../images/branch/1%20git_branch.png" /></li>
+</ul>
+<p>新建testing分支:</p>
+<blockquote>
+<p>git branch testing</p>
+</blockquote>
+<p>新建分支后:
+    <img alt="git branch" src="../images/branch/2%20git_branch.png" /></p>
+<h5 id="333">3.3.3 切换分支</h5>
+<ul>
+<li>git checkout \&lt;branch-name&gt;</li>
+</ul>
+<p>切换至testing分支</p>
+<blockquote>
+<p>git checkout testing</p>
+</blockquote>
+<p><img alt="git checkout" src="../images/branch/3%20git_checkout.png" /></p>
+<h5 id="334">3.3.4 创建并切换分支</h5>
+<ul>
+<li>git checkout -b [branch-name]<blockquote>
+<p>git checkout -b
+等价于
+git branch + git checkout</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="335">3.3.5 重命名本地分支</h5>
+<ul>
+<li>git branch -m <old_branch_name> <new_branch_name></li>
+</ul>
+<h5 id="336">3.3.6 删除本地分支</h5>
+<ul>
+<li>git branch -d \&lt;branch-name&gt;</li>
+</ul>
+<h4 id="34">3.4 基本的分支与合并操作</h4>
+<p>一个简单的分支与合并案例，其工作流可供日常开发借鉴
+1. 在项目展开工作
+2. 为新需求创建<code>feature</code>分支
+3. 在<code>feature</code>分支上展开工作</p>
+<p>这时，突然有一个紧急的bug需要立即修复，随后需要这样做:
+1. 切换到生产环境(<code>master</code>分支)
+2. 创建<code>bug_fix</code>分支来进行此次问题的修复工作
+3. 待测试通过后，合并修补分支并推送到环境中(<code>master</code>分支)
+4. 切换回之前的<code>feature</code>分支上继续新需求开发工作</p>
+<h5 id="341">3.4.1 实际案例</h5>
+<ul>
+<li>
+<p>初始状态
+<img alt="stat_0" src="../images/branch/stat_0.png" /></p>
+</li>
+<li>
+<p>step1 - 为新需求创建<code>feature</code>分支并进行开发</p>
+<blockquote>
+<p>git checkout -b feature
+或者
+git branch feature
+git checkout feature</p>
+</blockquote>
+</li>
+</ul>
+<p><img alt="stat_1" src="../images/branch/stat_1.png" /></p>
+<ul>
+<li>step2 - 在feature上进行新需求开发工作，并进行提交</li>
+</ul>
+<p><img alt="stat_w" src="../images/branch/stat_2.png" /></p>
+<ul>
+<li>step3 - 有一个紧急bug需要立即修复<ul>
+<li>切换回<code>master</code>分支</li>
+<li>创建<code>bug_fix</code>分支，展开bug修复工作<blockquote>
+<p>git checkout master
+git branch bug_fix
+git checkout bug_fix</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="new bug_fix" src="../images/branch/stat_3.png" /></p>
+<ul>
+<li>step4 - 修复完成后，并进行提交</li>
+</ul>
+<p><img alt="bug_fixed" src="../images/branch/stat_4.png" /></p>
+<ul>
+<li>step5 - 将<code>bug_fix</code>分支合并到<code>master</code>分支
+    &gt; git checkout master
+    &gt; git merge bug_fix</li>
+</ul>
+<p><img alt="git_merge" src="../images/branch/stat_5.png" /></p>
+<ul>
+<li>step6 - 删除<code>bug_fix</code>分支
+    &gt; git branch -d bug_fix</li>
+</ul>
+<p><img alt="delete bug_fix" src="../images/branch/stat_6.png" /></p>
+<ul>
+<li>step7 - 切换回<code>feature</code>分支,继续之前未完成的需求</li>
+</ul>
+<p><img alt="to new_req" src="../images/branch/stat_7.png" /></p>
+<ul>
+<li>step8 - 新需求开发完毕，将新需求合并到<code>master</code>分支
+重点: 三方合并，以共同祖先C2为基础节点</li>
+</ul>
+<p><img alt="to new_req" src="../images/branch/stat_8.png" /></p>
+<p><img alt="three to one" src="../images/branch/stat_9.png" /></p>
+<ul>
+<li>step9 - 删除<code>feature</code>分支
+    &gt; git branch -d feature</li>
+</ul>
+<p><img alt="delete feature" src="../images/branch/stat_10.png" /></p>
+<h4 id="35">3.5 上述案例中涉及到的重要知识点</h4>
+<h5 id="351">3.5.1 合并分支操作</h5>
+<ul>
+<li>git merge \&lt;branch-name&gt;</li>
+</ul>
+<p>例，将分支B合并到分支A的步骤:</p>
+<blockquote>
+<p>先分支B切换到分支A
+git checkout A
+在分支A上执行git merge命令
+git merge B</p>
+</blockquote>
+<h5 id="352">3.5.2 分支合并的两种模式</h5>
+<ul>
+<li>方式一: 快进合并(fast-forward)</li>
+</ul>
+<p>合并前
+<img alt="before merge" src="../images/branch/stat_11.png" /></p>
+<p>由于当前所在的<code>master</code>分支所指向的提交是要并入<code>bug_fix</code>分支的直接上游，因而Git会将<code>master</code>分支指针向前移动。换句话说，当你试图去合并两个不同的提交，而顺着其中一个提交历史可以直接到达另一个提交时，Git会简化合并操作，直接把分支指针向前移动，因为这种单线历史不存在有分歧的工作，这就叫做<code>fast-forword</code></p>
+<p><img alt="fast-forward" src="../images/branch/5_fast-forward.png" /></p>
+<p>合并后
+<img alt="after merge" src="../images/branch/stat_12.png" />
+- 方式二: 三方合并
+<img alt="before merge" src="../images/branch/stat_8.png" /></p>
+<p>这次合并看起来与之前<code>bug_fix</code>的合并有点不一样。在这次合并中，开发历史从某个早先的时间点开始有了分叉。由于当前<code>master</code>分支指向的提交并不是<code>feature</code>分支的直接祖先，因而Git必须要做一些额外，即 三方合并。三方合并操作会使用两个待合并分支上最新提交的快照，以及这两个分支的共同祖先的提交快照。</p>
+<p>与之前简单的向前移动分支指针的做法不同，这一次Git会基于三方合并的结果创建新的快照，然后再创建一个提交指向新建的快照。这个提交叫做<code>合并提交</code>。合并提交的特殊性在于它拥有不止一个父提交。值得注意的是，Git会自己判断最优的共同祖先并将其作为合并基础。</p>
+<p><img alt="after merge" src="../images/branch/stat_9.png" /></p>
+<h5 id="353">3.5.3 合并冲突的解决</h5>
+<p>在三方合并的过程中不可避免的会遇到冲突等问题。
+下面介绍一下遇到冲突了该如何解决:
+<img alt="merge conflict" src="../images/branch/6_merge_conflict.png" /></p>
+<p><img alt="merge-conflict" src="../images/branch/7_merge_conflict.png" /></p>
+<p>手动解决冲突, 然后 git add 告诉Git冲突已经解决, 最后git commit 即可。</p>
+<p>使用<code>git log --graph --oneline</code> 查看提交历史，可以以图形化的方式查看到分叉，以及三方合并的过程</p>
+<p><img alt="graph" src="../images/branch/8_merge_graph.png" /></p>
+<h4 id="36">3.6 查看已合并以及未合并分支</h4>
+<ul>
+<li>
+<p>查看哪些分支已经并入当前分支
+git branch --merged</p>
+</li>
+<li>
+<p>查看包含尚未合并工作的所有分支
+git branch --no-merged</p>
+</li>
+</ul>
+<h4 id="37">3.7 远程分支</h4>
+<h5 id="371">3.7.1 远程分支介绍</h5>
+<p>远程分支是指向远程仓库的分支的指针，这些指针存在于本地且无法移动。当你与服务器进行任何网络通信时，它们会自动更新。远程分支有点像书签，它们会提示你上一次连接服务器时远程仓库中每个分支的位置。
+远程分支的表示形式为: \&lt;remote-name&gt;/\&lt;branch-name&gt;</p>
+<h5 id="372">3.7.2 跟踪/不跟踪远程分支</h5>
+<ol>
+<li>创建新的分支跟踪远程分支</li>
+<li>
+<p>新建同名分支跟踪远程分支
+git checkout --track \&lt;remote-name&gt;/\&lt;branch-name&gt;</p>
+</li>
+<li>
+<p>新建任意名称分支跟踪远程分支
+git checkout -b branch-name \&lt;remote-name&gt;/\&lt;branch-name&gt;</p>
+</li>
+<li>
+<p>使已存在分支跟踪/不跟踪远程分支</p>
+</li>
+<li>跟踪远程分支
+git branch -u \&lt;remote-name&gt;/\&lt;branch-name&gt;
+或者
+git branch --set-upstream-to \&lt;remote-name&gt;/\&lt;branch-name&gt;</li>
+</ol>
+<p>例，使当前分支跟踪远程的master分支</p>
+<blockquote>
+<p>git branch -u origin/master</p>
+</blockquote>
+<ul>
+<li>取消跟踪
+git branch --unset-upstream</li>
+</ul>
+<p>例，取消跟踪远程master分支</p>
+<blockquote>
+<p>git branch --unset-upstream</p>
+</blockquote>
+<ol>
+<li>查看具体跟踪的分支
+git branch -vv</li>
+</ol>
+<h5 id="373-git-pull">3.7.3 git pull 与 远程分支</h5>
+<ul>
+<li>
+<p>没有跟踪分支时</p>
+<ul>
+<li>
+<p>git pull \&lt;remote&gt; \<remote-branch\>:\\<local-branch\>
+    场景: 当本地分支不是local-branch
+    作用: 将远程分支拉取到本地分支
+    > 例如，当前是master分支，但是你想把远程的master分支同步到本地testing，但又不想使用checkout切换分支时
+    > git pull origin master:testing</p>
+</li>
+<li>
+<p>git pull \<remote\> \\<remote-branch\>
+    场景: 在当前分支上进行同步操作
+    作用: 将指定远程分支同步到当前本地分支
+    > 例如，使用远程的master分支同步当前分支
+    > git pull origin master</p>
+</li>
+<li>
+<p>已经跟踪分支时
+    git pull</p>
+</li>
+</ul>
+<h5 id="374-git-push">3.7.4 git push 与远程分支</h5>
+<ul>
+<li>没有跟踪分支时</li>
+<li>
+<p>git push \&lt;remote&gt; \&lt;local-branch&gt;:\&lt;remote-branch&gt;
+    将本地local-branch分支的数据推送到远程的remote-branch分支</p>
+</li>
+<li>
+<p>git push \<remote\> \\<remote-branch\>
+    本地分支与远程分支同名，使用本地分支更新远程分支
+    > 例， git push origin serverfix
+    >上述命令是一个简化的写法。Git会自动把分支名称serverfix扩展为refs/heads/serverfix:refs/heads/serverfix
+    &gt; 上述操作的含义是：“把本地的serverfix分支推送到远程的serverfix分支上，以更新远程数据”。一般情况下可以省略不写这部分，也就是说你可以执行git push origin serverfix:serverfix,这条命令可以达到与之前的命令一样的效果。</p>
+</li>
+<li>已经跟踪分支时
+git push</li>
+</ul>
+</li>
+</ul>
+<h5 id="375">3.7.5 删除远程分支</h5>
+<ol>
+<li>通过Web</li>
+<li>通过命令行<ul>
+<li>git push \&lt;remote&gt; :\&lt;remote-branch&gt;</li>
+<li>git push --delete \&lt;remote&gt; \&lt;remote-branch&gt;</li>
+<li>git push \&lt;remote&gt; --delete \&lt;remote-branch&gt;</li>
+</ul>
+</li>
+</ol>
+<p>例，删除远程origin仓库的testing分支</p>
+<blockquote>
+<p>git push origin :testing</p>
+<p>git push --delete origin testing
+git push origin --delete testing</p>
+</blockquote>
+<h5 id="376">3.7.6 重命名远程分支</h5>
+<ol>
+<li>在本地以旧分支为基础创建新分支</li>
+<li>推送到远程仓库</li>
+<li>删除远程分支</li>
+</ol>
+<p>例，将远程的test分支重命名为test1</p>
+<blockquote>
+<p>git push origin test:test1
+git push origin :test</p>
+</blockquote>
+<h3 id="_5">遗留问题</h3>
+<h4 id="1-git-commit-amend">1. git commit --amend操作，时间是否会改变?</h4>
+<p>git commit --amend
+    撤销上一次的提交，（撤销提交内容 或者 撤销提交描述）
+注: <strong>时间</strong>不会变，但是 <strong>commit id</strong> 会改变
+<img alt="before amend" src="../images/48_before_amend.png" /></p>
+<blockquote>
+<p>git commit --amend</p>
+</blockquote>
+<p><img alt="after amend" src="../images/49_after_amend.png" /></p>
+<h4 id="2">2. 合并非连续提交?</h4>
+<p>git rebase 变基
+git rebase -i</p>
+<ul>
+<li>合并非连续提交之前
+    <strong>创建 4 个文件</strong>
+vi a
+git add a
+git commit -m 'add a'
+...</li>
+</ul>
+<p><img alt="before_rebase" src="../images/31_before_rebase.png" /></p>
+<ul>
+<li>
+<p>合并 a b d 三次提交至一个新的提交
+合并前的流程图
+<img alt="合并前" src="../images/32%20_rebase.png" />
+合并后的流程图
+<img alt="合并后" src="../images/33%20_rebase.png" /></p>
+</li>
+<li>
+<p>git rebase -i 父提交
+    注意: 如果你想改变最近4次或其中任意一次的提交消息，需要将待修改的最近一次提交的父提交作为参数提供给git rebase -i，我们将1之前的提交的commit id提供给git rebase -i</p>
+</li>
+</ul>
+<p><img alt="rebase" src="../images/34_rebase.png" /></p>
+<p>注意: 显示的提交为倒序，旧的提交在上方，新的提交在下方。
+格式:
+    关键字 commit-id commit-message</p>
+<p>几个重要的关键字如下所示:</p>
+<blockquote>
+<p>p, pick <commit> = use commit
+r, reword <commit> = use commit, but edit the commit message
+e, edit <commit> = use commit, but stop for amending
+s, squash <commit> = use commit, but meld into previous commit</p>
+<p>These lines can be re-ordered; they are executed from top to bottom.
+ If you remove a line here THAT COMMIT WILL BE LOST.</p>
+</blockquote>
+<p>选择要保留和要合并的commit
+<img alt="rebase" src="../images/35_rebase.png" /></p>
+<p>保存并退出
+<img alt="rebase" src="../images/36_rebase.png" /></p>
+<p>修改提交message
+<img alt="rebase" src="../images/37_rebase.png" /></p>
+<p>合并完成后
+<img alt="rebase" src="../images/38_rebase.png" /></p>
+<p>注意: <strong>提交时间不变，但是commit-id会全部改变</strong></p>
+<ul>
+<li>如果遇到冲突后该如何解决?</li>
+</ul>
+<p><img alt="rebase" src="../images/39_rebase.png" />
+第一步，解决冲突
+第二步，git add xxx
+第三步，继续rebase , 执行 git rebase --continue
+...
+如果想放弃，可使用
+git rebase --abort
+或者
+git rebase --skip</p>
+<ul>
+<li>推送到远程分支?</li>
+</ul>
+<p><img alt="rebase push" src="../images/40_rebase.png" /></p>
+<p>需要 git push -f 才行 （非常不推荐rebase非本地分支的内容）
+git push -f [remote] [branch]</p>
+<h4 id="3">3. 如何合并中间的某几个节点?</h4>
+<p>方法同上</p>
+<h4 id="4-log">4. 如何从提交log中进行关键字查找?</h4>
+<ul>
+<li>查找关键字
+git log --grep key_word</li>
+<li>查找关键字，并指定作者
+git log --grep key_word --author author</li>
+</ul>
+<p><img alt="git log grep" src="../images/41_git_log_grep.png" /></p>
+<p>git log 常用扩展
+- 查找指定函数的变更记录
+git log -L :\<funcname>:\<file></p>
+<p>例，寻找main.cpp文件中 add 函数的变更记录
+git log -L :add:main.cpp
+<img alt="search function" src="../images/42_search_func.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

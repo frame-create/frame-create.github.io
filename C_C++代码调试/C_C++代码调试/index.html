@@ -1,0 +1,4174 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../C_C%2B%2B/C_C%2B%2B/">
+      
+      
+        <link rel="next" href="../../Linux/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>C_C++代码调试 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Blog" class="md-header__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C_C++代码调试
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Blog" class="md-nav__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/%E9%AB%98%E8%B4%A8%E9%87%8FC_C%2B%2B%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    代码规范
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    绘图
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            绘图
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BB%98%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流程图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/eNSP%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F/eNSP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eNSP网络仿真
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C_C%2B%2B/C_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C_C++代码调试
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    C_C++代码调试
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-cc" class="md-nav__link">
+    第1章 C/C++调试基本知识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-visual-c" class="md-nav__link">
+    第2章 Visual C++ 调试基本功能
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linux-gdb" class="md-nav__link">
+    第3章 Linux 系统gdb调试基本功能
+  </a>
+  
+    <nav class="md-nav" aria-label="第3章 Linux 系统gdb调试基本功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#32-gdb" class="md-nav__link">
+    3.2 gdb 简介
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 gdb 简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-gdb" class="md-nav__link">
+    3.2.1 gdb的安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-gdb" class="md-nav__link">
+    3.2.2 gdb常用功能概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 调试执行
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 调试执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    3.3.1 启动调试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    3.3.2 启动调试并添加参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    3.3.3 附加到进程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 断点管理
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 断点管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341" class="md-nav__link">
+    3.4.1 设置断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342" class="md-nav__link">
+    3.4.2 启用/禁用断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343" class="md-nav__link">
+    3.4.3 启动断点一次
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344" class="md-nav__link">
+    3.4.4 启用断点并删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-n" class="md-nav__link">
+    3.4.5 启动断点并命中N次
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#346-n" class="md-nav__link">
+    3.4.6 忽略断点前N次命中
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#347" class="md-nav__link">
+    3.4.7 查看断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#348" class="md-nav__link">
+    3.4.8 删除断点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 程序执行
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 程序执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351" class="md-nav__link">
+    3.5.1 启动程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352" class="md-nav__link">
+    3.5.2 继续运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-n" class="md-nav__link">
+    3.5.3 继续运行并跳过当前断点N次
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354" class="md-nav__link">
+    3.5.4 继续运行直到当前函数执行完成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355" class="md-nav__link">
+    3.5.5 单步执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356" class="md-nav__link">
+    3.5.6 逐过程执行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 查看当前函数参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 查看 / 修改变量的值
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 查看 / 修改变量的值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-gdb" class="md-nav__link">
+    3.7.1 使用 gdb 内嵌函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372" class="md-nav__link">
+    3.7.2 查看结构体/类的值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373" class="md-nav__link">
+    3.7.3 查看数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    3.8 自动显示变量的值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    3.9 显示源代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 查看内存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.11 查看寄存器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.12 查看调用栈
+  </a>
+  
+    <nav class="md-nav" aria-label="3.12 查看调用栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3121" class="md-nav__link">
+    3.12.1 查看栈回溯信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3122" class="md-nav__link">
+    3.12.2 切换栈帧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3123" class="md-nav__link">
+    3.12.3 查看帧信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.13 线程管理
+  </a>
+  
+    <nav class="md-nav" aria-label="3.13 线程管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3131" class="md-nav__link">
+    3.13.1 查看所有线程信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3132" class="md-nav__link">
+    3.13.2 切换线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3133" class="md-nav__link">
+    3.13.3 为线程设置断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3134" class="md-nav__link">
+    3.13.4 为线程执行命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314" class="md-nav__link">
+    3.14 其他
+  </a>
+  
+    <nav class="md-nav" aria-label="3.14 其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3141" class="md-nav__link">
+    3.14.1 观察点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3142" class="md-nav__link">
+    3.14.2 捕获点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3143" class="md-nav__link">
+    3.14.3 搜索源代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3144" class="md-nav__link">
+    3.14.4 查看变量类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3145" class="md-nav__link">
+    3.14.5 跳转执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3146" class="md-nav__link">
+    3.14.6 窗口管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3147-shell" class="md-nav__link">
+    3.14.7 调用shell命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    第4章 多线程死锁调试
+  </a>
+  
+    <nav class="md-nav" aria-label="第4章 多线程死锁调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 创建多线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 多线程的同步
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-c" class="md-nav__link">
+    4.3 C++ 标准库中的锁
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 C++ 标准库中的锁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-stdmutex" class="md-nav__link">
+    4.3.1 std::mutex类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-stdtimed_mutex" class="md-nav__link">
+    4.3.2 std::timed_mutex类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-stdrecursive_mutex-stdrecursive_timed_mutex" class="md-nav__link">
+    4.3.3 std::recursive_mutex 和 std::recursive_timed_mutex
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 死锁调试
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 死锁调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-linux" class="md-nav__link">
+    4.4.1 Linux系统中的死锁调试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442" class="md-nav__link">
+    4.4.2 死锁条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443" class="md-nav__link">
+    4.4.3 解决死锁
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    第5章 调试动态库
+  </a>
+  
+    <nav class="md-nav" aria-label="第5章 调试动态库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-linux" class="md-nav__link">
+    5.1 Linux 系统动态库开发与调试
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Linux 系统动态库开发与调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511" class="md-nav__link">
+    5.1.1 创建动态库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512" class="md-nav__link">
+    5.1.2 使用动态库
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux系统编程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    makefile
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            makefile
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../makefile/makefile%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/makefile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    makefile学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nginx/2294_nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2294 nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nginx/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Beyond_Compare/Beyond_Compare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beyond_Compare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/git/Git%E5%9F%B9%E8%AE%AD/git%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Markdown/Markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/MobaXterm/MobaXterm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MobaXterm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Source_Insight/source_insight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Source_Insight
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/VMware/vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VMware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/VS_Code/VS_Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS_Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-cc" class="md-nav__link">
+    第1章 C/C++调试基本知识
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-visual-c" class="md-nav__link">
+    第2章 Visual C++ 调试基本功能
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linux-gdb" class="md-nav__link">
+    第3章 Linux 系统gdb调试基本功能
+  </a>
+  
+    <nav class="md-nav" aria-label="第3章 Linux 系统gdb调试基本功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#32-gdb" class="md-nav__link">
+    3.2 gdb 简介
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 gdb 简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-gdb" class="md-nav__link">
+    3.2.1 gdb的安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-gdb" class="md-nav__link">
+    3.2.2 gdb常用功能概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 调试执行
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 调试执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    3.3.1 启动调试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    3.3.2 启动调试并添加参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    3.3.3 附加到进程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 断点管理
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 断点管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341" class="md-nav__link">
+    3.4.1 设置断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342" class="md-nav__link">
+    3.4.2 启用/禁用断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343" class="md-nav__link">
+    3.4.3 启动断点一次
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344" class="md-nav__link">
+    3.4.4 启用断点并删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-n" class="md-nav__link">
+    3.4.5 启动断点并命中N次
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#346-n" class="md-nav__link">
+    3.4.6 忽略断点前N次命中
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#347" class="md-nav__link">
+    3.4.7 查看断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#348" class="md-nav__link">
+    3.4.8 删除断点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 程序执行
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 程序执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351" class="md-nav__link">
+    3.5.1 启动程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352" class="md-nav__link">
+    3.5.2 继续运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-n" class="md-nav__link">
+    3.5.3 继续运行并跳过当前断点N次
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354" class="md-nav__link">
+    3.5.4 继续运行直到当前函数执行完成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#355" class="md-nav__link">
+    3.5.5 单步执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#356" class="md-nav__link">
+    3.5.6 逐过程执行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 查看当前函数参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 查看 / 修改变量的值
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 查看 / 修改变量的值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-gdb" class="md-nav__link">
+    3.7.1 使用 gdb 内嵌函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372" class="md-nav__link">
+    3.7.2 查看结构体/类的值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373" class="md-nav__link">
+    3.7.3 查看数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    3.8 自动显示变量的值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    3.9 显示源代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 查看内存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.11 查看寄存器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.12 查看调用栈
+  </a>
+  
+    <nav class="md-nav" aria-label="3.12 查看调用栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3121" class="md-nav__link">
+    3.12.1 查看栈回溯信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3122" class="md-nav__link">
+    3.12.2 切换栈帧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3123" class="md-nav__link">
+    3.12.3 查看帧信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.13 线程管理
+  </a>
+  
+    <nav class="md-nav" aria-label="3.13 线程管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3131" class="md-nav__link">
+    3.13.1 查看所有线程信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3132" class="md-nav__link">
+    3.13.2 切换线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3133" class="md-nav__link">
+    3.13.3 为线程设置断点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3134" class="md-nav__link">
+    3.13.4 为线程执行命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314" class="md-nav__link">
+    3.14 其他
+  </a>
+  
+    <nav class="md-nav" aria-label="3.14 其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3141" class="md-nav__link">
+    3.14.1 观察点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3142" class="md-nav__link">
+    3.14.2 捕获点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3143" class="md-nav__link">
+    3.14.3 搜索源代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3144" class="md-nav__link">
+    3.14.4 查看变量类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3145" class="md-nav__link">
+    3.14.5 跳转执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3146" class="md-nav__link">
+    3.14.6 窗口管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3147-shell" class="md-nav__link">
+    3.14.7 调用shell命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    第4章 多线程死锁调试
+  </a>
+  
+    <nav class="md-nav" aria-label="第4章 多线程死锁调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 创建多线程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 多线程的同步
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-c" class="md-nav__link">
+    4.3 C++ 标准库中的锁
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 C++ 标准库中的锁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-stdmutex" class="md-nav__link">
+    4.3.1 std::mutex类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-stdtimed_mutex" class="md-nav__link">
+    4.3.2 std::timed_mutex类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-stdrecursive_mutex-stdrecursive_timed_mutex" class="md-nav__link">
+    4.3.3 std::recursive_mutex 和 std::recursive_timed_mutex
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 死锁调试
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 死锁调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-linux" class="md-nav__link">
+    4.4.1 Linux系统中的死锁调试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442" class="md-nav__link">
+    4.4.2 死锁条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443" class="md-nav__link">
+    4.4.3 解决死锁
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    第5章 调试动态库
+  </a>
+  
+    <nav class="md-nav" aria-label="第5章 调试动态库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-linux" class="md-nav__link">
+    5.1 Linux 系统动态库开发与调试
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Linux 系统动态库开发与调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511" class="md-nav__link">
+    5.1.1 创建动态库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512" class="md-nav__link">
+    5.1.2 使用动态库
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="cc">C/C++ 代码调试的艺术</h1>
+<h2 id="1-cc">第1章 C/C++调试基本知识</h2>
+<p>软件调试 -- 发现和去除BUG的过程或者行为。</p>
+<h2 id="2-visual-c">第2章 Visual C++ 调试基本功能</h2>
+<h2 id="3-linux-gdb">第3章 Linux 系统gdb调试基本功能</h2>
+<p>Makefile 规则
+目标 : 依赖
+[Tab] 命令</p>
+<h3 id="32-gdb">3.2 gdb 简介</h3>
+<p>gdb (GNU debugger)是UNIX/Linux 系统中国强大的调试工具，它能够调试软件并分析软件的执行过程，帮助我们调查研究程序的正确行为，查找程序中产生BUG的根源(这比直接查看源代码方便得多)，还能用来分析程序崩溃得原因等。</p>
+<h4 id="321-gdb">3.2.1 gdb的安装</h4>
+<p><code>apt-get install gdb</code></p>
+<h4 id="322-gdb">3.2.2 gdb常用功能概念</h4>
+<p>gdb的功能非常多，比如断点管理、崩溃转储文件(core dump)分析、执行Shell命令等。gdb的常用功能如下所示:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">支持的功能</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">断点管理</td>
+<td style="text-align: left;">设置断点、查看断点等</td>
+</tr>
+<tr>
+<td style="text-align: left;">调试执行</td>
+<td style="text-align: left;">逐语句、逐过程执行</td>
+</tr>
+<tr>
+<td style="text-align: left;">查看数据</td>
+<td style="text-align: left;">在调试状态下查看变量数据、内存数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">运行时修改变量值</td>
+<td style="text-align: left;">在调试状态下修改某个变量的值</td>
+</tr>
+<tr>
+<td style="text-align: left;">显示源代码</td>
+<td style="text-align: left;">查看源代码信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">搜索源代码</td>
+<td style="text-align: left;">对源代码进行查找</td>
+</tr>
+<tr>
+<td style="text-align: left;">调用堆栈管理</td>
+<td style="text-align: left;">查看堆栈信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">线程管理</td>
+<td style="text-align: left;">调式多线程程序，查看线程信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">进程管理</td>
+<td style="text-align: left;">调式多个进程</td>
+</tr>
+<tr>
+<td style="text-align: left;">崩溃转储(core dump)分析</td>
+<td style="text-align: left;">分析core dump 文件</td>
+</tr>
+<tr>
+<td style="text-align: left;">调式启动方式</td>
+<td style="text-align: left;">用不同的方式调试进程，比如加载参数启动、附加到进程等</td>
+</tr>
+</tbody>
+</table>
+<h4 id="33">3.3 调试执行</h4>
+<h5 id="331">3.3.1 启动调试</h5>
+<p>启动gdb调试的方式有好几种，最简单的一种就是执行命令:
+<code>gdb 程序名</code></p>
+<h5 id="332">3.3.2 启动调试并添加参数</h5>
+<p>添加参数的命令为:
+<code>set args param1 param2 ...</code>
+例，假设需要两个参数，分别为admin 和 password, 则需要在gdb命令窗口中输入以下命令:</p>
+<blockquote>
+<p>set args admin password
+然后再次输入r命令，启动程序</p>
+</blockquote>
+<h5 id="333">3.3.3 附加到进程</h5>
+<p>很多情况下，程序出现问题时并不处于调试状态。也就是说，在我们想要调试程序时，程序已经开始运行。这时，我们就不能按照上述方式来调试程序（因为程序已经启动），需要采用新的方式来调试已经启动的程序。
+这个新的方式就是将已经运行的程序附加进来，将gdb附加到进程的命令如下:
+<code>gdb attach pid</code>
+这里的pid就是我们程序运行的进程ID，可以通过命令ps来获取。
+<code>ps aux | grep 程序名</code>
+或者
+<code>ps -ef | grep 程序名</code></p>
+<h4 id="34">3.4 断点管理</h4>
+<p>断点(breakpoint)，即为了调试的需要，在程序中设置一些特殊标志，代码执行到这些具有特殊标志的位置时会暂停。一旦程序暂停，我们就可以查看或者修改程序运行的一些信息，比如内存信息、堆栈信息等，并且可以去检查程序运行的一些结果，去判断程序运行是否符合期望等。总而言之，断点就是程序中断（暂停运行）的地方。gdb提供了一些与断点有关的命令，比如设置断点、查看断点、条件断点等。断点是调试中最重要的技术。</p>
+<h5 id="341">3.4.1 设置断点</h5>
+<p>gdb中的断点可以分为好几个种类，比如普通断点、条件断点、数据断点等，下面将详细介绍每一种断点的使用方式。
+- 在源代码的某一行设置断点
+break 文件名:行号
+例，想在main.cpp的第10行设置断点,</p>
+<blockquote>
+<p>break main.cpp:49</p>
+</blockquote>
+<p>然后执行命令r启动程序。因为我们在第49行设置了第一个断点，所以程序运行到第49行时会暂停下来，这时就可以使用一些gdb命令来查看信息了。比如，输入list(缩写为l)来查看断点附近的代码，使用print(缩写为p)来查看变量的值。</p>
+<ul>
+<li>为函数设置断点
+为函数设置断点的语法如下:
+<code>break 函数名</code></li>
+</ul>
+<p>为某个函数设置断点后，只要代码中调用该函数，就会命中并暂停。
+例，我们要为add_member函数设置断点，则可以在gdb中输入以下命令:</p>
+<blockquote>
+<p>break add_member
+如果函数不存在，gdb会给出提示。如果是一个合法的函数名，则会提示设置断点成功。</p>
+</blockquote>
+<p>如果有多个函数名相同，只是参数不同，为同名函数设置断点会怎么样呢? gdb会为所有同名函数都设置断点，这一点其实很重要，尤其是在C++ 的函数重载中，因为只看代码很难区分到底会调用哪一个函数。但是为函数设置断点后，就不用担心到底会执行哪一个函数。因为每个函数都会被设置断点，无论是哪一个函数被调用，都会命中。</p>
+<blockquote>
+<p>b test_fun</p>
+</blockquote>
+<p>会看到提示有两个地方设置了函数断点，然后在gdb中输入r开始运行程序。首先命中第一个test_fun(int)函数。然后输入c，继续运行，马上在第二个test_fun(const char *)函数中断。</p>
+<p>如果多个类是继承关系，由于虚函数也是同名函数，所以当为函数设置断点时，无论是什么类型的函数，只要函数名满足条件，都会被设置断点。
+如果只想为特定的函数设置断点，则需要添加限定符，以便区分到底是为哪个函数设置断点。</p>
+<pre><code class="language-cpp">class test_1 {
+public:
+    test_1(){x=10; y=100;}
+    virtual ~test_1(){}
+    virtual void test_fun() {
+        printf(&quot;test_1 test_fun\n&quot;);
+    }
+
+private:
+    int x;
+    int y;
+};
+
+class test_2 : public test_1 {
+public:
+    test_2(){}
+    virtual ~test_2(){}
+    virtual void test_fun2() {
+        printf(&quot;test_fun2\n&quot;);
+    }
+
+    virtual void test_fun() {
+        printf(&quot;test_2 test_fun\n&quot;);
+    }
+};
+
+void test_fun(int i)
+{
+    printf(&quot;i is %d\n&quot;,i);
+}
+
+void test_fun(const char *str)
+{
+    printf(&quot;str is %s\n&quot;,str);
+}
+</code></pre>
+<p>代码中包含4个test_fun函数，如果在gdb中执行命令<code>b test_func</code>，则4个函数都会被设置断点。假设我们只想对test_1中的test_func和test_fun(int)设置断点，则分别执行命令:
+<code>b test_1::test_fun</code>
+<code>b test_fun(int)</code>
+就只会对这两个函数设置断点，另外两个函数则不会被设置断点。</p>
+<ul>
+<li>使用正则表达式设置函数断点
+如果想为多个函数设置断点，但是这些函数名又各不相同，则不能使用上节提到的方法。但是如果这些函数名遵循一定的规则或者模式，则可以使用正则表达式来为这些函数设置断点，比如使用<code>*</code>等。
+对代码稍作改动，添加一个函数，名称为test_fun_x，这时代码包含多个以test_fun开头的函数名，就可以使用正则表达式来为满足规则的函数设置断点，语法如下:
+<code>rb 正则表达式</code>
+或者
+<code>rbreak 正则表达式</code></li>
+</ul>
+<p>现在为所有以test_fun开头的函数设置断点，在gdb中输入以下命令:</p>
+<blockquote>
+<p>rb test_fun*</p>
+</blockquote>
+<p>这样就为所有以test_fun开头的函数设置了断点。</p>
+<ul>
+<li>通过偏移量设置断点
+当前代码执行到某一行时，如果要为当前代码行的前面某一行或者后面某一行设置断点，就可以使用这个功能来达到快速设置断点的目的。
+这个功能的语法如下:
+<code>b +偏移量</code>
+<code>b -偏移量</code>
+比如当前代码执行至73行，如果要在第78行设置断点，可以执行以下命令:<blockquote>
+<p>b +5</p>
+</blockquote>
+</li>
+</ul>
+<p>如果要在第68行设置断点，可以执行以下命令:</p>
+<blockquote>
+<p>b -5</p>
+</blockquote>
+<ul>
+<li>设置条件断点
+所谓条件断点，就是当满足一定条件时断点才会命中。普通的断点只要代码执行到断点处就会命中并暂停下来，而条件断点必须要满足设置的条件，才能够命中并暂停。条件断点的语法如下:
+<code>b 断点 条件</code>
+其中的“断点”可以是前面按照代码行的方式设置的断点，也可以是函数断点。“条件”一般是一个bool表达式，比如 <code>if i == 5</code>。条件断点在一些特殊的调试场合是非常有效的，比如在循环中，循环变量达到某个值时问题才会出现。如果循环变量很大，每次单步执行，是不太可能的。使用条件断点可以比较容易的解决这个问题。比如有一个上千次的循环，但是当循环变量达到900时才会出问题，这时就可以设置一个条件断点，使得循环变量达到900时才会中断。先来查看测试代码，其中包括一个循环，代码如下所示:</li>
+</ul>
+<pre><code class="language-cpp">// xxx
+
+void test_loop()                              // line 76
+{                                             // line 77
+     for (int i = 0; i &lt; 1000; i++) {         // line 78
+        printf(&quot;i is %d\n&quot;, i);               // line 79
+    }                                         // line 80
+}                                             // line 81
+
+int main(int argc, char *argv[])
+{
+    test_loop();
+    // xxx
+}
+</code></pre>
+<p>我们可以在代码的第79行设置一个条件断点，当 i 等于 900 的时候命中。在gdb中输入以下命令:</p>
+<blockquote>
+<p>b main.cpp:79 if i == 900</p>
+</blockquote>
+<p>可以使用<code>info b</code>命令查看断点的设置情况。
+然后输入r开始执行程序，并且会在i等于900的时候命中断点并暂停。此时输入print i查看变量i的当前值，发现确实是900。</p>
+<p>也可以为函数断点设置条件，比如函数
+<code>void cond_fun_test(int a, const char *str)</code>，如下所示:</p>
+<pre><code class="language-cpp">void cond_fun_test(int a, const char *str)
+{
+    printf(&quot;a is %d, str is %s\n&quot;, a, str);
+}
+</code></pre>
+<p>假设我们希望在调用cond_fun_test函数并且参数a等于10时，程序暂停，则可以使用以下命令:
+<code>b cond_fun_test if a == 10</code></p>
+<p>如果希望str等于test时暂停，则可以使用下面的命令来设置条件断点:
+<code>b cond_fun_test if str = "test"</code></p>
+<p>可以使用info b命令来查看设置的断定信息。然后在 gdb 中输入 r 运行程序，当调用cond_fun_test 并且str 等于test 时中断。</p>
+<ul>
+<li>在指令地址上设置断点
+如果调试程序没有符号信息，而我们又想在某些地方设置断点时，则可以使用在指令地址上设置断点的功能。语法如下:
+<code>b *指令地址</code>
+先使用无调试符号的方式生成可执行文件。对Makefile稍作修改，去除 -g 选项，使得生成的可执行文件不包含调试符号信息。启动 gdb 并调试程序，然后在测试函数 cond_fun_test上设置一个断点。因为没有调试符号信息，所以第一步先获得cond_fun_test函数的地址，执行下述命令:
+<code>p cond_fun_test</code></li>
+</ul>
+<p>该命令会获得函数 cond_fun_test的函数地址，这里是 <code>0x56130eec065e</code>。然后为地址 <code>0x56130eec065e</code> 设置断点，命令如下:
+<code>b * 0x56130eec065e</code>
+在 gdb 中输入 r，运行程序，就会在函数 cond_fun_test中暂停。</p>
+<ul>
+<li>设置临时断点
+顾名思义，临时断点是指这个断点是临时的，只命中一次，然后会被自动删除，后续即使代码被多次调用也不会再次命中。语法如下:
+<code>tbreak 断点</code>
+或者
+<code>tb 断点</code></li>
+</ul>
+<p>这里列举一个简单的多次调用函数的例子，代码如下所示:</p>
+<pre><code class="language-cpp">for (int i = 0; i &lt; 10; i++) {
+    test_fun_x();
+}
+</code></pre>
+<p>在代码清单中，我们在一个循环中调用函数 <code>test_fun_x</code>，但是只想在test_fun_x函数中命中一次，此时就可以设置一个临时断点。在 gdb 中执行下述命令:
+<code>tb test_fun_x</code>
+这就为函数 test_fun_x 设置了一个临时断点。第一次命中该断点后，后面的调用不会再次命中。</p>
+<h5 id="342">3.4.2 启用/禁用断点</h5>
+<p>如果一个断点被禁用，则该断点不会被命中，但是它任然会在断点列表中显示。我们仍然可以通过 info b 来查看被禁用的断点，也可以通过启用断点命令来重新启用被禁用的断点。
+禁用断点的语法如下:
+<code>disable 断点编号</code></p>
+<p>启用断点的语法如下:
+<code>enable 断点编号</code></p>
+<p>假设我们已经设置了3个断点，现在要把2号断点暂时禁用，可以使用以下命令来禁用2号断点:
+<code>disable 2</code>
+如果要启用2号断点，可以使用以下命令:
+<code>enable 2</code></p>
+<p>在禁用断点后，断点的Enb标志 变成n, 启用后又恢复成 y。
+也可以对一个范围内的断点执行启用或禁用操作，比如禁用编号为 4 - 10 的断点，则可以使用下述命令:
+<code>disable 4-10</code>
+启用断点也是一样的。例如要启用编号为 4 -10 的断点，则可以使用下述命令:
+<code>enable 4-10</code></p>
+<h5 id="343">3.4.3 启动断点一次</h5>
+<p>这是启动断点的一种变化用法，在启动断点时，可以只启用一次，命中一次后会自动禁用，不会再次命中。它与临时断点相似，临时断点只会命中一次，命中一次之后就会自动删除。启用断点一次的不同之处在于断点启用后，虽然只会命中一次，但是不会被删除，而是被禁用。
+启用断定一次的语法如下:
+<code>enable once 断点编号</code>
+比如我们为函数test_fun_x设置了一个断点，然后禁用了该断点。假设该断点编号为1，如果只启用一次，则可以使用下述命令启用断点一次:
+<code>enable once 1</code>
+当第一次命中以后，再次调用函数test_fun_x时不会被命中。
+使用<code>enable once 1</code>命令后,第一次命中会暂停,后面的调用都不会再次命中.如果此时使用命令 info b 去查看断点信息,会发现1号断点的Enb状态已经变为n。</p>
+<h5 id="344">3.4.4 启用断点并删除</h5>
+<p>这同样是启动断点的一种变化用法,即如果断点被启用,当下次命中该断点后,会自动删除。该功能与临时断点相似,相当于把一个被禁用的断点转换为临时断点。语法如下:
+<code>enable delete 断点编号</code></p>
+<p>先为函数test_fun_x设置一个断点,并禁用它,然后再启用并删除它,依次执行的命令如下:
+<code>b test_fun_x</code>
+<code>disable 1</code>
+<code>enable delete 1</code></p>
+<p>在 gdb 中输入 r 执行程序,可以发现test_fun_x中的断点被执行依次,然后自动被删除。</p>
+<h5 id="345-n">3.4.5 启动断点并命中N次</h5>
+<p>这也是启用断点的一种变化用法,即启用断点后可以命中N次,但是命中N次后,该断点就会被自动禁用,不会再次命中。语法如下:
+<code>enable count 数量 断点编号</code></p>
+<p>如果想重新启用已经禁用的断点,并命中5次,那么可以使用以下命令:
+<code>enable count 5 1</code></p>
+<p>仍然以test_fun_x函数断点为例。先为test_fun_x设置断点,然后禁用,最后以再次启用并命中5次的方式启用该断点。在命中5次之后,该断点就会被禁用。</p>
+<h5 id="346-n">3.4.6 忽略断点前N次命中</h5>
+<p>这个功能很有用,也很有趣,与条件断点类似,即在设置断点时可以指定接下来的N次命中都忽略,直到第N+1次命中时运行才暂停。语法如下:
+<code>ignore 断点编号 次数</code></p>
+<p>例如我们为函数 test_fun_x设置了断点,但是因为test_fun_x可能被多次调用,所以我们希望在第8次被调用时能够命中,前7次的调用都被忽略,则使用以下命令:
+<code>ignore 1 7</code></p>
+<p>这样在执行代码时,前7次对函数test_fun_x的调用都会被忽略,不会命中断点,但是从第8次调用开始都会被命中。</p>
+<h5 id="347">3.4.7 查看断点</h5>
+<p>查看断点可以通过下列命令实现:
+<code>info breakpoints</code>
+<code>info break</code>
+<code>info b</code>
+<code>i b</code></p>
+<p>上述命令只有第一个比较长,后面的3个都是简化缩写形式,所有的命令执行结果都是相同的。</p>
+<p>也可以只查看某一个具体的断点,方法为在这些命令后面加上断点编号。</p>
+<p>查看断点信息的命令由<code>info</code>和<code>breakpoint</code>两个命令组合而成,这两个命令有多种组合方式。info可以写为两种形式: info 和 i。 breakpoint 可以写为3种形式: breakpoint break 和 b。 因此, 一共有6种组合形式, 例如, i breakpoint 也是一种查看断点的有效命令。</p>
+<h5 id="348">3.4.8 删除断点</h5>
+<p>删除断点主要有两个相关命令，即clear 和 delete，下面分别介绍。
+- 删除所有断点: delete
+在gdb中输入以下命令就会删除所有的断点:
+<code>delete</code></p>
+<p>在删除之前会有确认对话框，询问是否删除所有断点。如果选择y，则删除所有断点，否则不会执行任何操纵。</p>
+<ul>
+<li>
+<p>删除指定断点: delete 断点编号
+比如要删除5号断点，可以在gdb中输入以下命令:
+<code>delete 5</code>
+如果要同时删除编号为 5 和 6 的两个断点，可以使用以下命令:
+<code>delete 5 6</code></p>
+</li>
+<li>
+<p>删除指定范围的断点: delete 范围
+如果要删除编号为 <code>5 - 7</code>的断点，则可以使用以下命令:
+<code>delete 5-7</code>
+还可以删除多个范围的断点，比如要删除编号为 5-7 和 10-12 的断点，则可以使用以下命令:
+<code>delete 5-7 10-12</code></p>
+</li>
+<li>
+<p>删除指定函数的断点: clear 函数名
+比如要删除 test_fun 函数断点，可以执行以下命令:
+<code>clear test_fun</code>
+这会删除所有的test_fun函数断点。如果有多个同名函数断点，这些同名函数断点都会被删除。</p>
+</li>
+<li>
+<p>删除指定行号的断点: clear 行号
+比如要删除main.cpp 第107行的断点，可以使用命令:
+<code>clear main.cpp:107</code>
+上述命令也可以简写为 <code>clear 107</code>。
+删除断点命令clear 和 delete 是有区别的。delete命令是全局的，不受栈帧的影响；clear命令受到当前栈帧的制约，删除的是将要执行的下一处指令的断点。delete命令可以删除所有断点，包括观察点和捕获点等；clear命令不能删除观察点和捕获点。</p>
+</li>
+</ul>
+<h4 id="35">3.5 程序执行</h4>
+<h5 id="351">3.5.1 启动程序</h5>
+<p>启动程序的命令为 <code>run</code> 或者 <code>r</code>，一般用于调试一个程序。r命令只在使用gdb启动被调试的程序时执行一次。比如使用 gdb 来启动main 程序，Shell 命令为：
+<code>gdb main</code>
+然后进入gdb的调试窗口，这时程序被暂停，可以执行设置启动参数，设置断点等操作。然后在 gdb 中输入 run 启动程序，直到遇到第一个命中的断点为止，程序才会中断。</p>
+<h5 id="352">3.5.2 继续运行</h5>
+<p>继续运行可以使用命令 <code>continue</code> 或者 <code>c</code>。当程序处于中断状态时，比如已经命中断点，则可以执行 <code>continue</code>命令恢复或者继续运行程序，直到遇到下一个断电为止。</p>
+<h5 id="353-n">3.5.3 继续运行并跳过当前断点N次</h5>
+<p>在使用<code>continue</code>命令时，还可以设置跳过当前断点的命中次数。语法如下：
+<code>continue 次数</code>
+先在test_fun_x中设置函数断点。从前面的代码中可以发现，main函数会循环调用test_fun_x函数10次，当第一次在test_fun_x中暂停时，如果想忽略接下来的8次命中（包括当前这一次），则可以使用命令:
+<code>continue 8</code>
+那么，继续执行时会忽略接下俩的7次断点命中，在第9次命中的时候暂停。</p>
+<h5 id="354">3.5.4 继续运行直到当前函数执行完成</h5>
+<p>如果在一个比较长的函数中设置了断点，当命中函数断点时，我们可能不想逐步执行代码，而是跳过部分代码的调试过程，直到回到调用函数的位置，此时可以使用这个功能。语法如下:
+<code>finish</code>
+在启动main后，先为add_member设置断点，然后输入r启动程序。程序开始执行后输入1执行添加会员的操作，这时就会在add_member函数中暂停。假设我们已经查看了部分变量的值，不需要查看其余代码，则可以执行finish命令来完成该函数的调试，直到回到调用该函数的位置并暂停。</p>
+<h5 id="355">3.5.5 单步执行</h5>
+<p>gdb单步执行的命令如下:
+<code>step</code> 或者 <code>s</code>
+当进入到断点所在代码时，可以输入step或者s命令执行该行代码。如果该行代码有函数调用，会直接进入该函数内部继续执行；如果没有函数调用，则直接执行下一行。</p>
+<h5 id="356">3.5.6 逐过程执行</h5>
+<p>逐过程执行与单步执行类似，执行一次就会进入下一行。但是，如果当前代码行有函数调用，单步执行会进入到函数中，逐过程执行则不会进入到函数中。无论有多少个函数调用，逐过程执行都会进入到下一行代码。逐过程执行都会进入到下一行代码。逐过程执行的语法如下:
+<code>next</code> 或者 <code>n</code></p>
+<p>单步执行也可以称之为逐语句执行。逐语句和逐过程执行命令后面都可以跟一个数字参数，例如 <code>s 5</code> 或者 <code>n 5</code> 表示往后执行5行代码，遇到s会进入函数，遇到n则不会进入函数。如果在往后执行的过程中遇到了断点，首先会在断点处中断。</p>
+<h4 id="36">3.6 查看当前函数参数</h4>
+<p>当程序在函数中暂停后，即可查看函数的参数。语句如下:
+<code>info args</code> 或者 <code>i args</code>
+比如进入main函数时，我们可以使用 <code>info args</code> 来查看传递给main的参数。在其他函数中也一样，同样可以使用 info args 查看函数的参数值。</p>
+<h4 id="37">3.7 查看 / 修改变量的值</h4>
+<p>在程序命中断点时，可以查看变量的值。这个变量可以是全局变量，也可以是局部变量，而且当前上下文能够访问的变量都可以查看。语法如下:
+<code>print 变量名</code> 或者 <code>p 变量名</code></p>
+<p>即如果要改变x变量的值，将它修改为20，可以使用命令 <code>p x=20</code>。对于结构体或者类对象，也可以使用这种方式修改成员的值，例如 <code>p test-&gt;x=30</code>、<code>p node.ID=100</code> 等。</p>
+<h5 id="371-gdb">3.7.1 使用 gdb 内嵌函数</h5>
+<p>在使用print 或者 p 命令时，可以直接使用 gdb 内嵌的一些函数（比如 C函数），比如 <code>sizeof</code>、<code>strcmp</code>等，也可以使用一些常见的表达式。当使用内嵌函数时，通常不是查看某个变量的值，而是进行一些计算或者比较等操作。这样，就可以实时的查看一些信息。比如，想了解long在Linux gcc 下占用几个字节长度、某个结构体所占用的空间大小等，都可以使用sizeof来计算。比如可以直接使用 <code>p sizeof(long)</code>、<code>p sizeof(NODE)</code>等。</p>
+<h5 id="372">3.7.2 查看结构体/类的值</h5>
+<p>先使用gdb调试main程序，在 add_member 函数的最后一行设置一个断点。在命中断点时，可以查看new_node的值，再查看add_member的代码如下所示:</p>
+<pre><code class="language-c">struct NODE {
+    int  ID;
+    char Name[40];
+    int age;
+    NODE *prev;
+    NODE *next;
+};
+
+void add_member()
+{
+    struct NODE *new_node = (NODE *)malloc(sizeof(NODE));
+    new_node-&gt;next = NULL;
+    NODE *prev_node = node_head-&gt;prev;
+    if(prev_node) {
+        prev_node-&gt;next = new_node;
+        new_node-&gt;prev = prev_node;
+        node_head-&gt;prev = new_node;
+    } else {
+        node_head-&gt;next = new_node;
+        new_node-&gt;prev = node_head;
+        node_head-&gt;prev = new_node;
+    }
+
+    new_node-&gt;ID = member_id++;
+    printf(&quot;请输入会员姓名,然后按回车\n&quot;);
+    scanf(&quot;%s&quot;,new_node-&gt;Name);
+    printf(&quot;请输入会员年龄,然后按回车\n&quot;);
+    scanf(&quot;%d&quot;,&amp;new_node-&gt;age);
+
+    printf(&quot;添加新会员成功\n&quot;);
+}
+</code></pre>
+<p>当命中<code>printf("添加新会员成功\n");</code>这一行的断点时，可以查看new_node的值。由于<code>new_node</code>是一个指针，因此可以查看这个指针本身，也可以查看其成员的值。如下所示:</p>
+<blockquote>
+<p>(gdb) p new_node
+<code>$7 = (NODE *) 0x555555571500</code>
+(gdb) p new_node-&gt;Name
+<code>$8 = "SimpleSoft", '\000' &lt;repeats 29 times&gt;</code>
+(gdb) p new_node-&gt;age
+<code>$9 = 28</code></p>
+</blockquote>
+<p>但是我们会发现，要查看结构体各个成员的值比较麻烦，因为这个结构体有3个数据成员，所以需要使用3次p命令。查看<code>new_node</code>结构体更加方便的方式是直接查看这个结构体的对象值，而不是new_node指针本身。也就是说，在查看 new_node 指针指向的内容的值时，使用 <code>*new_node</code> 可以显示整个结构体的成员信息。如下所示:</p>
+<pre><code class="language-c">(gdb) p *new_node
+$15 = {ID = 0, Name = &quot;SimpleSoft&quot;, '\000' &lt;repeats 29 times&gt;, age = 28, prev = 0x555555570a10, next = 0x0}
+</code></pre>
+<p>虽然显示结果看起来还不错，但是任然有改进的余地。比如Name的显示需要改进，我们还可以删除上述显示的空字符，使显示更美观。在 gdb 中输入 <code>set print null-stop</code>命令，设置字符串的显示规则，即遇到结束符时停止显示。通过设置之后，再次执行<code>p *new_node</code>命令，Name部分不会再显示空字符，如下所示:</p>
+<pre><code class="language-c">(gdb) set print null-stop
+(gdb) p *new_node
+$16 = {ID = 0, Name = &quot;SimpleSoft&quot;, age = 28, prev = 0x555555570a10, next = 0x0}
+</code></pre>
+<p>如果结构体成员比较多，这种显示任然会杂乱无章，不方便查看每一个成员的数据，也就是说还不够漂亮(pretty)。gdb还提供了一个使显示更加漂亮的选项，命令为<code>set print pretty</code>。设置之后，我们再次使用<code>p *new_node</code>命令来查看，结果如下所示:</p>
+<pre><code class="language-c">(gdb) set print pretty
+(gdb) show print pretty
+Pretty formatting of structures is on.
+(gdb) p *new_node
+$17 = {
+  ID = 0,
+  Name = &quot;SimpleSoft&quot;,
+  age = 28,
+  prev = 0x555555570a10,
+  next = 0x0
+}
+</code></pre>
+<p>类变量也可以使用p命令来显示，只要设置了 <code>print pretty</code>，显示出来的类成员也与结构体成员相同。</p>
+<h5 id="373">3.7.3 查看数组</h5>
+<p>同样，使用 <code>print</code> 或者 <code>p</code>命令也可以查看数组的信息。查看测试函数print_arr_test的代码，如下所示:</p>
+<pre><code class="language-c">void print_arr_test()
+{
+    int iarr[]={0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    const char *strarr[]={&quot;this&quot;, &quot;is&quot;, &quot;a&quot;, &quot;test&quot;, &quot;string&quot;};
+
+    for(unsigned long i = 0; i &lt; sizeof(iarr)/sizeof(int); i++)
+        printf(&quot;%d &quot;, iarr[i]);
+
+    for(int i= 0; i &lt; 5; i++)
+        printf(&quot;%s &quot;, strarr[i]);
+
+    printf(&quot;arr test done\n&quot;);
+}
+</code></pre>
+<p>启动调试后，为<code>print_arr_test</code>函数设置断点，在该函数中查看两个数组<code>iarr</code> 和 <code>strarr</code> 的值，如下所示:</p>
+<pre><code class="language-c">Thread 1 &quot;chapter_3.3&quot; hit Breakpoint 2, print_arr_test () at chapter_3.3.cpp:103
+(gdb) n
+104 int iarr[]={0,1,2,3,4,5,6,7,8,9};
+(gdb) n
+105 const char *strarr[]={&quot;this&quot;,&quot;is&quot;,&quot;a&quot;,&quot;test&quot;,&quot;string&quot;};
+(gdb) n
+106 for(unsigned long i=0;i&lt;sizeof(iarr)/sizeof(int);i++)
+(gdb) p iarr
+$18 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+(gdb) p strarr
+$19 = {0x5555555590f2 &quot;this&quot;, 0x5555555590f7 &quot;is&quot;, 0x5555555590fa &quot;a&quot;, 0x5555555590fc &quot;test&quot;, 0x555555559101 &quot;string&quot;}
+</code></pre>
+<p>该显示的问题与查看结构体的问题相同，即不太美观。在执行 <code>set print pretty</code> 命令后，数组的显示效果并没有改善。控制数组显示的命令为<code>set print array on</code>，其中 <code>on</code> 可以省略，默认情况下为 <code>off</code>，因此在gdb中执行 <code>set print array</code>命令，以便能够在显示数组时更方便查看，如下所示:</p>
+<pre><code class="language-c">(gdb) set print array on
+(gdb) p iarr
+$20 = {
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+}
+(gdb) p strarr
+$21 = {
+  0x5555555590f2 &quot;this&quot;,
+  0x5555555590f7 &quot;is&quot;,
+  0x5555555590fa &quot;a&quot;,
+  0x5555555590fc &quot;test&quot;,
+  0x555555559101 &quot;string&quot;
+}
+</code></pre>
+<h4 id="38">3.8 自动显示变量的值</h4>
+<p>上节介绍了使用 <code>print</code> 或者 <code>p</code> 命令来显示变量的值，但是遇到了一个问题，即如果想要查看某个变量的值，需要不停的使用 <code>print</code> 命令。这对于需要观察那些不停变化的变量值来说，使用 <code>p</code> 命令就不太方便了，因为需要使用多次。
+gdb还有另外一个 <code>display</code> 命令，每次程序暂停都可以自动显示变量值。语法如下:
+<code>display 变量名</code></p>
+<p>后面可以跟多个变量名，比如<code>display {var1, var2, var3}</code>。 我们使用 display 来自动观察 cond_fun_test中的变量x，而不是使用print 命令，效果如下:</p>
+<pre><code class="language-c">Thread 1 &quot;chapter_3.3&quot; hit Breakpoint 3, cond_fun_test (a=10, str=0x5555555590fc &quot;test&quot;) at chapter_3.3.cpp:97
+97 int x = a * a;
+(gdb) display x
+1: x = -1598486201
+(gdb) n
+98 printf(&quot;a is %d,x is %d,str is %s\n&quot;,a,x,str);
+1: x = 100
+(gdb) n
+a is 10,x is 100,str is test
+99 x *=2;
+1: x = 100
+(gdb) n
+100 printf(&quot;quit fun\n&quot;);
+1: x = 200
+</code></pre>
+<p>如果 display 命令后面跟多个变量名，则必须要求这些变量的长度相同(比如都是整型变量)。如果长度不相同，则需要分开使用。
+可以在gdb中输入 <code>info display</code> 命令来查看已经设置的自动显示的变量信息，如下所示:</p>
+<pre><code class="language-c">(gdb) info display
+Auto-display expressions now in effect:
+Num Enb Expression
+1:   y  x (cannot be evaluated in the current context)
+</code></pre>
+<p>如果不需要某些变量自动显示，则可以使用<code>undisplay 编号</code> 的方式来取消自动变量的显示。
+如果要取消所有变量的自动显示，可以使用undisplay 命令来。在使用 undisplay 命令时会收到确认信息，确认是否全部取消自动显示。如果输入y，则取消所有的自动显示。 <code>delete diaplay</code> 命令也可以删除所有的自动显示。如果只想删除部分变量的自动显示，可以使用<code>delete display 序号</code>的方式。
+除了删除自动显示，还可以暂时禁用自动显示，在需要的时候可以再次启用某些变量的自动显示。比如，如果要暂时禁用编号为1的自动显示，则可以使用以下命令:
+<code>disable display 1</code>
+如果想要恢复编号为1的变量的自动显示，则可以使用以下命令来恢复:
+<code>enable display 1</code></p>
+<h4 id="39">3.9 显示源代码</h4>
+<p>gdb 可以在调试的时候显示源代码信息。查看源代码的命令是 <code>list</code> 或者 <code>l</code>。当程序命中断点或者暂停后可以使用 <code>list</code> 命令查看相关的源代码。
+因为加上编译选项 <code>-g</code> 后，生成的可执行文件中包含了对应的源文件信息(只是保存了源文件名等信息)，所以在查看源代码时，要确保对应的源文件存在，否则无法查看。
+在程序中断时，可以使用命令来查看源代码信息。默认情况下，使用 <code>l</code> 命令可以显示10行源代码 -- 当前代码行的前面5行和后面5行。
+如果继续执行 <code>l</code> 命令，则会继续从当前行往后显示10行代码。如果执行 <code>l-</code> 命令，则会从当前代码行往前显示10行代码。
+换行 <code>l</code> 命令时，每次默认显示10行代码，如果觉得每次显示的代码太少，可以通过 <code>set listsize</code> 命令来改变每次显示代码的行数。比如，希望每次能够显示20行代码，可执行下述命令:
+<code>set listsize 20</code>
+这样，每次调用 <code>list</code> 命令时，就会显示20行代码。
+还可以使用 <code>list</code> 命令查看指定函数的代码，语法为 <code>list 函数名</code>。比如，我们要查看 <code>add_member</code> 函数的源代码，可以使用下述命令:
+<code>list add_member</code>
+显示函数与显示普通代码的规则相同。第一，受到行数的限制，比如我们刚设置了每次显示20行代码，则显示 <code>add_member</code> 函数时只显示20行代码；第二，仍然会以上下文的方式显示函数代码，即显示函数前面10行代码和函数后面10行代码。</p>
+<p>如果想要查看指定文件的指定行代码，则可以使用下述命令:
+<code>list 文件名:行号</code>
+如果查看的是当前文件的代码行，则可以省略文件名。比如我们要查看 <code>main.cpp</code> 的第100行代码，则可以使用下述命令进行查看:
+<code>l 100</code>
+这同样遵循代码上下文的规则和行数的限制要求。</p>
+<h4 id="310">3.10 查看内存</h4>
+<p>gdb查看内存的命令是 <code>x</code>(examine的缩写)。x命令有很多选项，包括显示的方式(比如是以十六进制、十进制显示，还是以字符串方式显示等)。
+下面来编写一个简单的查看内存的测试函数。代码很简单，就是定义几个变量，代码如下所示:</p>
+<pre><code class="language-c">struct TEST_NODE {
+    char gender[3];
+    int ID;
+    char name[7];
+};
+
+void test_memory()
+{
+    const char *str = &quot;test&quot;;
+    int number = 0x12345678;
+    TEST_NODE *node = new TEST_NODE;
+    node-&gt;ID = 100;
+    strcpy(node-&gt;gender, &quot;男&quot;);
+    strcpy(node-&gt;name, &quot;海洋&quot;);
+
+    printf(&quot;str is %s, number is %d, node is %d, test end\n&quot;, str, number, node-&gt;ID);
+    delete node;
+}
+
+int main(int argc, char *argv[])
+{
+    test_memory();
+    // xxx
+}
+</code></pre>
+<p>使用 gdb 启动调试，执行 <code>b test_memory</code> 命令为test_memory函数设置一个断点。断点命中时，使用 x命令查看各个变量的内存信息。x命令的语法如下:
+<code>x /选项 地址</code>
+先查看字符串变量 str的内存信息。执行 x str，默认以十六进制显示。由于 str 是字符串，所以也可以使用字符串的方式查看。使用命令 <code>x /s str</code>还可以以十进制方式查看、设定显示的宽度等，如下所示:</p>
+<pre><code class="language-c">(gdb) x str
+0x5555555590fc: 0x74736574
+(gdb) x /s str
+0x5555555590fc: &quot;test&quot;
+(gdb) x /d str
+0x5555555590fc: 116
+(gdb) x /4d str
+0x5555555590fc: 116 101 115 116
+</code></pre>
+<p>以十六进制方式查看时，显示的内存内容为<code>0x74736574</code>，对应的字符分别为t、s、e、t，即在内存中存储的内容刚好与我们看到的情况相反。如果以 <code>x /s str</code> 的方式查看，则会直接显示字符串的内容。</p>
+<p>再来查看 <code>int</code>型变量 number 在内存中的信息。因为number不是一个指针，所以我们要首先找到它的地址。可以使用 <code>p &amp;number</code>命令来查看number 对应的地址，然后再使用 x 来查看number地址对应的内存数据。当然也可以直接使用 <code>x &amp;number</code>的方式来查看 number 地址对应的内存信息，如下所示:</p>
+<pre><code class="language-c">(gdb) p &amp;number
+$1 = (int *) 0x7fffffffdfec
+(gdb) x /4x 0x7fffffffdfec
+0x7fffffffdfec: 0x78 0x56 0x34 0x12
+(gdb) x /4x &amp;number
+0x7fffffffdfec: 0x78 0x56 0x34 0x12
+</code></pre>
+<p>在代码中，我们为 number 赋值为 0x12345678，但是内存中显示的却是 0x78563412，原因是字节在x86架构中是按照小端方式存储的。小端存储是指字节序数据的尾端数据存放在低地址部分，所以与我们看到的顺序刚好相反。
+变量node存储的数据是一个结构体类型。来看看node在内存中到底是如何存储的。在gdb中输入命令x /16s node，如下所示:</p>
+<pre><code class="language-c">(gdb) x /16s node
+0x555555570fa0: &quot;男&quot;
+0x555555570fa4: &quot;d&quot;
+0x555555570fa6: &quot;&quot;
+0x555555570fa7: &quot;&quot;
+0x555555570fa8: &quot;海洋&quot;
+0x555555570faf: &quot;\211\035iUUUU&quot;
+0x555555570fb7: &quot;&quot;
+0x555555570fb8: &quot;1\001&quot;
+0x555555570fbb: &quot;&quot;
+0x555555570fbc: &quot;&quot;
+0x555555570fbd: &quot;&quot;
+0x555555570fbe: &quot;&quot;
+0x555555570fbf: &quot;&quot;
+0x555555570fc0: &quot;\020&quot;
+0x555555570fc2: &quot;&quot;
+0x555555570fc3: &quot;&quot;
+(gdb) p sizeof(TEST_NODE)
+$2 = 16
+</code></pre>
+<p>从上面可以看到，node在内存中的存储顺序与结构体声明成员的顺序一致，即按照性别、ID和姓名来存储。显示性别的起始地址是 <code>0x555555570fa0</code> ，显示ID的起始地址是 <code>0x555555570fa4</code>，<code>d</code>对应的十进制是100。可以发现，ID的地址和性别的起始地址相差4，但是我们定义gender成员时使用的是 <code>char gender[3]</code>，明明只声明了3字节，最后却在内存中占用了4字节。这是因为结构体在内存中会进行对齐和补齐操作，默认是按照4字节对齐，所以需要补齐1字节，这导致gender占用了4字节空间。同样，成员Name也会补齐到8字节，所以整个结构体在内存中会占用16字节，可以使用<code>p sizeof(TEST_NODE)</code>命令进行查看。
+命令x 并不局限于查看变量的内存信息，无论是函数地址、变量地址，还是其他地址，只要地址合法并且可以访问，都可以使用x命令来查看。</p>
+<h4 id="311">3.11 查看寄存器</h4>
+<p>寄存器是CPU内部用来存放数据的一些区域，是CPU内部的高速存储单元，用来临时存放一些参与计算的数据，比如函数参数、程序指针等。CPU可以直接操作寄存器中的值，且速度要比访问内存快得多。
+寄存器主要分为 通用寄存器、指针寄存器、段寄存器和标志寄存器等。
+- 通用寄存器(General Purpose Register)
+尽管通用寄存器是通用的，可以任意数据，但大多时候主要用来存储操作数和运算结果等信息。比如，32位通用寄存器对应的为EAX、EBX、ECX、EDX、ESP、EBP、ESI、EDI; 64位通用寄存器对应的为 RAX、RBX、RCX、RDX、RSP、RBP、RSI、RDI等。其中，EBP(RBP)是基指针寄存器，可以直接访问栈中的数据; ESP(RSP)是栈指针寄存器; 只能访问栈顶的数据。</p>
+<ul>
+<li>
+<p>指针寄存器(Pointer Register)
+又称为指令寄存器，用来存放指令指针。32位为EIP，64位为RIP。</p>
+</li>
+<li>
+<p>段寄存器(Segment Register)
+用来存储段数据的段值，比如存储数据段的段值、代码段的段值等。段寄存器主要有CS(代码段)、DS(数据段)、ES(附加段)、FS(通用段)、GS(通用段)、SS(栈段)。</p>
+</li>
+<li>
+<p>标志寄存器(RFLAGS Register)
+显示程序状态的寄存器，主要有CF(Carry Flag, 进位或者错位)、AF(Adjust Flag，辅助进位)、ZF(Zero Flag, 零标志)等。</p>
+</li>
+</ul>
+<p>在 gdb 中，指令寄存器 <code>$rip</code> 指向当前执行的代码位置，栈指针寄存器 <code>$rsp</code> 指向当前栈顶，通用寄存器会存储一些变量的值、函数参数以及函数返回值等。
+下面简单演示如何在 gdb 调试状态下查看寄存器的值。在 main 中调用测试函数 cond_fun_test，代码如下所示:</p>
+<pre><code class="language-c">void cond_fun_test(int a, const char *str)
+{
+    int x = a * a;
+    printf(&quot;a is %d, x is %d, str is %s\n&quot;, a, x, str);
+
+    x *= 2;
+    printf(&quot;quit fun\n&quot;);
+}
+</code></pre>
+<p>在 main 函数中调用语句为 <code>cond_fun_test(10, "test");</code>
+为了达到演示的效果，我们在编译时删除 <code>-g</code> 参数，这样就不会生成调试信息，当进入函数断点时，则无法使用 print 命令来查看参数值。比如，在删除 -g 参数以后，在函数 <code>cond_fun_test</code> 中设置一个断点，当进入到断点并命中时，此时输入 <code>print a</code> 或者 <code>print str</code> ，都不能正确显示参数的值，原因是没有调试信息，gdb并不了解 a 和 str 的意义。</p>
+<pre><code class="language-c">(gdb) p a
+$1 = {i = {0, 1045149306}, x = 1.2904777690891933e-08, d = 1.2904777690891933e-08}
+(gdb) p str
+No symbol &quot;str&quot; in current context.
+</code></pre>
+<p>一般情况下，函数的参数会存放在寄存器中，所以我们用查看寄存器的方式来查看传递的参数是什么。查看寄存器的命令如下:</p>
+<pre><code class="language-c">info registers
+</code></pre>
+<p>查看所有的整型寄存器，因为 <code>info</code> 可以简写为 i，registers 可以简写为 r，所以命令可以简写为 <code>i r</code>。在gdb中输入 <code>i r</code> 则可以查看所有整型寄存器的值，如下所示:</p>
+<pre><code class="language-c">(gdb) i r
+rax            0x5555555590fc      93824992252156
+rbx            0x0                 0
+rcx            0x7ffff7c58a6f      140737350306415
+rdx            0x1                 1
+rsi            0x5555555590fc      93824992252156
+rdi            0xa                 10
+rbp            0x7fffffffe000      0x7fffffffe000
+rsp            0x7fffffffe000      0x7fffffffe000
+r8             0x0                 0
+r9             0x7fffffff          2147483647
+r10            0x0                 0
+r11            0x293               659
+r12            0x7fffffffe198      140737488347544
+r13            0x555555556c9e      93824992242846
+r14            0x55555555cb98      93824992267160
+r15            0x7ffff7ffd040      140737354125376
+rip            0x555555556666      0x555555556666 &lt;cond_fun_test(int, char const*)+8&gt;
+eflags         0x246               [ PF ZF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+</code></pre>
+<p>也可以在 r后面指定寄存器的名称，比如 rax、rbx等，使其只显示特定寄存器的值。而下述命令则显示所有寄存器的值，包括浮点寄存器等。
+<code>info all-registers</code>
+现在回到查看函数参数的问题上来。其中测试函数 cond_fun_test 有两个参数: 一个是整型；一个是字符串。main函数调用的时候传入了 10 和 test，我们通过查看寄存器的值来验证是不是这两个值。
+第一个参数存储在寄存器 <code>rdi</code> 中，第二个参数存储在寄存器 <code>rsi</code> 中。现在先用 <code>i r</code> 命令来查看这两个值，如下所示:</p>
+<pre><code class="language-c">(gdb) i r rdi
+rdi 0xa 10
+(gdb) i r rsi
+rsi 0x5555555590fc 93824992252156
+</code></pre>
+<p>由上可以看到，rdi的值为 0xa(即十进制10)，最后一列也显示10, 确认是函数的第一个参数。但是 rsi 的值并没有显示 test。因为第二个参数是一个字符串指针，所以只在寄存器 rsi 中存储了一个地址，这个地址指向的才是第二个参数str真正的值。这里可以使用查看内存的命令x来查看它对应的值。x命令后面可以直接跟寄存器名称，也可以跟寄存器的值，如下所示:</p>
+<pre><code class="language-c">(gdb) x /s $rsi
+0x5555555590fc: &quot;test&quot;
+(gdb) x /s 0x5555555590fc
+0x5555555590fc: &quot;test&quot;
+</code></pre>
+<p>测试并验证寄存器的值后，再修改Makefile，加上 <code>-g</code> 参数，以便后面的测试能够正常进行。</p>
+<h4 id="312">3.12 查看调用栈</h4>
+<p>当程序进行函数调用时，这些调用信息(比如在哪里调用等)称为栈帧。每一个栈帧的内容还包括调用函数的参数、局部变量等。所有栈帧组成的信息称为调用栈(或者调用堆栈)。
+当程序刚开始运行时，只有一个栈帧，即主函数main。每调用一个函数，就产生一个新的栈帧；当函数调用结束时(即从函数返回后)，该函数的调用随之结束，该栈帧也结束。如果该函数是一个递归函数，则调用该函数会产生多个栈帧。</p>
+<h5 id="3121">3.12.1 查看栈回溯信息</h5>
+<p>查看栈回溯信息的命令是 <code>backtrace</code>。执行该栈回溯命令后，会显示程序执行到什么位置、包含那些帧等信息。每一帧都有一个编号，从0开始。0 表示当前正在执行的函数，1表示调用当前函数的函数，以此类推。栈回溯是倒序排列的。下面来演示 <code>backtrace</code> 命令的用法。
+这里有3个函数: main、call_fun_test和call_fun_test_2，代码如下所示:</p>
+<pre><code class="language-c">int call_fun_test_2(int level, const char *str)
+{
+    int number = 102;
+    const char *name = &quot;call_fun_test_2&quot;;
+    printf(&quot;level is %d, str is %s, name is %s\n&quot;, level, str, name);
+
+    return 2;
+}
+
+int call_fun_test_1(int level, const char *str)
+{
+    int number = 101;
+    const char *name = &quot;call_fun_test_1&quot;;
+    printf(&quot;level is %d, str is %s, name is %s\n&quot;, level, str, name);
+    call_fun_test_2(level + 1, &quot;call fun_test_2&quot;);
+
+    return 1;
+}
+
+int main(int argc, char *argv[])
+{
+    int number = 100;
+    const char *name = &quot;main&quot;;
+    call_fun_test_1(1, &quot;call_fun_test_1&quot;);
+}
+</code></pre>
+<p>其中 main 函数调用 call_fun_test_1。启动gdb进入调试模式，为函数call_fun_test_2设置一个断点。当程序在 call_fun_test_2中 中断后，执行栈回溯backtrace命令，结果如下所示:</p>
+<pre><code class="language-c">(gdb) backtrace
+#0 call_fun_test_2 (level=2, str=0x55555555914f &quot;call_fun_test_2&quot;) at chapter_3.3.cpp:148
+#1 0x0000555555556916 in call_fun_test_1 (level=1, str=0x555555559182 &quot;call_fun_test_1&quot;) at chapter_3.3.cpp:156
+#2 0x0000555555556d03 in main (argc=1, argv=0x7fffffffe198) at chapter_3.3.cpp:218
+</code></pre>
+<p>命令 backtrace 可以简写为bt。从命令执行结果来看，一共有3个栈帧，编号分别为0、1、2。每个栈帧中都包含函数名、调用函数的参数以及代码所在的行数等。我们可以看到一个完整的函数调用链。
+也可以执行命令来查看指定数量的栈帧:
+<code>bt 栈帧数量</code>
+这对于调用栈帧比较多的情况很有用，可以忽略掉不太关心的那些栈帧。比如执行 <code>bt 2</code>，则只显示两个栈帧，如下所示:</p>
+<pre><code class="language-c">(gdb) bt 2
+#0 call_fun_test_2 (level=2, str=0x55555555914f &quot;call_fun_test_2&quot;) at chapter_3.3.cpp:148
+#1 0x0000555555556916 in call_fun_test_1 (level=1, str=0x555555559182 &quot;call_fun_test_1&quot;) at chapter_3.3.cpp:156
+(More stack frames follow...)
+</code></pre>
+<p>从上述结果可以看到，只显示了0和1两帧。如果想查看1和2这两个帧应该怎样做呢? 可以使用命令 <code>bt -2</code>，如下所示：</p>
+<pre><code class="language-c">(gdb) bt -2
+#1 0x0000555555556916 in call_fun_test_1 (level=1, str=0x555555559182 &quot;call_fun_test_1&quot;) at chapter_3.3.cpp:156
+#2 0x0000555555556d03 in main (argc=1, argv=0x7fffffffe198) at chapter_3.3.cpp:218
+</code></pre>
+<p>如果bt后面跟的是一个正数，则从0开始计数。如果是一个负数，则从最大的栈帧编号开始倒序计数，但是最后显示时还是按照从小到大的编号顺序显示，只是显示的栈帧不同。比如一共有10个帧，编号为 0 - 9，如果执行 <code>bt 4</code>，则显示的帧为0-3；如果执行命令 <code>bt -4</code>，则显示的帧编号为6-9。</p>
+<h5 id="3122">3.12.2 切换栈帧</h5>
+<p>可以通过 <code>frame 栈帧号</code> 的方式来切换栈帧。为什么要切换栈帧呢? 因为每一个栈帧所对应的程序的运行上下文都不同，比如栈帧1的局部变量和栈帧2的局部变量都不相同，只有切换到某个具体的栈帧之后才能查看该栈帧对应的局部变量信息。比如上例栈回溯中，共有3个栈帧，我们想查看栈帧号为2(也就是main函数中所对应)的信息，则执行命令即可切换到2号帧:
+<code>frame 2</code> 或者 <code>f 2</code>
+这时我们可以查看该帧对应的一些变量信息，比如局部变量 number 和 name 的值，如下所示:</p>
+<pre><code class="language-c">(gdb) f 2
+#2 0x0000555555556d03 in main (argc=1, argv=0x7fffffffe198) at chapter_3.3.cpp:218
+218 call_fun_test_1(1,&quot;call_fun_test_1&quot;);
+(gdb) p number
+$1 = 100
+(gdb) p name
+$2 = 0x555555559213 &quot;main&quot;
+</code></pre>
+<p>再切换到1号帧。因为1号帧中也包含两个临时变量number 和 name，执行<code>f 1</code>，然后查看 number 和 name 的值，如下所示:</p>
+<pre><code class="language-c">(gdb) f 1
+#1 0x0000555555556916 in call_fun_test_1 (level=1, str=0x555555559182 &quot;call_fun_test_1&quot;) at chapter_3.3.cpp:156
+156 call_fun_test_2(level + 1,&quot;call_fun_test_2&quot;);
+(gdb) p number
+$15 = 101
+(gdb) p name
+$16 = 0x555555559182 &quot;call_fun_test_1&quot;
+</code></pre>
+<p>除使用 print 查看局部变量外，还可以使用 <code>info locals</code>来查看当前帧的所有局部变量的值，也可以使用<code>info args</code>来查看当前帧所有的函数参数，如下所示:</p>
+<pre><code class="language-c">(gdb) info args
+level = 1
+str = 0x555555559182 &quot;call_fun_test_1&quot;
+(gdb) info locals
+number = 101
+name = 0x555555559182 &quot;call_fun_test_1&quot;
+</code></pre>
+<p>还可以使用命令 <code>up</code> 和 <code>down</code> 来切换帧。<code>up</code> 和 <code>dow</code> 都是基于当前帧来计数的。比如，当前帧号为1，<code>up 1</code> 则切换到2号帧，<code>down 1</code>则切换到0号帧，如下所示:</p>
+<pre><code class="language-c">(gdb) f 1
+#1 0x0000555555556916 in call_fun_test_1 (level=1, str=0x555555559182 &quot;call_fun_test_1&quot;) at chapter_3.3.cpp:156
+156 call_fun_test_2(level + 1,&quot;call_fun_test_2&quot;);
+(gdb) up 1
+#2 0x0000555555556d03 in main (argc=1, argv=0x7fffffffe198) at chapter_3.3.cpp:218
+218 call_fun_test_1(1,&quot;call_fun_test_1&quot;);
+(gdb) down 2
+#0 call_fun_test_2 (level=2, str=0x55555555914f &quot;call_fun_test_2&quot;) at chapter_3.3.cpp:148
+148 return 2;
+</code></pre>
+<p>还可以使用以下命令来切换帧:
+<code>f 帧地址</code>
+其中，帧地址是栈帧所对应的地址。如果程序崩溃，栈回溯信息可能会遭到破坏，这时就可以使用该命令来进行栈帧切换。假设有一个栈帧的地址为 <code>0x7fffffffe3a0</code>，则使用命令即可切换到该栈帧。
+<code>f 0x7fffffffe3a0</code></p>
+<h5 id="3123">3.12.3 查看帧信息</h5>
+<p>可以使用 <code>info frame</code>命令(包括前面介绍的 info locals 和 info args命令)来查看帧的详细信息，还可以使用 info frame命令来查看具体的某一帧的详细信息。比如要查看编号为1的帧的详细信息，可以直接使用 <code>info frame 1</code>(可以简写为 <code>i f 1</code>)命令，而不用先进行帧的切换操作。如下为连续查看1号帧和2号帧的详细信息。
+<code>i f 1</code> 和 <code>info frame 2</code></p>
+<pre><code class="language-c">(gdb) i f 1
+Stack frame at 0x7fffffffe010:
+ rip = 0x555555556916 in call_fun_test_1 (chapter_3.3.cpp:156); saved rip = 0x555555556d03
+ called by frame at 0x7fffffffe090, caller of frame at 0x7fffffffdfe0
+ source language c++.
+ Arglist at 0x7fffffffe000, args: level=1, str=0x555555559182 &quot;call_fun_test_1&quot;
+ Locals at 0x7fffffffe000, Previous frame's sp is 0x7fffffffe010
+ Saved registers:
+  rbp at 0x7fffffffe000, rip at 0x7fffffffe008
+(gdb) info frame 2
+Stack frame at 0x7fffffffe090:
+ rip = 0x555555556d03 in main (chapter_3.3.cpp:218); saved rip = 0x7ffff7b6dd90
+ caller of frame at 0x7fffffffe010
+ source language c++.
+ Arglist at 0x7fffffffe080, args: argc=1, argv=0x7fffffffe198
+ Locals at 0x7fffffffe080, Previous frame's sp is 0x7fffffffe090
+ Saved registers:
+  rbx at 0x7fffffffe078, rbp at 0x7fffffffe080, rip at 0x7fffffffe088
+</code></pre>
+<p>从上可以看到，帧的详细信息包括帧地址、rip地址、函数名、函数参数等信息。这里可以用f 帧地址命令来切换帧地址。这个帧地址也可以用到<code>i f</code> 命令中，比如使用 <code>i f 0x7fffffffe090</code> 可以查看2号帧的详细信息。</p>
+<h4 id="313">3.13 线程管理</h4>
+<p>对于现代程序来讲，大多情况下是多个线程在同时工作，从而充分利用系统资源。测试程序也不例外。
+为了使示例简单而且不影响功能，我们不新增文件，而是在main.cpp中直接新增代码。我们新增一个函数，使用该函数创建线程，如下所示:</p>
+<pre><code class="language-c">int count = 0;
+
+void do_work(void *args)
+{
+    std::cout &lt;&lt; &quot;线程函数开始&quot; &lt;&lt; std::endl;
+    int local_data = count;
+    count++;
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::cout &lt;&lt; &quot;线程函数结束&quot; &lt;&lt; std::endl;
+}
+
+int start_threads(int thread_num)
+{
+    std::vector&lt;std::thread&gt; threads;
+
+    for (int i = 0; i &lt; thread_num; ++i) {
+        threads.push_back(std::thread(do_work, &amp;i));
+        std::cout &lt;&lt; &quot;启动新线程: &quot; &lt;&lt; i &lt;&lt; std::endl;
+    }
+
+    for (auto &amp;thread : threads)
+        thread.join();
+}
+
+int main(int argc, char *argv[])
+{
+    start_threads(10);
+    // xxx
+}
+</code></pre>
+<p>在上述代码中，do_work是线程函数，它只是对全局变量count 执行加1操作，然后等待3秒并打印一些信息。
+start_threads函数根据输入的 thread_num 参数来创建线程，最后等待所有线程结束。
+在 main 函数中调用 start_threads(10)，表示启动10个线程。因为用到了线程函数和标准库的vector，所有需要包含线程相关的头文件和标准库的头文件，如下所示:</p>
+<pre><code class="language-c">#include &lt;thread&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+</code></pre>
+<p>如果这时直接编译链接代码，会链接失败。这是因为我们在程序中用到了线程函数，但是链接时不包含线程库，所以还需要在Makefile 中添加线程库 <code>-lpthread</code>。
+再次执行make命令，即可成功构建出可执行文件。
+现在开始用gdb调试多线程程序。启动后先在start_threads函数中设置一个断点，以方便观察线程信息。可以把断点设置在 <code>for (auto &amp;thread : threads)</code>，然后执行r命令，如下所示:</p>
+<pre><code class="language-c">(gdb) b 179
+Breakpoint 2 at 0x555555556aaf: file chapter_3.3.cpp, line 179.
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/superman/C_C++_Debug/book_debug/chapter_3.3/chapter_3.3
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library &quot;/lib/x86_64-linux-gnu/libthread_db.so.1&quot;.
+name is test_try_catch,10
+throw
+catch ...
+[New Thread 0x7ffff7a58640 (LWP 7207)]
+线程函数开始启动新线程：
+0
+[New Thread 0x7ffff7257640 (LWP 7208)]
+线程函数开始
+启动新线程：1
+[New Thread 0x7ffff6a56640 (LWP 7209)]
+线程函数开始
+启动新线程：2
+[New Thread 0x7ffff6255640 (LWP 7210)]
+线程函数开始
+启动新线程：3
+[New Thread 0x7ffff5a54640 (LWP 7211)]
+启动新线程：4
+线程函数开始
+[New Thread 0x7ffff5253640 (LWP 7212)]
+启动新线程：5
+线程函数开始
+[New Thread 0x7ffff4a52640 (LWP 7213)]
+启动新线程：6
+线程函数开始
+[New Thread 0x7ffff4251640 (LWP 7214)]
+线程函数开始
+启动新线程：7
+[New Thread 0x7ffff3a50640 (LWP 7215)]
+线程函数开始
+启动新线程：8
+[New Thread 0x7ffff324f640 (LWP 7216)]
+线程函数开始
+启动新线程：9
+
+Thread 1 &quot;chapter_3.3&quot; hit Breakpoint 2, start_threads (thread_num=10) at chapter_3.3.cpp:179
+179 for (auto&amp; thread : threads)
+</code></pre>
+<p>现在可以使用线程相关的命令来查看线程的一些信息。</p>
+<h5 id="3131">3.13.1 查看所有线程信息</h5>
+<p>使用命令<code>info threads</code>查看当前进程所有的线程信息，如下所示:</p>
+<pre><code class="language-c">(gdb) info threads
+  Id   Target Id                                      Frame
+* 1    Thread 0x7ffff7a5c3c0 (LWP 7203) &quot;chapter_3.3&quot; start_threads (thread_num=10) at chapter_3.3.cpp:179
+  2    Thread 0x7ffff7a58640 (LWP 7207) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff7a57d00, rem=0x7ffff7a57d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  3    Thread 0x7ffff7257640 (LWP 7208) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff7256d00, rem=0x7ffff7256d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  4    Thread 0x7ffff6a56640 (LWP 7209) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff6a55d00, rem=0x7ffff6a55d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  5    Thread 0x7ffff6255640 (LWP 7210) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff6254d00, rem=0x7ffff6254d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  6    Thread 0x7ffff5a54640 (LWP 7211) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff5a53d00, rem=0x7ffff5a53d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  7    Thread 0x7ffff5253640 (LWP 7212) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff5252d00, rem=0x7ffff5252d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  8    Thread 0x7ffff4a52640 (LWP 7213) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff4a51d00, rem=0x7ffff4a51d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  9    Thread 0x7ffff4251640 (LWP 7214) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff4250d00, rem=0x7ffff4250d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  10   Thread 0x7ffff3a50640 (LWP 7215) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff3a4fd00, rem=0x7ffff3a4fd00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  11   Thread 0x7ffff324f640 (LWP 7216) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff324ed00, rem=0x7ffff324ed00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+</code></pre>
+<p>可以看到，当前进程共有11个线程，编号为 <code>1-11</code>，其中1号相乘前面有一个*号，表示1号线程是当前线程。每个线程信息还包含执行位置，即处于哪个文件的哪一行代码处。可以看到，2-11号这10个线程都处于系统clock_nanosleep.c文件的第78行，因为每个线程都在调用sleep函数，所以需要等待3秒。</p>
+<h5 id="3132">3.13.2 切换线程</h5>
+<p>当前线程很重要，因为很多命令都是针对当前线程有效。比如，查看栈回溯的<code>bt</code>命令、查看栈帧的f命令等都是针对当前线程。如果想要查看某个线程堆栈的相关信息，必须先切换到该线程。切换线程的命令如下:
+<code>thread 线程ID</code>
+线程ID就是前面提到的线程的标号，如上所示的1-11就是线程的编号。如果想要切换到2号线程，则执行以下命令(也可以使用简写命令 <code>t 2</code>)可以将2号相乘切换为当前线程:
+<code>thread 2</code>
+再执行 <code>i threads</code>命令查看当前线程是否已经切换到2号线程，如下所示:</p>
+<pre><code class="language-c">(gdb) thread 2
+[Switching to thread 2 (Thread 0x7ffff7a58640 (LWP 568))]
+#0  0x00007ffff7c29868 in __GI___clock_nanosleep (clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff7a57d00,
+    rem=0x7ffff7a57d00) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+78      ../sysdeps/unix/sysv/linux/clock_nanosleep.c: No such file or directory.
+(gdb) i threads
+  Id   Target Id                                     Frame
+  1    Thread 0x7ffff7a5c3c0 (LWP 565) &quot;chapter_3.3&quot; start_threads (thread_num=10) at chapter_3.3.cpp:179
+* 2    Thread 0x7ffff7a58640 (LWP 568) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff7a57d00, rem=0x7ffff7a57d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+  3    Thread 0x7ffff7257640 (LWP 569) &quot;chapter_3.3&quot; 0x00007ffff7c29868 in __GI___clock_nanosleep (
+    clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff7256d00, rem=0x7ffff7256d00)
+    at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+</code></pre>
+<p>确认当前线程是2号线程后，即可使用堆栈命令来查看信息。比如执行 <code>bt</code> 命令查看栈回溯信息，如下所示:</p>
+<pre><code class="language-c">(gdb) bt
+#0  0x00007ffff7c29868 in __GI___clock_nanosleep (clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff7a57d00,
+    rem=0x7ffff7a57d00) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+#1  0x00007ffff7c2e6e7 in __GI___nanosleep (req=&lt;optimized out&gt;, rem=&lt;optimized out&gt;)
+    at ../sysdeps/unix/sysv/linux/nanosleep.c:25
+#2  0x000055555555754d in std::this_thread::sleep_for&lt;long, std::ratio&lt;1l, 1l&gt; &gt; (__rtime=...)
+    at /usr/include/c++/11/bits/this_thread_sleep.h:82
+#3  0x00005555555569a5 in do_work (arg=0x7fffffffdf8c) at chapter_3.3.cpp:166
+#4  0x0000555555558cac in std::__invoke_impl&lt;void, void (*)(void*), int*&gt; (
+    __f=@0x555555570360: 0x55555555691d &lt;do_work(void*)&gt;) at /usr/include/c++/11/bits/invoke.h:61
+#5  0x0000555555558c1f in std::__invoke&lt;void (*)(void*), int*&gt; (__fn=@0x555555570360: 0x55555555691d &lt;do_work(void*)&gt;)
+    at /usr/include/c++/11/bits/invoke.h:96
+#6  0x0000555555558b7f in std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt;::_M_invoke&lt;0ul, 1ul&gt; (
+    this=0x555555570358) at /usr/include/c++/11/bits/std_thread.h:253
+#7  0x0000555555558b34 in std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt;::operator() (this=0x555555570358)
+    at /usr/include/c++/11/bits/std_thread.h:260
+#8  0x0000555555558b14 in std::thread::_State_impl&lt;std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt; &gt;::_M_run
+    (this=0x555555570350) at /usr/include/c++/11/bits/std_thread.h:211
+#9  0x00007ffff7e682b3 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#10 0x00007ffff7bd8b43 in start_thread (arg=&lt;optimized out&gt;) at ./nptl/pthread_create.c:442
+#11 0x00007ffff7c6aa00 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+</code></pre>
+<p>因为当前栈帧在系统nanosleep中，所以我们看到的大部分栈帧都是thread相关的函数。然后再执行finish命令退出sleep函数，回到do_work函数，这时候就可以使用命令<code>i locals</code>来查看当前帧的局部变量信息。</p>
+<h5 id="3133">3.13.3 为线程设置断点</h5>
+<p>可以通过断点命令<code>break</code>或者<code>b</code>来为特定线程设置断点，命令语法如下:
+<code>break 断点 thread 线程ID</code>
+比如，要为2号和3号线程在代码155行处设置断点，可以使用以下命令:
+<code>b 155 thread 2</code>
+<code>b 155 thread 3</code>
+这会为线程2和线程3在代码155行处设置断点。通过<code>i b</code>命令也可以发现，只有线程2和线程3会在这里命中断点，其他线程执行到这里时不会命中，如下所示:</p>
+<pre><code class="language-c">(gdb) b 155 thread 2
+Breakpoint 2 at 0x5555555568de: file chapter_3.3.cpp, line 155.
+(gdb) b 155 thread 3
+Note: breakpoint 2 (thread 2) also set at pc 0x5555555568de.
+Breakpoint 3 at 0x5555555568de: file chapter_3.3.cpp, line 155.
+(gdb) i b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000555555556aaf in start_threads(int) at chapter_3.3.cpp:179
+        breakpoint already hit 1 time
+2       breakpoint     keep y   0x00005555555568de in call_fun_test_1(int, char const*) at chapter_3.3.cpp:155 thread 2
+        stop only in thread 2
+3       breakpoint     keep y   0x00005555555568de in call_fun_test_1(int, char const*) at chapter_3.3.cpp:155 thread 3
+        stop only in thread 3
+</code></pre>
+<h5 id="3134">3.13.4 为线程执行命令</h5>
+<p>在查看线程信息时，还可以为一个线程或者多个线程执行命令。也就是说可以指定线程执行命令，比如为2号线程执行<code>info args</code>命令。为线程执行命令的语法如下:
+<code>thread apply 线程号 命令</code></p>
+<p>比如，我们可以为2号和3号线程执行print命令，查看它们对应的变量local_data的值。相应的命令如下:
+<code>thread apply 2 3 p local_data</code>
+或者
+<code>thread apply 2 3 i locals</code>
+执行结果如下所示:</p>
+<pre><code class="language-c">Thread 2 (Thread 0x7ffff7a58640 (LWP 671) &quot;chapter_3.3&quot;):
+No symbol &quot;local_data&quot; in current context.
+(gdb) thread apply 2 3 i locals
+
+Thread 2 (Thread 0x7ffff7a58640 (LWP 671) &quot;chapter_3.3&quot;):
+sc_cancel_oldtype = 0
+sc_ret = &lt;optimized out&gt;
+r = &lt;optimized out&gt;
+
+Thread 3 (Thread 0x7ffff7257640 (LWP 672) &quot;chapter_3.3&quot;):
+sc_cancel_oldtype = 0
+sc_ret = &lt;optimized out&gt;
+r = &lt;optimized out&gt;
+</code></pre>
+<p>为使所有线程都执行命令，需要将线程号写为 <code>all</code>，使所有线程都执行相同的命令。查看每个线程的栈回溯，即执行<code>bt</code>命令，如下所示:
+<code>thread apply all bt</code></p>
+<pre><code class="language-c">(gdb) thread apply all bt
+
+Thread 11 (Thread 0x7ffff324f640 (LWP 680) &quot;chapter_3.3&quot;):
+#0  0x00007ffff7c29868 in __GI___clock_nanosleep (clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff324ed00, rem=0x7ffff324ed00) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+#1  0x00007ffff7c2e6e7 in __GI___nanosleep (req=&lt;optimized out&gt;, rem=&lt;optimized out&gt;) at ../sysdeps/unix/sysv/linux/nanosleep.c:25
+#2  0x000055555555754d in std::this_thread::sleep_for&lt;long, std::ratio&lt;1l, 1l&gt; &gt; (__rtime=...) at /usr/include/c++/11/bits/this_thread_sleep.h:82
+#3  0x00005555555569a5 in do_work (arg=0x7fffffffdf8c) at chapter_3.3.cpp:166
+#4  0x0000555555558cac in std::__invoke_impl&lt;void, void (*)(void*), int*&gt; (__f=@0x555555570fb0: 0x55555555691d &lt;do_work(void*)&gt;) at /usr/include/c++/11/bits/invoke.h:61
+#5  0x0000555555558c1f in std::__invoke&lt;void (*)(void*), int*&gt; (__fn=@0x555555570fb0: 0x55555555691d &lt;do_work(void*)&gt;) at /usr/include/c++/11/bits/invoke.h:96
+#6  0x0000555555558b7f in std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt;::_M_invoke&lt;0ul, 1ul&gt; (this=0x555555570fa8) at /usr/include/c++/11/bits/std_thread.h:253
+#7  0x0000555555558b34 in std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt;::operator() (this=0x555555570fa8) at /usr/include/c++/11/bits/std_thread.h:260
+#8  0x0000555555558b14 in std::thread::_State_impl&lt;std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt; &gt;::_M_run (this=0x555555570fa0) at /usr/include/c++/11/bits/std_thread.h:211
+#9  0x00007ffff7e682b3 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#10 0x00007ffff7bd8b43 in start_thread (arg=&lt;optimized out&gt;) at ./nptl/pthread_create.c:442
+#11 0x00007ffff7c6aa00 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+
+Thread 10 (Thread 0x7ffff3a50640 (LWP 679) &quot;chapter_3.3&quot;):
+#0  0x00007ffff7c29868 in __GI___clock_nanosleep (clock_id=clock_id@entry=0, flags=flags@entry=0, req=0x7ffff3a4fd00, rem=0x7ffff3a4fd00) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+#1  0x00007ffff7c2e6e7 in __GI___nanosleep (req=&lt;optimized out&gt;, rem=&lt;optimized out&gt;) at ../sysdeps/unix/sysv/linux/nanosleep.c:25
+#2  0x000055555555754d in std::this_thread::sleep_for&lt;long, std::ratio&lt;1l, 1l&gt; &gt; (__rtime=...) at /usr/include/c++/11/bits/this_thread_sleep.h:82
+#3  0x00005555555569a5 in do_work (arg=0x7fffffffdf8c) at chapter_3.3.cpp:166
+#4  0x0000555555558cac in std::__invoke_impl&lt;void, void (*)(void*), int*&gt; (__f=@0x555555570e60: 0x55555555691d &lt;do_work(void*)&gt;) at /usr/include/c++/11/bits/invoke.h:61
+#5  0x0000555555558c1f in std::__invoke&lt;void (*)(void*), int*&gt; (__fn=@0x555555570e60: 0x55555555691d &lt;do_work(void*)&gt;) at /usr/include/c++/11/bits/invoke.h:96
+#6  0x0000555555558b7f in std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt;::_M_invoke&lt;0ul, 1ul&gt; (this=0x555555570e58) at /usr/include/c++/11/bits/std_thread.h:253
+#7  0x0000555555558b34 in std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt;::operator() (this=0x555555570e58) at /usr/include/c++/11/bits/std_thread.h:260
+#8  0x0000555555558b14 in std::thread::_State_impl&lt;std::thread::_Invoker&lt;std::tuple&lt;void (*)(void*), int*&gt; &gt; &gt;::_M_run (this=0x555555570e50) at /usr/include/c++/11/bits/std_thread.h:211
+#9  0x00007ffff7e682b3 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#10 0x00007ffff7bd8b43 in start_thread (arg=&lt;optimized out&gt;) at ./nptl/pthread_create.c:442
+#11 0x00007ffff7c6aa00 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+</code></pre>
+<p>由于每个线程的栈帧比较多，屏幕上无法全部显示，所以只贴出了前面一部分线程信息。用于查看所有线程栈回溯信息的命令<code>thread apply all bt</code>非常有用，尤其是在大型程序的调试过程中，比如死锁的调试。</p>
+<h4 id="314">3.14 其他</h4>
+<h5 id="3141">3.14.1 观察点</h5>
+<p>很多时候，程序只有在一些特定条件下才会出现BUG，比如某个变量的值发生变化时，或者几个因素同时发生变化时。观察点(watchpoint)或者监视点可以用来观察或者定位该类型的BUG。可以设置为监控一个变量或者表达式的值，当这个值或者表达式的值发生变化时程序会暂停，而不需要提前在某些地方设置断点。
+在某些系统中，gdb是以软观察点的方式来实现的。通过单步执行程序的方式来监控变量的值是否发生改变，每执行一步就会检查变量的值是否发生变化。这种做法会比正常执行慢上百倍，但有时为了找到不容易发现的BUG，这是值得的。
+而在有些系统中(比如Linux)，gdb是以硬件方式实现观察点功能，这并不会降低程序运行的速度。设置观察点的语法如下:
+<code>watch 变量或者表达式</code>
+当为变量或者一个表达式设置观察点后，该变量或者表达式的值在发生变化时，程序会发生中断，并且在变量或者表达式发生改变的地方暂停。这时可以使用各种命令查看线程或者栈帧等信息。
+比如我们想观察全部变量count的值。由于全部变量count会被多个线程同时修改，如果希望count等于5时程序暂停，就可以使用命令<code>watch count==5</code>进行设置，如下所示:</p>
+<pre><code class="language-c">(gdb) watch count==5
+
+Thread 5 &quot;chapter_3.3&quot; hit Hardware watchpoint 5: count==5
+
+Old value = 0
+New value = 1
+do_work (arg=0x7fffffffdf8c) at chapter_3.3.cpp:166
+166         std::this_thread::sleep_for(std::chrono::seconds(3));
+(gdb) p count
+$4 = 5
+</code></pre>
+<p>从上可以观察出，因为我们观察的是一个bool表达式(count == 5)，所以除了显示命中硬件观察点和<code>count==5</code>外，还显示了Old value 和 New value。Old value是0，New value是1，所以命中。除了显示这些信息外，还显示了当前函数的名称(do_work)，以及对应的代码行(chapter_3.3.cpp的第166行)。</p>
+<p>读取观察点的语法如下:
+<code>rwatch 变量或者表达式</code>
+当该变量或者表达式被读取时，程序会发生中断。比如为count变量设置一个读取观察点，然后执行<code>rwatch count</code>命令继续运行程序。当count被读取时，程序会发生中断，如下所示:</p>
+<pre><code class="language-c">(gdb) rwatch count
+Hardware read watchpoint 6: count
+(gdb) c
+Continuing.
+启动新线程：5
+线程函数结束
+线程函数结束
+线程函数结束
+线程函数开始
+[New Thread 0x7ffff4a52640 (LWP 707)]
+[Thread 0x7ffff7a58640 (LWP 701) exited]
+[Thread 0x7ffff6a56640 (LWP 703) exited]
+[Thread 0x7ffff7257640 (LWP 702) exited]
+[Switching to Thread 0x7ffff5a54640 (LWP 705)]
+
+Thread 6 &quot;chapter_3.3&quot; hit Hardware read watchpoint 6: count
+
+Value = 5
+do_work (arg=0x7fffffffdf8c) at chapter_3.3.cpp:166
+</code></pre>
+<p>读写观察点的语法如下:
+a 是 access 的缩写。
+<code>awatch 变量或者表达式</code>
+无论这个变量是被读取还是被写入，程序都会发生中断，即只要遇到这个变量就会发生中断。比如，我们为临时变量local_data设置一个读写观察点，则执行<code>awatch local_data</code>命令时会在local_data被读写时中断，如下所示:</p>
+<pre><code class="language-c">(gdb) awatch count
+Hardware access (read/write) watchpoint 7: count
+(gdb) r
+
+Thread 4 &quot;chapter_3.3&quot; hit Hardware access (read/write) watchpoint 11: local_data
+
+Old value = 0
+New value = 2
+do_work (arg=0x7fffffffdf8c) at chapter_3.3.cpp:165
+165         count++;
+</code></pre>
+<p>因为我们观察的变量<code>local_data</code>是一个临时变量，代码中把count的值赋给临时变量，复制前的Old value为0，赋值之后的New value为8，所以命中。</p>
+<p>查看所有观察点的语法如下:
+<code>info watchpoints</code></p>
+<p>执行命令后可以显示当前已经设置的所有观察点信息，如下所示:</p>
+<pre><code class="language-c">(gdb) i watchpoints
+Num     Type           Disp Enb Address            What
+11      acc watchpoint keep y                      local_data
+        breakpoint already hit 1 time
+12      hw watchpoint  keep y                      count
+</code></pre>
+<p>在显示的所有观察点中，每个观察点的序号、类型、命中次数以及观察的变量等信息都会显示出来，一目了然。</p>
+<p>禁用/启用/删除观察点的语法格式如下:
+<code>delete 观察点编号</code>
+<code>disable 观察点编号</code>
+<code>enable 观察点编号</code>
+观察点是一种特殊的断点，因此可以通过管理断点的方式来管理观察点，比如<code>i b</code>命令可以查看所有的断点和观察点。delete、disable、enable等命令也适用于观察点。</p>
+<h5 id="3142">3.14.2 捕获点</h5>
+<p>捕获点(catchpoint)指的是程序在发生某事件时，gdb能够捕获这些事件并使程序停止执行。该功能可以支持很多事件，比如C++异常、载入动态库等。语法如下:
+<code>catch 事件</code></p>
+<p>可以捕获的事件如下所示:
+- throw
+在C++代码中执行throw语句时程序会中断。
+- catch
+当代码中执行到catch语句块时会中断，也就是说代码捕获异常时会中断。
+- exec、fork、vfork
+调用这些系统函数时会中断，主要适用于HP-UNIX。
+- load/unload
+加载或者卸载动态库时。</p>
+<p>下面通过示例来观察throw和catch事件。</p>
+<pre><code class="language-c++">void test_try_catch(int number)
+{
+    int local_data = number;
+    const char *name = &quot;test_try_catch&quot;;
+    printf(&quot;name is %s, %d\n&quot;, name, local_data);
+
+    try {
+        int throw_num = 50;
+        printf(&quot;throw\n&quot;);
+        throw 10;
+    } catch(...) {
+        int catch_num = 100;
+        printf(&quot;catch ...\n&quot;);
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    test_try_catch(10);
+    // xxx
+}
+</code></pre>
+<p>在上述代码中，既有<code>throw语句</code>也有<code>catch语句</code>，所有我们在测试时可以添加两个捕获点：一个是throw；另一个是catch。因此执行到这两个语句时都会命中。在gdb启动以后添加两个捕获点，然后执行程序，如下所示:
+<code>catch throw</code>
+<code>catch catch</code></p>
+<pre><code class="language-c">(gdb) catch throw
+Catchpoint 1 (throw)
+(gdb) catch catch
+Catchpoint 2 (catch)
+(gdb) i b
+Num     Type           Disp Enb Address            What
+1       catchpoint     keep y                      exception throw
+2       catchpoint     keep y                      exception catch
+</code></pre>
+<p>捕获点也是一种特殊的断点，因此可以使用管理断点的命令来管理捕获点，比如使用<code>i b</code>命令来查看所有断点，包括捕获点。
+然后输入<code>r</code>命令启动程序。由于添加了两个捕获点，因此会马上在throw语句处中断，这时可以输入bt命令查看栈回溯。也可以使用其他命令(比如print命令)查看变量的值，如下所示：</p>
+<pre><code class="language-c">(gdb) r
+Starting program: /home/superman/C_C++_Debug/book_debug/chapter_3.3/chapter_3.3
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library &quot;/lib/x86_64-linux-gnu/libthread_db.so.1&quot;.
+name is test_try_catch,10
+throw
+
+Catchpoint 1 (exception thrown), 0x00007ffff7e3a4e1 in __cxa_throw () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(gdb) bt
+#0  0x00007ffff7e3a4e1 in __cxa_throw () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x0000555555556c58 in test_try_catch (number=10) at chapter_3.3.cpp:200
+#2  0x0000555555556cd3 in main (argc=1, argv=0x7fffffffe178) at chapter_3.3.cpp:214
+(gdb) f 1
+#1  0x0000555555556c58 in test_try_catch (number=10) at chapter_3.3.cpp:200
+200                     throw 10;
+(gdb) i locals
+throw_num = 50
+local_data = 10
+name = 0x5555555591f4 &quot;test_try_catch&quot;
+</code></pre>
+<p>可以看到，程序在第一个捕获点处发生中断，显示第一个捕获点类型为throw，与我们的预期相同。
+然后输入c继续执行，程序马上会在catch处中断。同样，程序中断后，可以执行相关命令查看相关信息，如下所示：</p>
+<pre><code class="language-c">(gdb) c
+Continuing.
+
+Catchpoint 2 (exception caught), 0x00007ffff7e392a5 in __cxa_begin_catch () from /lib/x86_64-linux-gnu/libstdc++.so.6
+(gdb) bt
+#0  0x00007ffff7e392a5 in __cxa_begin_catch () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x0000555555556c64 in test_try_catch (number=10) at chapter_3.3.cpp:202
+#2  0x0000555555556cd3 in main (argc=1, argv=0x7fffffffe178) at chapter_3.3.cpp:214
+(gdb) f 1
+#1  0x0000555555556c64 in test_try_catch (number=10) at chapter_3.3.cpp:202
+202             catch(...)
+(gdb) i locals
+local_data = 10
+name = 0x5555555591f4 &quot;test_try_catch&quot;
+(gdb) i args
+number = 10
+</code></pre>
+<p>可以看到，程序在第二处捕获点中断，而且类型是catch。然后我们使用帧切换命令切换到1号帧查看局部变量和函数入参。
+命令catch还有一个对应的命令<code>tcatch</code>，意思是临时捕获，即只捕获一次，命中后会自动删除该捕获点(与临时断点类似)。</p>
+<h5 id="3143">3.14.3 搜索源代码</h5>
+<p>3.9节介绍了查看源代码功能，但是仅仅使用查看源代码的功能还远远不够，尤其是在程序的代码量比较大的情况下。有时候需要去查找、搜索自己关注的代码，然后进行断点设置等操作。代码搜索主要有以下几个命令：
+<code>search 正则表达式</code>
+<code>forward-search 正则表达式</code></p>
+<p>这两个命令是相同的，都是在当前文件中从前往后搜索满足正则表达式的代码，进行逐行匹配，如果该行有满足条件的代码，则显示行号。如果要继续往后搜索，可以继续输入search命令，也可以简单的按下Enter键，继续进行搜索。如果搜索结束或者没有找到匹配的代码，则提示没有找到，如下所示：</p>
+<pre><code class="language-c++">(gdb) search member
+17      int member_id = 0;
+(gdb)
+18      void add_member()
+(gdb)
+36              new_node-&gt;ID = member_id++;
+(gdb)
+252                             add_member();
+(gdb)
+Expression not found
+</code></pre>
+<p>如上所示，从前往后搜索代码<code>member</code>，首先在第17行找到匹配的代码，按Enter键继续搜索。然后在第18行也找到了匹配代码，一直搜索到没有匹配的代码为止。在显示搜索结果时，会按照源文件中的格式进行输出，比如空格、Tab等控制符也会显示出来，这样就比较容易发现源代码的使用方式和调用位置。因为同样是调用一个函数，可能是在主函数中调用，也可能是在循环内部调用，通过Tab或者空格键可以对此大致区分。</p>
+<p><code>reverse-search 正则表达式</code>
+反向搜索代码的规则相同。如果搜索到匹配的代码，则显示行号和对应的代码，否则会提示没有找到匹配代码，如下所示：</p>
+<pre><code class="language-c++">(gdb) reverse-search NODE*
+244             node_head = (struct NODE*)malloc(sizeof(NODE));
+(gdb)
+135             TEST_NODE *node = new TEST_NODE;
+(gdb)
+124     struct TEST_NODE
+(gdb)
+22              NODE* prev_node = node_head-&gt;prev;
+(gdb)
+20              struct NODE *new_node = (NODE*)malloc(sizeof(NODE));
+(gdb)
+16      struct NODE *node_head = NULL;
+(gdb)
+14              NODE *next;
+(gdb)
+13              NODE* prev;
+(gdb)
+8       struct NODE
+(gdb)
+Expression not found
+</code></pre>
+<p>使用反向搜索命令搜索包含<code>NODE</code>关键字的代码，先在244行找到。继续按Enter键，然后在135行找到对应代码，以此类推。最后一个匹配的代码行是第8行，再往前搜索，则找不到匹配的代码行，所以提示"Expression not found"。</p>
+<h5 id="3144">3.14.4 查看变量类型</h5>
+<p>在调试时，尤其是在调试不是自己编写的代码时，我们可能对代码和变量的类型并不熟悉。如果该变量是一个类，其中包含那些成员函数和成员变量等也不是很清晰。查看源代码比较麻烦，需要搜索查找。这时可以使用命令ptype来查看变量或者结构体以及类等详细信息。语法如下：
+<code>ptype 可选参数 变量或者类型</code>
+其中，可选参数用来控制显示信息，变量或者类型可以是任意的变量，也可以是定义的数据类型，比如类、结构体、枚举等。
+其中可选参数如下所示：
+- /r
+表示以原始数据的方式显示，不会替代一些typedef定义。/m 查看类时，不会显示类的方法，只显示成员变量。
+- /M
+与/m相反，显示类的方法(默认选项)。
+- /t
+不打印类中的typedef数据
+- /o
+打印结构体字段的偏移量和大小。</p>
+<p>下面对ptype进行详细的演示，先使用命令查看结构体：
+<code>ptype node_head</code></p>
+<pre><code class="language-c++">(gdb) ptype node_head
+type = struct NODE {
+    int ID;
+    char Name[40];
+    int age;
+    NODE *prev;
+    NODE *next;
+} *
+</code></pre>
+<p>其中node_head是代码中的一个结构体指针，使用ptype命令只会显示成员名称和类型，不会显示字段的偏移量和大小。添加<code>/o</code>参数后，可以打印偏移量和大小信息，如下所示：</p>
+<pre><code class="language-c++">(gdb) ptype /o node_head
+type = struct NODE {
+/*      0      |       4 */    int ID;
+/*      4      |      40 */    char Name[40];
+/*     44      |       4 */    int age;
+/*     48      |       8 */    NODE *prev;
+/*     56      |       8 */    NODE *next;
+
+                               /* total size (bytes):   64 */
+                             } *
+</code></pre>
+<p>可以清楚的看到结构体NODE中每一个成员的大小、所占的字节数，以及整个结构体所占的空间大小。代码中定义了一个结构体TEST_NODE，可以直接查看TEST_NODE的信息，如下所示：</p>
+<pre><code class="language-c++">(gdb) ptype TEST_NODE
+type = struct TEST_NODE {
+    char gender[3];
+    int ID;
+    char name[7];
+}
+(gdb) ptype /o  TEST_NODE
+/* offset      |    size */  type = struct TEST_NODE {
+/*      0      |       3 */    char gender[3];
+/* XXX  1-byte hole      */
+/*      4      |       4 */    int ID;
+/*      8      |       7 */    char name[7];
+/* XXX  1-byte padding   */
+
+                               /* total size (bytes):   16 */
+                             }
+</code></pre>
+<p>结构体TEST_NODE的成员gender占用3字节，偏移量为0，后面的一个字节显示<code>1-byte hole</code>，表示该字节为空，用于字节对齐，所以成员ID的偏移量为4。最后一个成员name占用7字节，为了能够使整个结构体以4字节方式对齐和填充，所以后面一个字节显示<code>1-byte padding</code>。
+再来看类的信息。代码中有test_1和test_2两个类，其中test_2是从test_1继承而来的，如下所示：</p>
+<pre><code class="language-c++">(gdb) ptype test_1
+type = class test_1 {
+  private:
+    int x;
+    int y;
+
+  public:
+    test_1(void);
+    ~test_1();
+    virtual void test_fun(void);
+}
+(gdb) ptype test_2
+type = class test_2 : public test_1 {
+  public:
+    test_2(void);
+    ~test_2();
+    virtual void test_fun2(void);
+    virtual void test_fun(void);
+}
+</code></pre>
+<p>尽管test_2是从test_1继承而来的，但是查看test_2时，并不会把test_1的变量和函数一起显示，而是只显示test_2拥有的成员信息。也可以添加参数<code>/o</code>来查看类的成员变量的偏移量以及大小等。查看类test_1的成员变量信息如下所示：</p>
+<pre><code class="language-c++">(gdb) ptype /o  test_1
+/* offset      |    size */  type = class test_1 {
+                             private:
+/*      8      |       4 */    int x;
+/*     12      |       4 */    int y;
+
+                               /* total size (bytes):   16 */
+                             }
+</code></pre>
+<p>为什么test_1只有两个整型成员变量，整个test_1的大小却是16呢？因为test_1有一个虚函数，所以会有一个虚函数表，而我们的程序是64位的，每个指针占用8字节。因此test_1的空间大小就是两个int型的大小加上一个8字节的虚函数表指针，一共16字节。
+还有一个简单的命令<code>whatis</code>用来查看变量或者表达式的类型，只是打印的信息比较简单，如下所示：</p>
+<pre><code class="language-c++">(gdb) whatis test_1
+type = test_1
+(gdb) whatis call_fun_test_1
+type = int (int, const char *)
+(gdb) ptype call_fun_test_1
+type = int (int, const char *)
+</code></pre>
+<h5 id="3145">3.14.5 跳转执行</h5>
+<p>在调试过程中，很多时候我们希望某些代码能够被反复执行，因为我们希望能够多次查看问题，以便更加仔细的观察问题。有时候又希望直接跳过某些代码，比如环境的问题、不能满足某些条件、部分代码没有意义或者会执行失败等。
+这就是跳转执行，即不按照代码的流程逐行执行，而是按照我们期望的方式执行。命令语法如下：
+<code>jump 位置</code>
+命令中的位置可以是代码行或者某个函数的地址。假设我们的代码在函数<code>add_member</code>中执行，如下所示：</p>
+<pre><code class="language-c++">void add_member()
+{
+    struct NODE *new_node = (NODE *)malloc(sizeof(NODE));
+    new_node-&gt;next = NULL;
+    NODE *prev_node = node_head-&gt;prev;
+    if (prev_node) {
+        prev_node-&gt;next = new_node;
+        new_node-&gt;prev = prev_node;
+        node_head-&gt;prev = new_node;
+    } else {
+        node_head-&gt;next = new_node;
+        new_node-&gt;prev = node_head;
+        node_head-&gt;prev = new_node;
+    }
+
+    new_node-&gt;ID = member_id++;
+    printf(&quot;请输入会员姓名，然后按回车\n&quot;);
+    scanf(&quot;%s&quot;, new_node-&gt;Name);
+    printf(&quot;请输入会员年龄，然后按回车\n&quot;);
+    scanf(&quot;%d&quot;, &amp;new_node-&gt;age);
+
+    printf(&quot;添加新会员成功\n&quot;);
+}
+</code></pre>
+<p>假设代码执行到42行，这时如果想回到36行去执行，则执行下述命令，程序就会跳转到36行去执行：
+<code>jump 36</code>
+程序会要求重新输入会员姓名和年龄，这证明确实已经执行到第36行。为了观察的更加仔细，先在第36行添加一个断点，以便执行到第36行能够发生中断。我们的目的就是能够再次观察程序的运行。所以在执行<code>jump 36</code>命令时先执行<code>b 36</code>命令设置一个断点。执行完jump 36后，会立刻在第36行处中断，如下所示：</p>
+<pre><code class="language-c++">(gdb) b 36
+Breakpoint 2 at 0x55555555651b: file chapter_3.3.cpp, line 36.
+(gdb) jump 36
+Continuing at 0x55555555651b.
+
+Thread 1 &quot;chapter_3.3&quot; hit Breakpoint 2, add_member () at chapter_3.3.cpp:36
+36              new_node-&gt;ID = member_id++;
+(gdb) n
+37              printf(&quot;请输入会员姓名,然后按回车\n&quot;);
+</code></pre>
+<p>这时可以执行n命令至下一行，也可以执行c命令使代码继续运行。我们执行n命令，使代码执行至下一行，同时观察到member_id的值已经变成5。
+如果想跳过某些代码，直接进入到某一行或者某个函数去执行，仍然可以使用jump命令去完成。jump命令确实能够带来很多方便，比如我们想跳转到函数<code>add_member</code>去执行，可以直接输入下述命令：
+<code>jump add_member</code>
+程序会跳转到函数add_member，如下所示：</p>
+<pre><code class="language-c++">(gdb) jump add_member
+Continuing at 0x555555556495.
+
+Thread 1 &quot;chapter_3.3&quot; hit Breakpoint 2, add_member () at chapter_3.3.cpp:36
+36              new_node-&gt;ID = member_id++;
+</code></pre>
+<blockquote>
+<p>注意：
+尽管gdb提供了jump执行跳转功能，但正如前面提到的跳转执行一样，不能任意跳转，否则程序可能会崩溃，或者运行出错。比如跳过一些初始化的操作代码，会对后面的执行造成威胁，容易导致出错。使用jump命令的基本原则就是执行跳转后还能使程序正常运行，否则jump命令就会失去意义。</p>
+</blockquote>
+<h5 id="3146">3.14.6 窗口管理</h5>
+<p>gdb可以同时显示几个窗口，比如源代码窗口、命令窗口、寄存器窗口、汇编窗口等。有时我们希望在调试时一边输入命令查看执行结果，一边查看源代码，这时可以打开源代码窗口来查看源代码。
+- 命令窗口
+gdb命令输入和结果输出的窗口，该窗口始终是可见的。
+- 源代码窗口
+显示程序源代码的窗口，会随着代码的执行自动显示代码对应的行。
+- 汇编窗口
+汇编窗口也会随着代码的执行而变化，显示代码对应的汇编代码行。
+- 寄存器窗口
+显示寄存器的值。</p>
+<p>可以使用<code>layout</code>命令控制窗口的显示。layout命令可以设置显示那个窗口、是否切分窗口等，主要命令如下。
+- 显示下一个窗口
+<code>layout next</code>
+- 显示前一个窗口
+<code>layout prev</code>
+- 只显示源代码窗口
+<code>layout src</code>
+- 只显示汇编窗口
+<code>layout asm</code>
+- 显示源代码和汇编窗口
+<code>layout split</code>
+- 显示寄存器窗口，与源代码以及汇编窗口一起显示
+<code>layout regs</code>
+- 设置窗口为活动窗口，以便能够响应上下滚动键
+<code>focus next | prev | src | asm | regs | split</code>
+- 刷新屏幕
+<code>refresh</code>
+- 更新源代码窗口
+<code>update</code></p>
+<p>我们可以在命令窗口执行<code>layout split</code>命令来同时显示命令窗口、源代码窗口和汇编窗口。如果要关闭这些窗口(除命令窗口外)，可以执行<code>tui disable</code>命令。</p>
+<h5 id="3147-shell">3.14.7 调用shell命令</h5>
+<p>在gdb命令行窗口还可以调用系统shell的外部命令，比如要临时查看文件是否存在、系统时间等信息，都可以直接在命令窗口中输入外部命令来执行。语法如下：
+<code>shell 命令</code>
+这里的命令可以是任意的Shell命令，比如<code>ls</code>、<code>date</code>等。如下为执行Shell命令后的效果。</p>
+<pre><code class="language-c++">(gdb) shell ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:15:5d:99:c5:e0 brd ff:ff:ff:ff:ff:ff
+    inet 172.28.31.114/20 brd 172.28.31.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::215:5dff:fe99:c5e0/64 scope link
+       valid_lft forever preferred_lft forever
+(gdb)
+</code></pre>
+<p>可以看到，还可以使用<code>!</code>来执行Shell命令，这里使用了<code>shell ip addr</code>命令来查看ip地址，用<code>!ls -l</code>命令来查看文件列表。</p>
+<pre><code class="language-c++">(gdb) !ls -l
+total 412
+-rw-rw-r-- 1 superman superman    836 Apr  2 17:02 Makefile
+-rwxr-xr-x 1 superman superman 147864 Apr  2 19:50 chapter_3.3
+-rw-rw-r-- 1 superman superman   4833 Mar 11 16:27 chapter_3.3.cpp
+-rw-r--r-- 1 superman superman     31 Apr  2 19:50 chapter_3.3.d
+-rw-r--r-- 1 superman superman 250336 Apr  2 19:50 chapter_3.3.o
+</code></pre>
+<h2 id="4">第4章 多线程死锁调试</h2>
+<p>在介绍多线程之前，这里先简单介绍进程和线程的一些基本知识。进程通常被定义为一个正在运行的程序中的实例。与C++代码中的类实例相似，C++中的类也是一个比较抽象的概念，只有在实例化后才会分配真正的资源。在程序没有实例化之前，只是一个二进制集合，没有实际意义。一旦实例化之后，即程序开始运行后，操作系统会为进程分配资源，比如内存空间等。
+但是进程并不是系统调度的单元，操作系统只会对线程进行调度。进程只是线程的容器，因此线程的生命周期受制于进程，线程在进程的地址空间中执行代码。一个进程至少拥有一个线程，进程要执行操作都是依靠线程来完成的。当操作系统创建一个进程实例时，就会自动为该进程创建一个线程，称为主线程。我们经常用到的命令行程序，往往只有一个线程（即主线程），当主线程在等待用户输入或者显示信息时，不能执行任何操作，只有等待。
+主线程可以再创建其他的线程，其他的线程又可以创建线程。除主线程外的线程称为工作线程。除主线程由系统创建外，进程中的其他线程都是由进程创建的。当一个进程包含多个线程时，这个程序就是一个多线程程序，每个线程都在执行进程的代码。
+那么，要处理一件复杂的工作，到底是使用多个进程，还是使用多个线程呢？进程使用的系统资源要比线程多得多。系统每启动一个进程，都要为进程分配相应的资源，会占用很多内存。线程使用的资源要比一个进程少很多，线程只包含一个线程内核对象和一个线程对应的堆栈信息，因此占用的内存比较少。
+如果一个进程只启动一个线程，即主线程，所能做的事情就比较有限。如今的计算机资源配置非常强大，尤其是CPU和内存，如果只有一个线程，则计算机资源不能得到充分利用，也没有办法使CPU和内存充分发挥作用。这是一种浪费，同时导致我们的任务需要更多的时间才能完成。因此，为了更加有效迅速的完成工作，程序往往会启动多个线程执行工作，尤其是对于一些复杂的应用，线程数更是达到了几十甚至几百个。可以说，在现代的计算机系统上，单线程应用已经越来越少。
+可以比较形象的比喻多线程场景：假设人类的行为是一个多线程的进程，可以一边走路，一边与其他人聊天，两件事情都不会耽误，所占用的资源也很少。而且，这两件事情不会有任何冲突，基本上是完全独立的。但是，如果一个人一边吃饭，一边说话，往往是会有冲突的。如果要比较优雅的一边吃饭一边聊天，就需要在说话的时候不吃东西，或者吃东西时不说话，否则有可能说话模糊不清，或者被食物噎着。这个是资源竞争的问题，因为说话和吃饭都要用嘴，同一时刻只能执行一个线程。“吃饭”和“说话”的这个比喻，就是计算机领域多线程同步与互斥的问题，后面会做更近一步的讨论。</p>
+<h3 id="41">4.1 创建多线程</h3>
+<p>多线程是一种程序的执行模型，在一个进程中允许启动多个线程。虽然多个线程存在于进程的上下文（比如进程地址空间）中，并且共享进程的资源，但是它们是独立执行的。每个线程会维护一些信息，包括属于该线程的寄存器、栈状态等。
+即使在只有一个CPU的计算机中，多线程也是非常有用的。因为CPU是分时间片执行的，每个线程都能得到执行。在具有多个CPU的环境中，多线程能够得到更好的效果。但是在多CPU环境中，多线程的执行往往会产生意想不到的结果。因为虽然同一时刻CPU只执行一个线程代码，但是多个CPU却同时执行多个线程代码，这为我们的开发带来了一定的困难与挑战。如果不能正确处理，可能导致数据混乱，或者死锁。
+Windows系统或者Linux系统都提供了对应的线程管理API，比如创建线程、等待线程等；也提供了自己的线程同步技术，比如信号量、互斥体等。为了使本书中的示例代码能够跨平台使用，我们会使用C++语言本身提供的特性和技术，不会使用专门的系统API，以便在Windows和Linux系统中都可以正常编译和运行。
+C++11以上的版本都实现了一个线程类<code>std::thread</code>。这个类提供了创建线程的能力，用起来也非常方便。下面主要介绍其构造函数和<code>join</code>函数。构造函数的原型定义如下：
+<code>thread(Function &amp;&amp;fun, Args &amp;&amp;...args)</code>
+其中的fun是线程函数，args是传递给线程函数的参数。<code>std::thread</code>构造函数特别灵活：fun可以是普通的函数，也可以是类的成员函数，还可以是匿名函数；参数args可以是任意的；<code>...</code>表示可变的参数个数。<code>thread</code>的成员函数join就是等待线程结束。我们先来看一个简单的例子，它展示了如何使用<code>thread</code>类，并且使用了不同的构造函数。为了显示使用类的成员函数，这里示例了一个简单的类<code>test_c</code>，其中包括4个不同的成员函数，如下所示：</p>
+<pre><code class="language-cpp">#include &lt;thread&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+using namespace std;
+class test_c {
+public:
+    test_c() {}
+    virtual ~test_c() {}
+public:
+    static void do_work_1() {
+        cout &lt;&lt; &quot;do work 1&quot; &lt;&lt; endl;
+    }
+
+    void do_work_2() {
+        cout &lt;&lt; &quot;do work 2&quot; &lt;&lt; endl;
+    }
+
+    void do_work_3(void *arg) {
+        cout &lt;&lt; &quot;do work 3&quot; &lt;&lt; endl;
+    }
+
+    int do_work_4(void *arg, int i) {
+        cout &lt;&lt; &quot;do work 4, i is&quot; &lt;&lt; i &lt;&lt; endl;
+        return 0;
+    }
+}
+</code></pre>
+<p>然后再来看main函数如何使用它们作为线程函数，如下所示：</p>
+<pre><code class="language-cpp">void do_work_5(void *arg)
+{
+    cout &lt;&lt; &quot;do work 5&quot; &lt;&lt; endl;
+}
+
+int main()
+{
+
+    thread t1(&amp;test_c::do_work_1);
+    test_c test2;
+
+    thread t2(&amp;test_c::do_work_2,test2);
+
+    test_c test3;
+    thread t3(&amp;test_c::do_work_3,test3,(void*)&quot;test3&quot;);
+
+    test_c test4;
+    thread t4(&amp;test_c::do_work_4,test4,(void*)&quot;test4&quot;,4);
+
+    thread t5(&amp;do_work_5,(void*)&quot;test5&quot;);
+
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
+
+    return 0;
+}
+</code></pre>
+<p>test_c类实现了4个方法，其中do_work_1是一个静态函数，其他3个都是普通函数，只是参数不同，部分有返回值，部分没有返回值。
+由于test_c的do_work_1是一个静态函数，所以可以直接作为线程函数传递给thread构造函数。非静态成员函数作为thread的参数稍有不同，需要定义一个类对象，然后把这个类对象作为thread的一个参数传递。由于do_work_5是一个全局函数，所以可以像静态函数一样直接使用。因此，代码中启动了5个线程，每个线程函数很简单，就是直接输出一句话，表示是哪一个线程函数。执行结果如下所示：</p>
+<pre><code class="language-cpp">do work 1
+do work 4,i is4
+do work 5
+do work 2
+do work 3
+</code></pre>
+<p>从图我们可以看到多线程运行的一些特点，虽然创建线程的顺序是1、2、3、4、5，但是最终运行的结果并不相同。
+调用thread的join函数的目的是等待线程结束。join是同步等待的，只有对应的线程结束后，才会执行join后面的代码。join在多数时候是必要的。如果测试程序不调用join等待，则有可能线程函数还在执行，而main函数已经执行结束，从而导致程序崩溃。</p>
+<h3 id="42">4.2 多线程的同步</h3>
+<p>4.1节中已经对多线程的使用进行了简要介绍，下面我们再来看一个多线程的简化版示例，代码如下所示：</p>
+<pre><code class="language-cpp">int count = 0;
+
+void do_save()
+{
+    count = count + number;
+    std::cout &lt;&lt; &quot;count is&quot; &lt;&lt; count &lt;&lt; std::endl;
+}
+
+void do_withdraw(int number)
+{
+    count = count - number;
+    std::cout &lt;&lt; &quot;count is&quot; &lt;&lt; count &lt;&lt; std::endl;
+}
+</code></pre>
+<p>代码很简单：模拟银行的存钱和取钱过程。代码定义了一个全局变量count并赋值为0，表示银行客户的初始资金为0。 do_save模拟存钱过程，do_withdraw模拟取钱过程。假设一个客户在银行存款10000元，则银行系统调用<code>do_save</code>将客户的count修改为10000，表示该客户账户存款10000元。
+假设这个银行的存款客户同时进行取钱的操作。比如这位客户的家人拿着客户的卡去ATM上去取钱，同时这位客户自己用手机银行进行向外转账操作，且都是要取出5000块钱。这时银行会调用do_withdraw的操作。假设ATM和手机转账发生在同一时刻，即在同一时刻都执行do_withdraw，因为账户上还有10000元，即count为10000，所以从ATM上顺利取走5000，而且手机转账也顺利转走5000。此时此刻，客户的银行账户上居然还会剩下5000。
+在真实世界中，这种情况几乎不会发生。但是这个例子很好的说明了多线程世界中的秩序需要一种管理机制，使多线程的世界也能井然有序，这种管理机制就是锁。
+为了保证每次都能正确执行存钱、取钱操作，必须保护count的每一次读写。当一个线程正在执行读写操作时，另一个线程的读写请求必须等待第一个线程读写过程完成后才能执行。即读写count时要添加一把锁，在读写count结束后释放锁。一般情况下，当这把锁被一个线程拥有时，其他线程就不能同时拥有这把锁，这样就很好的保护了count被正确有序的操作，而不至于出现混乱。
+为do_work和do_withdraw加锁的代码如下所示。后面的示例会比较详细的介绍怎样使用锁，这里只是演示锁的使用方式。</p>
+<pre><code class="language-cpp">#include &lt;mutex&gt;
+
+int count = 0;
+std::mutex locker;
+
+void do_save(int number)
+{
+    locker.lock();
+    count = count + number;
+    locker.unlock();
+    std::cout &lt;&lt; &quot;count is&quot; &lt;&lt; count &lt;&lt; std::endl;
+}
+
+void do_withdraw(int number)
+{
+    locker.lock();
+    count = count - number;
+    locker.unlock();
+    std::cout &lt;&lt; &quot;count is&quot; &lt;&lt; count &lt;&lt; std::endl;
+}
+</code></pre>
+<h3 id="43-c">4.3 C++ 标准库中的锁</h3>
+<p>C++的线程中用到的锁主要是由互斥对象(mutex)来实现的。不同的操作系统实现锁的方式不同。比如Linux系统和Windows系统提供的操作互斥锁的API不同。但是，这并不影响我们的使用，因为C++标准库中的锁是对操作系统的锁的一个封装，使得我们不用关系操作系统的区别和实现细节。C++11中针对线程互斥锁主要提供了下列模板类。
+- std::mutex: 最基本的互斥对象。
+- std::recursive_mutex: 可以递归使用(也称为可以重入)的互斥对象，递归调用不会导致死锁。
+- std::timed_mutex: 带有超时功能，可以提供一个等待时间；如果超过这个时间则不会继续等待，返回失败。
+- std::recursive_timed_mutex: 超时可重入互斥对象。</p>
+<h4 id="431-stdmutex">4.3.1 std::mutex类</h4>
+<p>mutex也称为互斥对象，是比较常用的一种锁，可以控制多个线程对它们之间的共享资源的访问。在任意时刻，只能有一个线程获取到互斥锁，其他线程要想获得该互斥锁，必须等到该互斥锁被释放之后，否则只能等待。
+使用互斥锁的方式很简单。构建一个互斥对象，在需要的地方调用互斥对象的lock方法，然后在需要释放的地方调用unlock方法即可。互斥锁的示例代码如下所示:</p>
+<pre><code class="language-cpp">class test_mutex_c {
+public:
+    test_mutex_c() {}
+    virtual ~test_mutex_c() {}
+public:
+    int get_data()
+    {
+        int data = 0;
+        _mutex.lock();
+        data = _data;
+        _mutex.unlock();
+    }
+
+    void set_data(int data)
+    {
+        _mutex.lock();
+        _data = data;
+        _mutex.unlock();
+    }
+private:
+    std::mutex _mutex;
+    int _data;
+};
+</code></pre>
+<p>类test_mutex_c中提供了<code>get_data</code>和<code>set_data</code>方法来读取和修改类成员变量<code>_data</code>的值。为了保证在多线程环境下数据的一致性，<code>get_data</code>和<code>set_data</code>使用了互斥锁。有时候我们说一个类或者一个函数是线程不安全的，是指该类或者函数在多线程环境下得到的结果可能是不稳定的，或者可能会出错。相反，如果说这个类或者函数是线程安全的，则指该类或者函数即使是在多线程环境下也能稳定工作，保证数据的正确性和稳定性。就像本示例中的类<code>test_mutex_c</code>，即使在多线程环境下，<code>_data</code>数据也是稳定的，而且调用者不需要额外使用锁就可以正常使用<code>test_mutex_c</code>的方法，因此是线程安全的。
+在<code>test_mutex_c</code>的<code>get_data</code>和<code>set_data</code>方法中，虽然使用了互斥锁，但不是很方便，而且有时还可能出现问题。比如在调用<code>set_data</code>方法时，代码执行到了<code>_data = data</code>时已经获得了互斥锁。如果由于特殊原因导致代码抛出异常，<code>_mutex.unlock()</code>将无法执行。这会导致一个严重的后果--死锁！因为<code>_mutex</code>会被永远锁住，没有机会去释放锁。再次调用还会等待锁，同样会导致死锁。
+因此，在使用锁的时候推荐使用<code>RAII(Resource Acquistion Is Initialization)</code>技术，即方便又安全。C++提供了几个模板类利用<code>RAII</code>来使用锁，比如<code>std::lock_guard</code>、<code>std::unique_lock</code>和<code>std::shared_lock</code>。它们的使用场合稍有差别，比如<code>std::lock_guard</code>是基于作用域的，构造时自动加锁(可选)，析构时自动释放锁。所以，即使使用<code>std::lock_guard</code>的过程中抛出了异常，也不会导致死锁的情况发生。因为即使在代码中抛出了异常，<code>std::lock_guard</code>对象的析构函数仍然会被执行。
+使用<code>std::lock_guard</code>还有一个好处，即如果函数中有多个路径可以返回，不用在每个返回路径都执行unlock操作，代码的清晰度和可维护度都得以提高。我们把之前的代码中的锁修改为<code>std::lock_guard</code>，代码如下所示:</p>
+<pre><code class="language-cpp">class test_mutex_c {
+public:
+    test_mutex_c() {}
+    virtual ~test_mutex_c() {}
+public:
+    int get_data()
+    {
+        int data = 0;
+        std::lock_guard&lt;std::mutex&gt; locker(_mutex);
+        data = _data;
+    }
+
+    void set_data(int data)
+    {
+        std::lock_guard&lt;std::mutex&gt; locker(_mutex);
+        if (data == 0)
+            return;
+        if (data == 1)
+            throw 1;
+        _data = data;
+    }
+private:
+    std::mutex _mutex;
+    int _data;
+};
+</code></pre>
+<p>在上述代码中，<code>get_data</code>和<code>set_data</code>方法都使用了<code>lock_guard</code>，其中在<code>set_data</code>中模拟了多个路径返回和抛出异常的情况，<code>lock_guard</code>可以正常处理这两种情况。因为我们定义的locker是一个局部变量，函数执行结束后，变量locker的生命周期也会结束，执行它的析构函数去调用<code>unlock</code>操作，因此这种用法永远不会导致锁没有释放的问题。<code>lock_guard</code>模板类的构造和析构代码如下所示:</p>
+<pre><code class="language-cpp">// class with destructor that ublock a mutex
+class lock_guard {
+public:
+    using mutex_type = _Mutex;
+
+    // construct and lock
+    explicit lock_guard(_Mutex &amp;_Mtex) : _MyMutex(_Mtx) {
+        _MyMutex.lock();
+    }
+
+    // construct but don't lock
+    lock_guard(_Mutex &amp;_Mtx, adopt_lock_t) : _MyMutex(_Mtx) {
+    }
+
+    ~lock_guard() noexcept {
+        _MyMutex.unlock();
+    }
+}
+</code></pre>
+<h4 id="432-stdtimed_mutex">4.3.2 std::timed_mutex类</h4>
+<p>模板类<code>timed_mutex</code>的用法基本与<code>mutex</code>类似，使用起来也很简单，只是多了一个时间参数。这里不做过多的讲解，唯一要说明的是，如果<code>std::timed_mutex</code>使用超时功能，需要调用<code>try_lock_for</code>方法，而且不能使用RAII（资源获取即初始化）机制。<code>timed_mutex</code>的使用示例如下所示：</p>
+<pre><code class="language-cpp">class test_timed_mutex_c {
+public:
+    test_timed_mutex_c() {}
+    virtual ~test_mutex_mutex_c() {}
+public:
+    int get_data()
+    {
+        int data = 0;
+        if (_mutex.try_lock_for(std::chrono::milliseconds(2000)))
+            _mutex.unlock();
+        data = _data;
+    }
+
+    void set_data(int data)
+    {
+        if (_mutex.try_lock_for(std::chrono::milliseconds(2000)))
+            _mutex.unlock();
+        _data = data;
+    }
+private:
+    std::timed_mutex _mutex;
+    int _data;
+}
+</code></pre>
+<h4 id="433-stdrecursive_mutex-stdrecursive_timed_mutex">4.3.3 std::recursive_mutex 和 std::recursive_timed_mutex</h4>
+<p><code>std::recursive_mutex</code> 和 <code>std::recursive_timed_mutex</code>的使用方法与前面的 <code>mutex</code> 和 <code>timed_mutex</code> 一一对应，只是 <code>recursive</code> 版本可以重入，可以递归调用，因此这里不再重复举例，只需要将 <code>mutex</code> 替换成 <code>recursive_mutex</code>，将 <code>timed_mutex</code> 替换成 <code>recursive_timed_mutex</code> 即可。为了尽可能的避免死锁问题，可以全部使用 <code>recursive</code> 版本。</p>
+<h3 id="44">4.4 死锁调试</h3>
+<p>在多线程环境中，一个基本问题是数据没有同步，导致数据读写不一致。另一个经常出现的问题就是死锁。死锁的情况有时候会比较复杂，因为死锁的原因有很多。在实际情况中，死锁是比较严重的问题，会导致整个程序不能正常工作。而且有时候死锁的根源也很麻烦，因为死锁往往不是必然出现的，而是在满足一定的条件之后才会死锁，而这个条件在多线程环境中往往是随机的。所以我们要学习一些调试死锁的基本技巧或者方法，确保在遇到死锁的问题时能通过调试手段找到死锁的根源，并彻底解决。
+我们新建一个示例代码，这是一个多线程程序，代码清单如下所示：</p>
+<pre><code class="language-cpp">mutex _mutex1;
+mutex _mutex2;
+int data1;
+int data2;
+int do_work_1()
+{
+    std::cout &lt;&lt; &quot;线程函数do_work_1开始&quot; &lt;&lt; std::endl;
+    lock_guard&lt;mutex&gt; locker1(_mutex1);
+    // 模拟做一些事情
+    data1++;
+    std::this_thread::sleep_for(std::chrono:seconds(1));
+    lock_guard&lt;mutex&gt; locker2(_mutex2);
+    data2++;
+    std::cout &lt;&lt; &quot;线程函数do_work_1结束&quot; &lt;&lt; std::endl;
+
+    return 0;
+}
+
+int do_work_2()
+{
+    std::cout &lt;&lt; &quot;线程函数do_work_2开始&quot; &lt;&lt; std::endl;
+    lock_guard&lt;mutex&gt; locker2(_mutex2);
+    // 模拟做一些事情
+    data2++;
+    std::this_thread::sleep_for(std::chrono:seconds(1));
+    lock_guard&lt;mutex&gt; locker1(_mutex1);
+    data1++;
+    std::cout &lt;&lt; &quot;线程函数do_work_2结束&quot; &lt;&lt; std::endl;
+
+    return 0;
+}
+
+int main()
+{
+    thread t1(do_work_1);
+    thread t2(do_work_2);
+    t1.join();
+    t2.join();
+    cout &lt;&lt; &quot;线程运行结束&quot; &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>main函数中启动了两个线程，然后等待线程结束，最后输出 "线程运行结束" 字符串。两个线程函数 <code>do_work_1</code> 和 <code>do_work_2</code> 也比较简单，都是模拟做一些操作，对全局变量<code>data1</code> 和 <code>data2</code> 进行加1操作。为了保证<code>data</code> 和 <code>data2</code> 数据的一致性，所以都使用了锁。
+程序运行结果如下所示:</p>
+<pre><code class="language-cpp">线程函数do_work_1开始
+线程函数do_work_2开始
+</code></pre>
+<p>在上面的程序中一直没有出现 <code>线程运行结束</code> 的字样，程序也没有结束，我们猜测程序发生死锁。</p>
+<h4 id="441-linux">4.4.1 Linux系统中的死锁调试</h4>
+<p>在命令行输入 <code>gdb main</code> 来启动程序，然后在 gdb 中输入命令<code>r</code>来运行程序。同样，程序不会结束。为了能够查看程序当前处于什么状态，以及那些程序在执行什么操作，需要使程序中断。
+在gdb中按下<code>Ctrl + C</code>组合键，使程序中断，如下所示：</p>
+<pre><code class="language-cpp">(gdb) r
+Starting program: /home/superman/C_C++_Debug/book_debug/chapter_4.1.4/chapter_4.1.4
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library &quot;/lib/x86_64-linux-gnu/libthread_db.so.1&quot;.
+[New Thread 0x7ffff7a58640 (LWP 809)]
+线程函数do_work_1开始
+[New Thread 0x7fffeffff640 (LWP 810)]
+线程函数do_work_2开始
+^C
+Thread 1 &quot;chapter_4.1.4&quot; received signal SIGINT, Interrupt.
+__futex_abstimed_wait_common64 (private=128, cancel=true, abstime=0x0, op=265, expected=809, futex_word=0x7ffff7a58910) at ./nptl/futex-internal.c:57
+57      ./nptl/futex-internal.c: No such file or directory.
+</code></pre>
+<p>首先查看当前调用栈情况，在gdb中输入命令 <code>bt</code> ，查看栈回溯，如下所示：</p>
+<pre><code class="language-cpp">(gdb) bt
+#0  __futex_abstimed_wait_common64 (private=128, cancel=true, abstime=0x0, op=265, expected=812,
+    futex_word=0x7ffff7a58910) at ./nptl/futex-internal.c:57
+#1  __futex_abstimed_wait_common (cancel=true, private=128, abstime=0x0, clockid=0, expected=812,
+    futex_word=0x7ffff7a58910) at ./nptl/futex-internal.c:87
+#2  __GI___futex_abstimed_wait_cancelable64 (futex_word=futex_word@entry=0x7ffff7a58910,
+    expected=812, clockid=clockid@entry=0, abstime=abstime@entry=0x0, private=private@entry=128)
+    at ./nptl/futex-internal.c:139
+#3  0x00007ffff7bda6a4 in __pthread_clockjoin_ex (threadid=140737348208192, thread_return=0x0,
+    clockid=0, abstime=0x0, block=&lt;optimized out&gt;) at ./nptl/pthread_join_common.c:105
+#4  0x00007ffff7e68327 in std::thread::join() () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#5  0x000055555555535b in main () at chapter_4.1.4.cpp:89
+</code></pre>
+<p>从图可以看到 <code>main</code> 函数信息，程序停在了chapter_4.1.4.cpp的第89行，即<code>t1.join();</code>。这时将栈帧切换到main函数，执行命令 <code>f 5</code>，然后执行命令 <code>l</code> 来查看相关代码，如下所示：</p>
+<pre><code class="language-cpp">(gdb) l
+84
+85      int main()
+86      {
+87          thread t1(do_work_1);
+88          thread t2(do_work_2);
+89          t1.join();
+90          t2.join();
+91          cout &lt;&lt; &quot;线程运行结束&quot; &lt;&lt; endl;
+92          return 0;
+93      }
+</code></pre>
+<p>第89行代码是 <code>t1.join</code>，表示t1线程还没有结束，所以初步预测是死锁。现在要做的是查看那些线程在执行什么操作。先执行命令 <code>info threads</code> 来查看当前进程中包含那些线程，如下所示：</p>
+<pre><code class="language-cpp">(gdb) info threads
+  Id   Target Id                                       Frame
+* 1    Thread 0x7ffff7a5c3c0 (LWP 811) &quot;chapter_4.1.4&quot; __futex_abstimed_wait_common64 (private=128,
+    cancel=true, abstime=0x0, op=265, expected=812, futex_word=0x7ffff7a58910)
+    at ./nptl/futex-internal.c:57
+  2    Thread 0x7ffff7a58640 (LWP 812) &quot;chapter_4.1.4&quot; futex_wait (private=0, expected=2,
+    futex_word=0x555555558180 &lt;_mutex2&gt;) at ../sysdeps/nptl/futex-internal.h:146
+  3    Thread 0x7ffff7257640 (LWP 813) &quot;chapter_4.1.4&quot; futex_wait (private=0, expected=2,
+    futex_word=0x5555555581c0 &lt;_mutex1&gt;) at ../sysdeps/nptl/futex-internal.h:146
+</code></pre>
+<p>从图中可以看到，一共有3个线程，其中1号线程是main函数主线程，前面已经查看过。现在要查看另外两个线程的状态，先查看2号线程的情况。执行命令<code>t 2</code>切换到2号线程，再执行命令 <code>bt</code> 查看当前线程的堆栈信息，如下所示：</p>
+<pre><code class="language-cpp">(gdb) t 2
+[Switching to thread 2 (Thread 0x7ffff7a58640 (LWP 1080))]
+#0  futex_wait (private=0, expected=2, futex_word=0x555555558180 &lt;_mutex2&gt;)
+    at ../sysdeps/nptl/futex-internal.h:146
+146     in ../sysdeps/nptl/futex-internal.h
+(gdb) bt
+#0  futex_wait (private=0, expected=2, futex_word=0x555555558180 &lt;_mutex2&gt;)
+    at ../sysdeps/nptl/futex-internal.h:146
+#1  __GI___lll_lock_wait (futex=futex@entry=0x555555558180 &lt;_mutex2&gt;, private=0)
+    at ./nptl/lowlevellock.c:49
+#2  0x00007ffff7bdc082 in lll_mutex_lock_optimized (mutex=0x555555558180 &lt;_mutex2&gt;)
+    at ./nptl/pthread_mutex_lock.c:48
+#3  ___pthread_mutex_lock (mutex=0x555555558180 &lt;_mutex2&gt;) at ./nptl/pthread_mutex_lock.c:93
+#4  0x0000555555555639 in __gthread_mutex_lock (__mutex=0x555555558180 &lt;_mutex2&gt;)
+    at /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:749
+#5  std::mutex::lock (this=0x555555558180 &lt;_mutex2&gt;) at /usr/include/c++/11/bits/std_mutex.h:100
+#6  std::lock_guard&lt;std::mutex&gt;::lock_guard (__m=..., this=&lt;synthetic pointer&gt;)
+    at /usr/include/c++/11/bits/std_mutex.h:229
+#7  do_work_1 () at chapter_4.1.4.cpp:65
+#8  0x00007ffff7e682b3 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#9  0x00007ffff7bd8b43 in start_thread (arg=&lt;optimized out&gt;) at ./nptl/pthread_create.c:442
+#10 0x00007ffff7c6aa00 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+</code></pre>
+<p>从图的堆栈信息中找到所在的栈帧，即7号栈帧，执行命令 <code>f 7</code> 切换到7号栈帧，并执行 <code>l</code> 命令来查看相关代码，如下所示：</p>
+<pre><code class="language-cpp">(gdb) f 7
+#7  do_work_1 () at chapter_4.1.4.cpp:65
+65          lock_guard&lt;mutex&gt; locker2(_mutex2);
+(gdb) l
+60          std::cout &lt;&lt; &quot;线程函数do_work_1开始&quot; &lt;&lt; std::endl;
+61          lock_guard&lt;mutex&gt; locker1(_mutex1);
+62          // 模拟做一些事情
+63          data1++;
+64          std::this_thread::sleep_for(std::chrono::seconds(1));
+65          lock_guard&lt;mutex&gt; locker2(_mutex2);
+66          data2++;
+67          std::cout &lt;&lt; &quot;线程函数do_work_1结束&quot; &lt;&lt; std::endl;
+68          return 0;
+69      }
+</code></pre>
+<p>从图中可以发现，代码停在了<code>lock_guard&lt;mutex&gt; locker2(_mutex2);</code>。这说明确实发生死锁，进一步查看3号线程来验证是否发生死锁。
+因为查看3号线程的信息与查看2号线程的信息的过程是相同的，所以我们直接执行相关的命令: <code>t 3</code> <code>bt</code> <code>f 7</code> <code>l</code>的结果如图所示。</p>
+<pre><code class="language-cpp">(gdb) t 3
+[Switching to thread 3 (Thread 0x7ffff7257640 (LWP 1081))]
+#0  futex_wait (private=0, expected=2, futex_word=0x5555555581c0 &lt;_mutex1&gt;)
+    at ../sysdeps/nptl/futex-internal.h:146
+146     ../sysdeps/nptl/futex-internal.h: No such file or directory.
+(gdb) bt
+#0  futex_wait (private=0, expected=2, futex_word=0x5555555581c0 &lt;_mutex1&gt;)
+    at ../sysdeps/nptl/futex-internal.h:146
+#1  __GI___lll_lock_wait (futex=futex@entry=0x5555555581c0 &lt;_mutex1&gt;, private=0)
+    at ./nptl/lowlevellock.c:49
+#2  0x00007ffff7bdc082 in lll_mutex_lock_optimized (mutex=0x5555555581c0 &lt;_mutex1&gt;)
+    at ./nptl/pthread_mutex_lock.c:48
+#3  ___pthread_mutex_lock (mutex=0x5555555581c0 &lt;_mutex1&gt;) at ./nptl/pthread_mutex_lock.c:93
+#4  0x0000555555555849 in __gthread_mutex_lock (__mutex=0x5555555581c0 &lt;_mutex1&gt;)
+    at /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:749
+#5  std::mutex::lock (this=0x5555555581c0 &lt;_mutex1&gt;) at /usr/include/c++/11/bits/std_mutex.h:100
+#6  std::lock_guard&lt;std::mutex&gt;::lock_guard (__m=..., this=&lt;synthetic pointer&gt;)
+    at /usr/include/c++/11/bits/std_mutex.h:229
+#7  do_work_2 () at chapter_4.1.4.cpp:78
+#8  0x00007ffff7e682b3 in ?? () from /lib/x86_64-linux-gnu/libstdc++.so.6
+#9  0x00007ffff7bd8b43 in start_thread (arg=&lt;optimized out&gt;) at ./nptl/pthread_create.c:442
+#10 0x00007ffff7c6aa00 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+(gdb) f 7
+#7  do_work_2 () at chapter_4.1.4.cpp:78
+78          lock_guard&lt;mutex&gt; locker1(_mutex1);
+(gdb) l
+73          std::cout &lt;&lt; &quot;线程函数do_work_2开始&quot; &lt;&lt; std::endl;
+74          lock_guard&lt;mutex&gt; locker2(_mutex2);
+75          // 模拟做一些事情
+76          data2++;
+77          std::this_thread::sleep_for(std::chrono::seconds(1));
+78          lock_guard&lt;mutex&gt; locker1(_mutex1);
+79
+80          data1++;
+81          std::cout &lt;&lt; &quot;线程函数do_work_2结束&quot; &lt;&lt; std::endl;
+82          return 0;
+</code></pre>
+<p>从图中可以发现线程3也在等待锁，停在了<code>lock_guard&lt;mutex&gt; locker1(_mutex1);</code>，与2号线程互相等待，从而导致发生死锁。这样，我么就发现死锁的根源。</p>
+<h4 id="442">4.4.2 死锁条件</h4>
+<p>从前面的示例中可以总结出来，一般在满足下列几个条件时会发生死锁。
+- 互斥条件
+多个线程访问某个资源时是互斥的（比如前面示例中的mutex），如果多个线程需要同时占用，必须等待，要等到资源被释放后才能获取。
+- 保持和请求条件
+当一个线程获得资源以后，在没有释放资源之前（即占用该资源）又去获取其他资源（请求）。比如在我们的示例中，线程1获取到了mutex1资源，在没有释放mutex1时又去请求获取mutex2，由于mutex2被2号线程所占用，所以程序在这里发生中断。
+- 不可剥夺条件
+在一个线程获得资源后，如果不主动释放该资源，其他线程无法使其释放资源。如示例代码所示，线程1获得了mutex1，只有等到线程函数1结束后才能主动释放；线程2也是一样。
+- 循环等待条件
+形成死锁后，必然是互相等待的状态。这些线程之间形成了一个循环等待的条件。比如前面示例中的代码，线程1需要等待线程2拥有的资源mutex2，而线程2需要等待线程1拥有的资源mutex1。</p>
+<h4 id="443">4.4.3 解决死锁</h4>
+<p>既然发现了问题，解决起来就比较容易。先查看示例代码中这两个线程是如何使用锁的，如下所示：
+- 线程1
+    - 获取锁1 <code>_mutex1</code>
+    - // 做一些事情
+    - 获取锁2 <code>_mutex2</code>
+    - // 做一些事情
+    - 释放锁2
+    - 释放锁1</p>
+<ul>
+<li>线程2<ul>
+<li>获取锁2 <code>_mutex2</code></li>
+<li>// 做一些事情</li>
+<li>获取锁1 <code>_mutex1</code></li>
+<li>// 做一些事情</li>
+<li>释放锁1</li>
+<li>释放锁2</li>
+</ul>
+</li>
+</ul>
+<p>可以发现，如果这两个线程同时运行，发生死锁的几率很大。只要两个线程同时进入到线程函数中，就很容易出现死锁。我们现在可以根据这个锁的使用情况来假设一种发生死锁的情况。
+线程1和线程2都会启动，假设在线程1获取到锁1的同时，线程2获取到锁2，然后分别往下执行。此时线程1执行到获取锁2的地方，由于线程2刚获取到锁2但是未释放，所以线程1 =只能等待。同时线程2也执行到获取锁1的地方，处于同样的原因，线程1的锁1也未被释放，因此线程2也只能等待，由此形成死锁。
+在本示例中，我们只要打破这种交叉用锁的方式就能够避免死锁。两个线程都按照相同的顺序来使用锁1和锁2，代码如下所示：</p>
+<pre><code class="language-cpp">int do_work_1()
+{
+    std::cout &lt;&lt; &quot;线程函数 do_work_1 开始&quot; &lt;&lt; std::endl;
+    lock_guard&lt;mutex&gt; locker1(_mutex1);
+    // 模拟做一些事情
+    data1++;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    lock_guard&lt;mutex&gt; locker2(_mutex2);
+    data2++;
+    std::cout &lt;&lt; &quot;线程函数 do_work_1 结束&quot; &lt;&lt; std::endl;
+    return 0;
+}
+
+int do_work_2()
+{
+    std::cout &lt;&lt; &quot;线程函数 do_work_2 开始&quot; &lt;&lt; std::endl;
+    lock_guard&lt;mutex&gt; locker1(_mutex1);
+    // 模拟做一些事情
+    data1++;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    lock_guard&lt;mutex&gt; locker2(_mutex2);
+    data2++;
+    std::cout &lt;&lt; &quot;线程函数 do_work_2 结束&quot; &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<p>由于两个线程按照相同的顺序使用两把锁，比如都是按照 “先获取锁1，再获取锁2” 的顺序来使用，就不会导致死锁。
+除了按照相同顺序的方式使用锁外，另一种避免死锁的方式就是减少锁的使用范围，尽量把锁的使用范围局限于最小作用域中，代码如下所示：</p>
+<pre><code class="language-cpp">int do_work_1()
+{
+    std::cout &lt;&lt; &quot;线程函数 do_work_1 开始&quot; &lt;&lt; std::endl;
+    {
+        lock_guard&lt;mutex&gt; locker1(_mutex1);
+        // 模拟做一些事情
+        data1++;
+    }
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    {
+        lock_guard&lt;mutex&gt; locker2;
+        data2++;
+    }
+    std::cout &lt;&lt; &quot;线程函数 do_work_1 结束&quot; &lt;&lt; std::endl;
+    return 0;
+}
+
+int do_work_2()
+{
+    std::cout &lt;&lt; &quot;线程函数 do_work_2 开始&quot; &lt;&lt; std::endl;
+    {
+        lock_guard&lt;mutex&gt; locker2(_mutex2);
+        // 模拟做一些事情
+        data2++;
+    }
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    {
+        lock_guard&lt;mutex&gt; locker1;
+        data1++;
+    }
+    std::cout &lt;&lt; &quot;线程函数 do_work_2 结束&quot; &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<p>代码看起来好像没有区别，但其实区别还是比较大的，因为无论是在线程1还是在线程2中，对锁的使用都局限于非常小的范围，并且在执行操作后立刻释放锁。线程1和线程2都使用<code>{}</code>来限制作用范围，一旦超出作用域，锁就会被释放。
+通过前面解决死锁的示例可以发现，要解决死锁问题，主要是破坏产生死锁的条件，只要不满足任意一个死锁的条件就可以避免死锁。具体方法如下。
+- 顺序使用锁
+就像示例中用到的方法一样，如果使用多个锁，就要保证在多个线程中使用锁的顺序一致。不要在使用锁的时候产生交叉情况，否则很容易发生死锁。
+- 控制锁的作用域
+在使用锁的时候，尽可能的限制其作用域，缩短占用时间。能够在函数范围内使用锁，就不要在全局使用；能够在局部作用域使用锁，就不要在函数范围内使用。
+- 使用超时机制
+在使用锁时加上一定的时间限制，如果时间超时，则认为这次操作失败，执行返回命令，比如使用 <code>timed_mutex</code> 等。
+- 使用 <code>RAII</code> 机制
+如果可能，尽量通过 <code>RAII</code> 机制来使所锁，减少锁的误操作（比如忘记释放锁等），而且可以使代码更加简洁。</p>
+<h2 id="5">第5章 调试动态库</h2>
+<p>Linux系统中普遍使用到了动态库，因为动态库有下列优点。
+- 容易扩展功能
+因为动态库可以动态加载，所以可以在不改变主模块的情况下，通过扩展动态库来扩充整个应用的功能。
+- 节省内存空间
+因为动态库是可以共享的，如果一个设计良好的动态库被多个应用使用，那么这个动态库的代码只需要被加载进内存一次，而不需要重复加载。
+- 模块化管理
+可以把一些功能相关的代码集成到对应的动态库中，这样既便于开发使用，也方便维护管理。
+- 不同开发语言之间互相调用
+每种语言都有自己的优势，有些擅长处理计算，有些擅长处理界面等，因此可以在不同语言之间互相调用动态库。比如我们可以在C++语言中使用Go语言封装的动态库，也可以在VB中调用C++封装好的动态库等。
+- 便于资源本地化
+动态库有利于程序本地化的实现。比如一个程序中有多种语言界面，将本地化资源都放到动态库中，则可以在不同的语言环境中使用不同的语言界面。
+- 便于软件升级
+因为使用了动态库，所以软件在升级时能够更加方便 -- 可以将对应的有代码更新的动态库进行升级，而不用全部升级所有的软件模块。</p>
+<h3 id="51-linux">5.1 Linux 系统动态库开发与调试</h3>
+<p>Linux系统中的动态库(扩展名为 <code>.so</code> )也称为共享库 ( <code>Share Object</code> )。与Windows系统中的动态库相似，虽然它们在二进制中并不兼容，但是其使用形式和作用是相同的。同样，Linux系统中也有各种各样的动态库，包括系统的动态库和各种应用程序的动态库。
+同样，Linux系统动态库的链接方式也分为静态链接和动态链接。静态链接动态库的程序需要在程序启动时加载动态库。动态链接则是在运行时才需要加载，这与Windows系统采用的方式一致。</p>
+<h4 id="511">5.1.1 创建动态库</h4>
+<p>尽管 Linux 系统中没有图形化界面工具(Linux桌面系统比如Ubuntu也可以安装图形化界面开发工具)，但是在Linux系统中开发C/C++程序是比较方便的。
+Linux系统中的动态库命名需要遵循一定规则，如果不循循命名规则，有时会出现一些莫名其妙的问题。
+Linux动态库的命令规则如下：
+<code>lib[动态库名字].so.主版本号.次版本号.发行版本号</code>
+比如我们要创建一个名为test的动态库，则符合规范的完整名称如下：
+<code>libtest.so.1.0.123</code>
+需要说明的是，gcc在链接时寻找的名称仍然是不包含版本号的文件名。如果要使用带有版本号的文件名，一般还需要建立一个软连接，指向真实的动态库的文件名。
+我们仍以导出函数为例，导出一个计算PI的函数。先创建目录<code>chapter_5.2</code> ，测试程序都放在这个目录下，包括dll(.so)的代码和对应的测试动态库代码，以便于修改和调试。再创建子目录 <code>testso</code> 和 <code>testexe</code>，分别存放动态库代码和测试程序。
+先在testso目录下创建<code>test.cpp</code>，导出一个<code>calc_pi</code>函数，代码如下所示：</p>
+<pre><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+extern &quot;C&quot;
+
+double calc_pi()
+{
+    double x  = 0;
+    double y  = 0;
+    double pi = 0;
+    int num   = 0;
+    int iter  = 0;
+    const int try_times  = 10000000;
+    const double max_val = 32767.0;
+    while (iter++ &lt;= try_times) {
+        x = (double)(rand() % 32768) / max_val;
+        y = (double)(rand() % 32768) / max_val;
+        if ((x * x + y * y) &lt;= 1 )
+            num++;
+    }
+    pi = (4.0 * num) / try_times;
+
+    return pi;
+}
+</code></pre>
+<p>再创建一个test.h程序，其中包含一行代码。</p>
+<pre><code class="language-cpp">extern &quot;C&quot;
+double calc_pi();
+</code></pre>
+<p>测试程序在使用动态库时可以包含该头文件，调用calc_pi函数。注意，在 <code>test.h</code> 和 <code>test.cpp</code> 程序中都要加上 <code>extern "C"</code> ，告知gcc要以C语言的方式生成动态库函数，以便于其他语言正常调用。
+修改Makefile文件能够创建动态库，测试动态库对应的Makefile文件如下所示：</p>
+<pre><code class="language-Makefile">EXECUTABLE:= libtest.so
+LIBDIR:=
+LIBS:=
+INCLUDES:=.
+SRCDIR:=
+
+CC:=g++
+CFLAGS:= -g -fPIC -Wall -O0 
+CPPFLAGS:= $(CFLAGS)
+CPPFLAGS+= $(addprefix -I,$(INCLUDES))
+CPPFLAGS+= -I.
+CPPFLAGS+= -MMD
+
+RM-F:= rm -f
+
+SRCS:= $(wildcard *.cpp) $(wildcard $(addsuffix /*.cpp, $(SRCDIR)))
+OBJS:= $(patsubst %.cpp,%.o,$(SRCS))
+DEPS:= $(patsubst %.o,%.d,$(OBJS))
+MISSING_DEPS:= $(filter-out $(wildcard $(DEPS)),$(DEPS))
+
+
+.PHONY : all deps objs clean
+all:$(EXECUTABLE)
+deps:$(DEPS)
+
+objs:$(OBJS)
+clean:
+    @$(RM-F) *.o
+    @$(RM-F) *.d
+
+ifneq ($(MISSING_DEPS),)
+$(MISSING_DEPS):
+    @$(RM-F) $(patsubst %.d,%.o,$@)
+endif
+-include $(DEPS)
+$(EXECUTABLE) : $(OBJS)
+    $(CC) -shared -o $(EXECUTABLE) $(OBJS) $(addprefix -L,$(LIBDIR)) $(addprefix -l,$(LIBS))
+</code></pre>
+<p>Makefile 文件的大部分与以前示例中用到的Makefile文件相同，只有少数几个区别。
+第一行修改动态库的名称 <code>libtest.so</code>，在第8行我们添加了一个选项<code>-fPIC</code>，如果是动态库，必须有该选项或者 <code>-fPIC</code>。如果没有添加该选项，动态库中又调用了其他库文件，则链接时会出错。
+最后一个需要添加的选项是 <code>-shared</code> ，指明我们的结果文件是共享库，不是静态库或者可执行程序，否则也会出错。如果没有 <code>-shared</code> 选项，默认会当作可执行文件，链接时会提示找不到 <code>main</code> 函数。
+由于在没有 <code>-shared</code> 选项的情况下默认构建可执行文件，所以会提示找不到 <code>main</code> 函数；动态库中只有一个 <code>calc_pic</code> ，所以提示错误。
+在几个选项设置好以后，执行 <code>make</code> 命令，就可以成功构建出 <code>libtest.so</code> 动态库。当动态库构建完成以后，我们希望查看动态库是否能够成功导出函数。Linux系统中也有对应的工具可以查看动态库导出的函数信息，工具的名称为 <code>nm</code>。nm是name的缩写，是Linux系统中查看动态库和可执行文件导出符号的工具。使用nm查看libtest.so的导出函数，需要执行以下命令：
+<code>nm libtest.so</code>
+结果如下所示：</p>
+<pre><code class="language-cpp">superman@ubuntu:~/C_C++_Debug/book_debug/chapter_5.2/testso$ nm libtest.so
+0000000000200df0 d _DYNAMIC
+0000000000201000 d _GLOBAL_OFFSET_TABLE_
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+00000000000007b8 r __FRAME_END__
+0000000000000738 r __GNU_EH_FRAME_HDR
+0000000000201028 d __TMC_END__
+0000000000201028 B __bss_start
+                 w __cxa_finalize@@GLIBC_2.2.5
+00000000000005a0 t __do_global_dtors_aux
+0000000000200de0 d __do_global_dtors_aux_fini_array_entry
+0000000000200de8 d __dso_handle
+0000000000200dd8 d __frame_dummy_init_array_entry
+                 w __gmon_start__
+0000000000201028 D _edata
+0000000000201030 B _end
+0000000000000704 t _fini
+00000000000004e0 t _init
+00000000000005e9 T calc_pi
+0000000000201028 b completed.7294
+0000000000000530 t deregister_tm_clones
+00000000000005e0 t frame_dummy
+                 U rand@@GLIBC_2.2.5
+0000000000000560 t register_tm_clones
+</code></pre>
+<h4 id="512">5.1.2 使用动态库</h4>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

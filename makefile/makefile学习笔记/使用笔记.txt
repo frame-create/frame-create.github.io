@@ -1,0 +1,35 @@
+1、如何居中显示？
+# <center>协议代理</center>
+
+2、如何显示目录?
+[toc]
+
+3、如何插入图片？
+![替代文本](图片链接)
+
+4、如何让文字显示指定的颜色？
+<font color=Blue>Test</font>
+比较麻烦，建议不适用此功能
+
+5、如何给文字添加下划线？
+<u>Test</u>
+
+6、添加 makefile代码段
+```makefile
+
+```
+
+7、动态库的使用
+问题一: 如何编译生成动态库?
+问题二: 如何链接动态库?
+
+-Wl
+-rpath
+-rpath-link
+
+https://blog.csdn.net/hongszh/article/details/123238271
+
+
+
+
+

@@ -1,0 +1,100 @@
+<mxfile host="65bd71144e">
+    <diagram id="pyIiYwWN15eKJhpWYSDH" name="第 1 页">
+        <mxGraphModel dx="1196" dy="1160" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="" style="edgeStyle=none;html=1;fontSize=14;" parent="1" source="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="165" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="远程仓库" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="130" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="edgeStyle=none;html=1;fontSize=14;" parent="1" source="5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="491" y="285" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="本地工作区" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="391" y="130" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="克隆操作" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="295" y="139" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="edgeStyle=none;rounded=0;html=1;fontSize=14;" parent="1" source="9" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="491" y="443" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="修改后的工作区" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="391" y="287" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="编辑、添加、删除文件" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="494" y="236" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;endArrow=classic;html=1;fontSize=14;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=0;" parent="1" source="2" target="9" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="250" y="400" as="sourcePoint"/>
+                        <mxPoint x="300" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="更新操作" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="259" y="242" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;rounded=0;html=1;fontSize=14;" parent="1" source="17" target="19" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="检查修改文件" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="444" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="查看文件状态及修改情况" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="497" y="390" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="edgeStyle=none;rounded=0;html=1;fontSize=14;" parent="1" source="19" target="22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="暂存修改" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="594" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="加入暂存区" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="492" y="547" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="edgeStyle=none;html=1;fontSize=14;" edge="1" parent="1" source="22" target="31">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="提交修改" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="744" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="异常处理及推送操作" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="499" y="845" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;fontSize=14;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="22" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="210" y="580" as="sourcePoint"/>
+                        <mxPoint x="260" y="530" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;fontSize=14;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="31" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="120" y="780" as="sourcePoint"/>
+                        <mxPoint x="170" y="730" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="推送操作" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="280" y="750" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="推送操作" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="200" y="900" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="处理异常" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="894" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="提交及推送操作" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="497" y="692" width="110" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

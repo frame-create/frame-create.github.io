@@ -1,0 +1,1839 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2294_nginx/">
+      
+      
+        <link rel="next" href="../../Python/python/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>nginx学习 - Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nginx" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Blog" class="md-header__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              nginx学习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Blog" class="md-nav__button md-logo" aria-label="Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/%E9%AB%98%E8%B4%A8%E9%87%8FC_C%2B%2B%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    代码规范
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    绘图
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            绘图
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BB%98%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流程图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/eNSP%E7%BD%91%E7%BB%9C%E4%BB%BF%E7%9C%9F/eNSP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eNSP网络仿真
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C_C%2B%2B/C_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C_C%2B%2B%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95/C_C%2B%2B%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C_C++代码调试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux系统编程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    makefile
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            makefile
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../makefile/makefile%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/makefile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    makefile学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    nginx
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2294_nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2294 nginx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    nginx学习
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    nginx学习
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_1" class="md-nav__link">
+    第一章 研究Nginx前的准备工作
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章 研究Nginx前的准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-nginx" class="md-nav__link">
+    1.1 Nginx是什么?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-nginx" class="md-nav__link">
+    1.2 为什么选择Nginx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 准备工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-nginx" class="md-nav__link">
+    1.4 编译安装Nginx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-configure" class="md-nav__link">
+    1.5 configure 详解
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 configure 详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-nginx" class="md-nav__link">
+    1.5.1 指定nginx安装位置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-nginx" class="md-nav__link">
+    1.6 Nginx的命令行控制
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 Nginx的命令行控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    1.6.1 默认方式启动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162" class="md-nav__link">
+    1.6.2 另行指定配置文件的启动方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163" class="md-nav__link">
+    1.6.3 快速的停止服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164" class="md-nav__link">
+    1.6.4 “优雅”的停止服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-nginx" class="md-nav__link">
+    1.6.5 使运行中的Nginx重读配置项并生效
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-nginx" class="md-nav__link">
+    1.7 Nginx 源码结构
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_2" class="md-nav__link">
+    第二章 Nginx的配置
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 Nginx的配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nginx" class="md-nav__link">
+    2.1 运行中的Nginx进程间的关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-nginx" class="md-nav__link">
+    2.2 Nginx 配置的通用语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-nginx" class="md-nav__link">
+    2.3 Nginx服务的基本配置
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Nginx服务的基本配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231" class="md-nav__link">
+    2.3.1 用于调试进程和定位问题的配置项
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3.1 用于调试进程和定位问题的配置项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2311-error" class="md-nav__link">
+    2.3.1.1 error 日志的设置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2312-nginx" class="md-nav__link">
+    2.3.1.2 Nginx打印日志函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-httpweb" class="md-nav__link">
+    2.4 用HTTP核心模块配置一个静态Web服务器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-http-proxy-module" class="md-nav__link">
+    2.5 用 HTTP proxy module 配置一个反向代理服务器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    第三章 配置文件解析
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 配置文件解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 配置文件简介
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 配置文件简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-ngx_command_t" class="md-nav__link">
+    3.1.1 结构体 ngx_command_t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ngx_conf_parse" class="md-nav__link">
+    3.2 主函数 ngx_conf_parse
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 主函数 ngx_conf_parse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-ngx_conf_t" class="md-nav__link">
+    3.2.1 结构体 ngx_conf_t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-stream" class="md-nav__link">
+    nginx stream模块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2294nginx" class="md-nav__link">
+    2294项目的nginx
+  </a>
+  
+    <nav class="md-nav" aria-label="2294项目的nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginx_3" class="md-nav__link">
+    nginx 启动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-emerg-getpwnamnobody-failed" class="md-nav__link">
+    报错 nginx: [emerg] getpwnam(“nobody“) failed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdb" class="md-nav__link">
+    gdb调试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Beyond_Compare/Beyond_Compare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beyond_Compare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/git/Git%E5%9F%B9%E8%AE%AD/git%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Markdown/Markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/MobaXterm/MobaXterm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MobaXterm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/Source_Insight/source_insight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Source_Insight
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vim/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/VMware/vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VMware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/VS_Code/VS_Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS_Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_1" class="md-nav__link">
+    第一章 研究Nginx前的准备工作
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章 研究Nginx前的准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-nginx" class="md-nav__link">
+    1.1 Nginx是什么?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-nginx" class="md-nav__link">
+    1.2 为什么选择Nginx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 准备工作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-nginx" class="md-nav__link">
+    1.4 编译安装Nginx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-configure" class="md-nav__link">
+    1.5 configure 详解
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 configure 详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-nginx" class="md-nav__link">
+    1.5.1 指定nginx安装位置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-nginx" class="md-nav__link">
+    1.6 Nginx的命令行控制
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 Nginx的命令行控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    1.6.1 默认方式启动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162" class="md-nav__link">
+    1.6.2 另行指定配置文件的启动方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163" class="md-nav__link">
+    1.6.3 快速的停止服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164" class="md-nav__link">
+    1.6.4 “优雅”的停止服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-nginx" class="md-nav__link">
+    1.6.5 使运行中的Nginx重读配置项并生效
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-nginx" class="md-nav__link">
+    1.7 Nginx 源码结构
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_2" class="md-nav__link">
+    第二章 Nginx的配置
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 Nginx的配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nginx" class="md-nav__link">
+    2.1 运行中的Nginx进程间的关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-nginx" class="md-nav__link">
+    2.2 Nginx 配置的通用语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-nginx" class="md-nav__link">
+    2.3 Nginx服务的基本配置
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Nginx服务的基本配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231" class="md-nav__link">
+    2.3.1 用于调试进程和定位问题的配置项
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3.1 用于调试进程和定位问题的配置项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2311-error" class="md-nav__link">
+    2.3.1.1 error 日志的设置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2312-nginx" class="md-nav__link">
+    2.3.1.2 Nginx打印日志函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-httpweb" class="md-nav__link">
+    2.4 用HTTP核心模块配置一个静态Web服务器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-http-proxy-module" class="md-nav__link">
+    2.5 用 HTTP proxy module 配置一个反向代理服务器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    第三章 配置文件解析
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 配置文件解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 配置文件简介
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 配置文件简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-ngx_command_t" class="md-nav__link">
+    3.1.1 结构体 ngx_command_t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ngx_conf_parse" class="md-nav__link">
+    3.2 主函数 ngx_conf_parse
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 主函数 ngx_conf_parse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-ngx_conf_t" class="md-nav__link">
+    3.2.1 结构体 ngx_conf_t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-stream" class="md-nav__link">
+    nginx stream模块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2294nginx" class="md-nav__link">
+    2294项目的nginx
+  </a>
+  
+    <nav class="md-nav" aria-label="2294项目的nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginx_3" class="md-nav__link">
+    nginx 启动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-emerg-getpwnamnobody-failed" class="md-nav__link">
+    报错 nginx: [emerg] getpwnam(“nobody“) failed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdb" class="md-nav__link">
+    gdb调试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="nginx">nginx学习</h1>
+<p>nginx主程序入口:
+<code>src/core/nginx.c</code> 中的<code>main</code>函数</p>
+<h2 id="nginx_1">第一章 研究Nginx前的准备工作</h2>
+<h3 id="11-nginx">1.1 Nginx是什么?</h3>
+<h3 id="12-nginx">1.2 为什么选择Nginx</h3>
+<h3 id="13">1.3 准备工作</h3>
+<h3 id="14-nginx">1.4 编译安装Nginx</h3>
+<p>安装Nginx最简单的方式就是，进入nginx目录后执行以下3行命令:</p>
+<blockquote>
+<p>./configure
+make
+make install</p>
+</blockquote>
+<h3 id="15-configure">1.5 configure 详解</h3>
+<h4 id="151-nginx">1.5.1 指定nginx安装位置</h4>
+<p><code>./configure --prefix=PATH</code>
+如果不指定的话，默认安装位置为: <code>/usr/local/nginx</code></p>
+<h3 id="16-nginx">1.6 Nginx的命令行控制</h3>
+<p>默认情况下，Nginx被安装在目录 <code>/usr/local/nginx</code>中，其二进制文件路径为<code>/usr/local/nginx/sbin/nginx</code>，配置文件路径为<code>/usr/local/nginx/conf/nginx.conf</code>。</p>
+<h4 id="161">1.6.1 默认方式启动</h4>
+<p><code>/usr/local/nginx/sbin/nginx</code>
+这时，会读取默认路径下的配置文件: /usr/local/nginx/conf/nginx.conf。</p>
+<h4 id="162">1.6.2 另行指定配置文件的启动方式</h4>
+<p><code>/usr/local/nginx/sbin/nginx -c /tmp/nginx.conf</code>
+这时，会读取-c 参数后指定的nginx.conf配置文件来启动Nginx。</p>
+<h4 id="163">1.6.3 快速的停止服务</h4>
+<p>使用 <code>-s stop</code>可以强制停止Nginx服务。-s参数其实是告诉Nginx程序向正在运行的Nginx服务发送信号量，Nginx程序通过nginx.pid文件中得到master进程的进程ID，再向运行中的master进程发送TERM信号来快速的关闭Nginx服务。例如:</p>
+<blockquote>
+<p>/usr/local/nginx/sbin/nginx -s stop</p>
+</blockquote>
+<p>实际上，如果通过kill命令直接向nginx master进程发送TERM 或者 INT信号，效果是一样的。例如，先通过ps命令来查看nginx master的进程ID:</p>
+<blockquote>
+<p>root@ubuntu:/home/superman/nginx/nginx-1.22.1# ps -ef | grep nginx
+root     23449 11417  0 23:43 ?        00:00:00 nginx: master process /usr/local/nginx/sbin/nginx
+nobody   23450 23449  0 23:43 ?        00:00:00 nginx: worker process</p>
+</blockquote>
+<p>接下来直接通过kill命令来发送信号:
+    <code>kill -s SIGTERM 23449</code>
+或者
+    <code>kill -s SIGINT 23449</code>
+上述两条命令的效果与执行 /usr/local/nginx/sbin/nginx -s stop是完全一样的。</p>
+<h4 id="164">1.6.4 “优雅”的停止服务</h4>
+<p>如果希望Nginx服务可以正常的处理完当前所有请求再停止服务，那么可以使用<code>-s quit</code>参数来停止服务。例如:
+<code>/usr/local/nginx/sbin/nginx -s quit</code></p>
+<p>该命令与快速停止Nginx服务是有区别的。当快速停止服务时，worker进程与master进程在收到信号后会立刻跳出循环，退出程序。而“优雅”的停止服务时，首先会关闭监听端口，停止接收新的连接，然后把当前正在处理的连接全部处理完，最后再退出进程。</p>
+<p>与快速停止服务相似，可以直接发送QUIT信号给master进程来停止服务，其效果与执行 <code>-s quit</code>命令是一样的。例如:
+<code>kill -s SIGQUIT &lt;nginx master pid&gt;</code></p>
+<p>如果希望“优雅”的停止某个worker进程，那么可以通过向该进程发送WINCH信号来停止服务。例如:
+<code>kill -s SIGWINCH &lt;nginx worker pid&gt;</code></p>
+<h4 id="165-nginx">1.6.5 使运行中的Nginx重读配置项并生效</h4>
+<p>使用<code>-s reload</code>参数可以使运行中的Nginx服务重新加载nginx.conf文件。例如:
+<code>/usr/local/nginx/sbin/nginx -s reload</code>
+事实上，Nginx会先检查新的配置项是否有误，如果全部正确就以“优雅”的方式关闭，再重新启动Nginx来实现这个目的。类似的，<code>-s</code>是发送信号，任然可以用kill命令发送HUP信号来达到相同的效果。
+<code>kill -s SIGHUP &lt;nginx master pid&gt;</code></p>
+<h3 id="17-nginx">1.7 Nginx 源码结构</h3>
+<p>Nginx 源码 src 文件夹的目录结构如下所示:</p>
+<blockquote>
+<p>.
+├── core
+├── event
+│   └── modules
+├── http
+│   ├── modules
+│   │   └── perl
+│   └── v2
+├── mail
+├── misc
+├── os
+│   └── unix
+└── stream</p>
+</blockquote>
+<ul>
+<li>
+<p>core文件夹用于存储Nginx核心代码，其中有Nginx内部自定义的数据结构，例如 字符串、数组、链表、散列表、队列、基数树以及红黑树等。另外还有Nginx核心结构体，例如用于与客户端连接的 <code>ngx_connection_t</code>，用于配置解析的<code>ngx_conf_t</code>，用于缓存的<code>ngx_buf_t</code>。Nginx入口函数main位于 nginx.c文件中。</p>
+</li>
+<li>
+<p>event文件夹存储事件处理模块相关的代码。modules存储了I/O多路复用相关的代码，例如 select、epoll、poll、kqueue等。Nginx可以根据不同的系统选择不同的方案以实现性能最大化。</p>
+</li>
+<li>
+<p>http文件夹包含Nginx处理HTTP请求时所需要的相关模块代码。</p>
+</li>
+<li>
+<p>除了可以作为HTTP服务器外，Nginx还可以作为邮件服务器。相关实现可以参考mail文件夹。</p>
+</li>
+<li>
+<p>misc文件夹包含两个文件: <code>ngx_cpp_test_module.cpp</code>与<code>ngx_google_perftools_module.c</code>。其中,<code>ngx_cpp_test_module.cpp</code>用于测试Nginx中引用的头文件是否与C++兼容，<code>ngx_google_perftools_module.c</code>用于支持gperftools的实现。gperftools是谷歌开源的性能分析工具，读者可以自行查阅相关资料。</p>
+</li>
+<li>
+<p>os文件夹包含跨平台实现的相关代码。</p>
+</li>
+<li>
+<p>stream 文件夹包含Nginx支持TCP反向代理功能的具体实现。</p>
+</li>
+</ul>
+<h2 id="nginx_2">第二章 Nginx的配置</h2>
+<h3 id="21-nginx">2.1 运行中的Nginx进程间的关系</h3>
+<h3 id="22-nginx">2.2 Nginx 配置的通用语法</h3>
+<h3 id="23-nginx">2.3 Nginx服务的基本配置</h3>
+<h4 id="231">2.3.1 用于调试进程和定位问题的配置项</h4>
+<h5 id="2311-error">2.3.1.1 error 日志的设置</h5>
+<p><strong>语法</strong>: <code>error_log /path/file level;</code>
+<strong>默认</strong>: <code>error_log logs/error.log error;</code></p>
+<p>error 日志是定位Nginx问题的最佳工具，我们可以根据自己的需求妥善设置error日志的路径和级别。</p>
+<p>/path/file参数可以是一个具体的文件，例如，默认情况下是 /logs/error.log文件，最好将它放到一个磁盘空间足够大的位置；/path/file也可以是 /dev/null，这样就不会输出任何日志了，它也是关闭error日志的唯一手段；/path/file也可以是 stderr，这样日志会输出到标准错误文件中。</p>
+<p>level是日志的输出级别，取值范围是 debug、info、notice、warn、error、crit、alert、emerg，从左至右级别依次增大。当设定为一个级别时，大于或等于该级别的日志都会被输出到 /path/file文件中，小于该级别的日志则不会输出。例如，当设定为error级别时，error、crit、alert、emerg级别的日志都会输出。</p>
+<p>如果设定的日志级别是 debug，则会输出所有的日志，这样数据量会很大，需要预先确保 /path/file所在磁盘有足够的磁盘空间。</p>
+<p><strong>注意</strong>
+如果日志级别设定到debug，必须在 configure 时加入 --with-debug 配置项。</p>
+<h5 id="2312-nginx">2.3.1.2 Nginx打印日志函数</h5>
+<p>https://www.nginx.com/resources/wiki/extending/api/logging/
+- ngx_log_error函数
+    - 函数功能
+    将错误日志打印到NGINX的日志文件中。
+    - 函数原型
+    <code>c
+    void ngx_log_error(ngx_uint_t level, ngx_log_t *log, ngx_err_t err, const char *fmt, ...)</code>
+    - 参数
+        - level
+        日志等级
+        - log
+        指向NGINX日志对象的指针
+        - err
+        操作系统的错误码（0表示不适用）
+        - fmt
+        日志内容</p>
+<p>日志等级取值如下:
+<img alt="log level" src="../images/log_level.png" /></p>
+<h3 id="24-httpweb">2.4 用HTTP核心模块配置一个静态Web服务器</h3>
+<h3 id="25-http-proxy-module">2.5 用 HTTP proxy module 配置一个反向代理服务器</h3>
+<h2 id="_1">第三章 配置文件解析</h2>
+<p>Nginx的配置指令可以分为两大类:
+    配置块(如 events/http/server/location)
+    单条指令(如 worker_processes/root/rewrite)
+- 配置块
+    配置块可以嵌套，如http配置块中可以嵌套server配置块，server配置块中还可以嵌套location配置块
+- 单条指令
+    单条指令可以同时配置在不同的配置块，如root指令可以同时配置在http/server/location配置块中
+配置块、配置块的嵌套以及指令的多出配置导致配置文件的解析、存储以及查找比较复杂。</p>
+<h3 id="31">3.1 配置文件简介</h3>
+<p>下载Nginx源码后，配置文件存储在<code>/usr/local/nginx/conf/nginx.conf</code>中，实例如下:</p>
+<pre><code>#user  nobody;
+master_process on;
+worker_processes  2;
+error_log  logs/error.log debug;
+
+events {
+    use epoll;
+    worker_connections  1024;
+}
+
+http {
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+}
+</code></pre>
+<p>Nginx按照上述配置启动之后会在80端口监听客户端请求，接收到HTTP请求并转发给上游FPM进程处理后，将处理结果返给客户端。各配置指令介绍如下。
+- worker_processes
+    配置Worker进程数目，其值可以是具体的数字或者auto，一般等于CPU核数。通常，其会结合<code>worker_cpu_affinity</code>来设置CPU亲和力，使得Worker进程绑定到特定CPU上执行。
+- error_log
+    配置错误日志输出方式以及日志级别。通常，我们会将错误日志输出到某一文件。日志级别从低到高划分为<code>debug/info/notice</code>等，默认级别为 <code>error</code>
+- events/http
+    配置块，用于区分配置类型。events指令块的内部指令均用于配置事件相关处理，http指令块的内部指令均用于HTTP请求处理
+- use
+    用于配置使用的 <code>I/O</code> 多路复用模型，如<code>epoll/kqueue</code>等。如果没有配置<code>use</code>，Nginx会检测当前操作系统支持的I/O多路复用模型
+- worker_connections
+    用于配置每个Worker进程最多可建立的连接数。由此可得Nginx实例最多可建立的连接数目为 <code>worker_connections * worker_processes</code>，包括与客户端建立的网络连接、与上游Upstream建立的网络连接以及用于监听的socket描述符
+- log_format
+    用于配置日志输出格式，main定义了 日志格式的名称，<code>$remote_addr</code>等变量为Nginx内部定义的变量，此处用于定义日志输出格式
+- access_log
+    用于配置Nginx访问日志，结果输出到文件<code>logs/access.log</code>。main定义了使用的日志格式名称
+- server
+    配置块，用于配置一个虚拟服务器
+- listen
+    用于配置监听的IP以及端口，该指令可选项非常多，比如选项 <code>default_server</code> 用于配置当前虚拟服务器为默认服务器（当某HTTP请求的Host与所有服务器的server_name都没有匹配成功时，会使用默认服务器处理）；选项 <code>backlog</code> 用于配置TCP半连接队列以及全连接队列最大限制（同时受限于内核参数）
+- server_name
+    用于配置基于名称的虚拟服务器，可使用全名称<code>www.example.com</code> 或者通配符 <code>*.example.com</code>。只有当HTTP请求的Host与该服务器名称匹配成功时，才会由该服务器处理HTTP请求（默认服务器除外）
+- location
+    用于匹配指定的请求URI，匹配成功时才会选择该location配置处理HTTP请求。location匹配方式支持正则匹配、最大前缀匹配以及精确匹配等
+- fastcgi_pass
+    将HTTP请求按照FastCGI协议转发给上游FPM进程处理，将HTTP请求按照HTTP转发给上游服务器</p>
+<h4 id="311-ngx_command_t">3.1.1 结构体 ngx_command_t</h4>
+<p>Nginx配置文件的解析是分散到各个模块的。每个模块都有一个<code>commands</code>数组，数组类型为<code>ngx_command_t</code>，用于存储该模块可以解析的所有配置指令。结构体<code>ngx_command_t</code>定义如下:</p>
+<pre><code class="language-c">struct ngx_command_s {
+    ngx_str_t             name;
+    ngx_uint_t            type;
+    char               *(*set)(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
+    ngx_uint_t            conf;
+    ngx_uint_t            offset;
+    void                 *post;
+};
+</code></pre>
+<p>各字段含义如下。
+- name
+    配置指令名称，如<code>proxy_pass</code>
+- type
+    &gt; 指令类型。指令类型分为4种:
+    &gt;    <strong>表示指令可配置位置</strong>
+    &gt;    <strong>用于检验参数数目</strong>
+    &gt;    <strong>表明指令是单条指令还是配置块</strong>
+    &gt;    <strong>其他</strong>
+    - 第1种指令类型表示指令可配置位置。什么是可配置位置? 我们以实例说明。比如:
+        - 指令 <code>worker_processes</code> 、 <code>events/http</code> 只能在配置文件进行配置，不能在任何配置块中配置，其类型为 <code>NGX_MAIN_CONF</code>
+        - 指令 <code>worker_connections/use</code> 只能配置在events配置块中，其类型为 <code>NGX_EVENT_CONF</code>
+        - 指令 <code>server</code> 只能配置在http配置块中，其类型为 <code>NGX_HTTP_MAIN_CONF</code>
+        - 指令 <code>listen/server_name</code> 只能配置在server配置块中，其类型为 <code>NGX_HTTP_SRV_CONF</code>
+        - 指令 <code>proxy_pass/fastcgi_pass</code> 只能配置在location配置块中，其类型为 <code>NGX_HTTP_LOC_CONF</code></p>
+<pre><code>&gt; **注意**
+&gt; 指令类型按位标记。当一条指令可以同时配置在多个位置时，指令类型支持按位或运算，
+&gt; 比如root指令，可以配置在 `http/server/location` 配置块，因此其类型为
+&gt; NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONG|NGX_HTTP_LOC_CONF
+
+- 第2种指令类型用于检验参数数目，主要有下面几种
+    - NGX_CONF_TAKEn
+        表示该指令必须有n个参数
+    - NGX_CONF_TAKEmn
+        表示该指令必须有 m 或者 n 个参数
+    - NGX_CONF_NOARGS
+        表示该指令没有参数
+    - NGX_CONF_1MORE
+        表示该指令至少有1个参数
+    - NGX_CONF_2MORE
+        表示该指令至少有2个参数
+    - NGX_CONF_ANY
+        表示该指令参数数目任意
+
+- 第3种指令类型表明指令是单条指令还是配置块，如 `NGX_CONF_BLOCK` 表示该指令为一个配置块。
+
+- 第4种是一些其他指令类型，比如NGX_CONF_FLAG表示该指令为一个标识类指令，只能配置 `on/off`; NGX_DIRECT_CONF表示该指令的存储地址可直接获取，不需要再额外分配
+</code></pre>
+<ul>
+<li>set
+    函数指针，指向该配置对应的处理函数</li>
+<li>conf 和 offset
+    表示偏移量，通过偏移量可定位到该配置的存储地址</li>
+<li>post
+    可以指向多种结构</li>
+</ul>
+<h3 id="32-ngx_conf_parse">3.2 主函数 ngx_conf_parse</h3>
+<p>配置解析的主函数，即入口函数是<code>ngx_conf_parse(ngx_conf_t *cf, ngx_str_t *filename)</code>，输入参数filename表示配置文件路径，如果值为NULL表明此时解析的是配置块；cf即当前待处理指令，类型为<code>ngx_conf_t</code>。函数ngx_conf_parse主要通过调用ngx_conf_handler函数处理并解析指令。</p>
+<h4 id="321-ngx_conf_t">3.2.1 结构体 ngx_conf_t</h4>
+<p>结构体ngx_conf_t主要字段如下:</p>
+<pre><code class="language-c">struct ngx_conf_s {
+    char                 *name;           // 当前读取到的配置名称
+    ngx_array_t          *args;           // 当前读取到的配置参数
+    void                 *ctx;            // 上下文
+    ngx_uint_t            module_type;    // 模块类型
+    ngx_uint_t            cmd_type;       // 指令类型
+};
+</code></pre>
+<p>各个字段说明如下:
+- name
+    类型为字符串，存储当前读取到的配置的名称
+- args
+    类型为数组，存储当前读取到的配置的所有参数
+- ctx
+    类型为<code>void *</code>指针，配置在解析后，结果通常会存储在某结构体的某字段。通过ctx字段，我们可以获取该结构体地址
+- module_type 和 cmd_type
+    表示当前配置可以由那些模块解析以及当前配置的指令类型。读取到某配置时，需要遍历所有模块的指令数组，查找当前配置对用的<code>ngx_command_t</code>。通过这两个字段可以快速过滤掉那些不能处理当前配置的模块以及不匹配的结构体。</p>
+<h2 id="nginx-stream">nginx stream模块</h2>
+<p>Nginx 的 TCP/UDP 代理功能的模块分为核心模块和辅助模块、核心模块 stream 需要在编译配置时增加"--with-stream"参数进行编译。</p>
+<p>https://www.w3schools.cn/nginx/nginx_proxy_stream.asp
+https://blog.csdn.net/carefree2005/article/details/121229818</p>
+<h2 id="2294nginx">2294项目的nginx</h2>
+<p>nginx 安装路径: /usr/local/nproxy
+日志路径: /usr/local/nproxy/logs    info.log 和 error.log
+使用GDB调试nginx:
+https://blog.csdn.net/sunxiaopengsun/article/details/73038959</p>
+<h4 id="nginx_3">nginx 启动</h4>
+<p>./configure --prefix=/usr/local/nginx \
+    --with-debug \
+    --with-cc-opt='-O0 -g' \</p>
+<p>其中 --with-cc-opt='-O0 -g' 是不对编译进行优化和打开调试开关</p>
+<h4 id="nginx-emerg-getpwnamnobody-failed">报错 nginx: [emerg] getpwnam(“nobody“) failed</h4>
+<blockquote>
+<p>groupadd -f nobody
+useradd -g nobody nobody
+./nginx -s reload</p>
+</blockquote>
+<h4 id="gdb">gdb调试</h4>
+<p>参考链接: https://wenfh2020.com/2021/06/25/gdb-nginx/</p>
+<ul>
+<li>
+<p>编译时关掉编译优化并添加<code>-g</code>选项</p>
+</li>
+<li>
+<p>gdb /usr/local/nginx/sbin/nginx</p>
+<blockquote>
+<p>说明: 使用<code>-tui</code>参数可以将调试窗口分为两部分：上面是源码，下面是调试信息，使用<code>Ctrl+n</code>/<code>Ctrl+p</code>或者方向键进行翻页。</p>
+</blockquote>
+</li>
+<li>
+<p>设置 gdb调试子进程模式
+    <code>set follow-fork-mode child</code>
+    <code>set detach-on-fork off</code></p>
+</li>
+<li>
+<p>设置断点
+    <code>b ngx_event_accept</code></p>
+</li>
+<li>
+<p>运行
+    <code>r</code></p>
+</li>
+<li>
+<p>用talent测试
+    <code>talent 127.0.0.1 80</code></p>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>
